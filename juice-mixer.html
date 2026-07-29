@@ -60,7 +60,19 @@
     .mixer-hero-btn:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.35)}
     @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
+    /* ── How to Play ── */
+    .how-to-play{max-width:900px;margin:0 auto;padding:60px 32px 30px}
+    .htp-heading{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;text-align:center;margin-bottom:36px}
+    .htp-heading span{color:var(--green)}
+    .htp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px}
+    .htp-card{background:rgba(255,255,255,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(46,111,64,.08);border-radius:18px;padding:28px 20px;text-align:center;transition:transform .3s,box-shadow .3s}
+    .htp-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .htp-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 14px}
+    .htp-card h3{font-size:.95rem;color:#111;margin-bottom:6px}
+    .htp-card p{font-size:.82rem;color:#888;line-height:1.5}
+    @media(max-width:768px){.htp-grid{grid-template-columns:1fr}}
     .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 32px}
+    @media(max-width:500px){.game-fruits{gap:8px}.fruit-btn{min-width:65px;padding:10px 12px}.fruit-emoji{font-size:1.6rem}}
     .mixer-frame{width:100%;max-width:750px;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);padding:32px;display:flex;flex-direction:column;align-items:center;gap:20px}
     .game-scoreboard{display:flex;justify-content:space-between;width:100%}
     .game-score,.game-timer{display:flex;flex-direction:column;align-items:center;gap:2px}
@@ -141,6 +153,43 @@
       <h1>Juice Mixer<br><span>Challenge</span></h1>
       <p>Create the perfect Frutex juice by choosing the correct ingredients.</p>
       <a href="#game" class="mixer-hero-btn">Start Mixing <span>→</span></a>
+    </div>
+  </section>
+  <section class="how-to-play">
+    <h2 class="htp-heading">How to <span>Play</span></h2>
+    <div class="htp-grid">
+      <div class="htp-card">
+        <div class="htp-icon" style="background:rgba(46,111,64,.1)">📋</div>
+        <h3>Read the Recipe</h3>
+        <p>A Frutex drink recipe appears at the top — match the ingredients shown.</p>
+      </div>
+      <div class="htp-card">
+        <div class="htp-icon" style="background:rgba(230,150,30,.1)">🍊</div>
+        <h3>Pick Ingredients</h3>
+        <p>Choose the correct fruits from the selection panel below the blender.</p>
+      </div>
+      <div class="htp-card">
+        <div class="htp-icon" style="background:rgba(33,150,243,.1)">👆</div>
+        <h3>Drag & Drop</h3>
+        <p>Drag the fruits into the blender or tap them to add ingredients one by one.</p>
+      </div>
+    </div>
+    <div class="htp-grid">
+      <div class="htp-card">
+        <div class="htp-icon" style="background:rgba(156,39,176,.1)">🔄</div>
+        <h3>Press Blend</h3>
+        <p>Hit the Blend button to mix your creation and see if it matches the recipe.</p>
+      </div>
+      <div class="htp-card">
+        <div class="htp-icon" style="background:rgba(46,200,100,.1)">⭐</div>
+        <h3>Earn Points</h3>
+        <p>Score 10 points for each correct recipe — bonus points for speed!</p>
+      </div>
+      <div class="htp-card">
+        <div class="htp-icon" style="background:rgba(255,87,34,.1)">⏱️</div>
+        <h3>Beat the Clock</h3>
+        <p>Complete as many recipes as possible before the 60-second timer runs out.</p>
+      </div>
     </div>
   </section>
   <section class="mixer-area" id="game">
