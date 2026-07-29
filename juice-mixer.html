@@ -91,7 +91,24 @@
     .fruit-btn:active{transform:scale(.95)}
     .fruit-emoji{font-size:2rem;line-height:1}
     .fruit-name{font-size:.7rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
-    @media(max-width:500px){.game-fruits{gap:8px}.fruit-btn{min-width:65px;padding:10px 12px}.fruit-emoji{font-size:1.6rem}}
+    /* ── Game state ── */
+    .fruit-btn.selected{border-color:var(--green);background:rgba(46,111,64,.15);transform:scale(1.05)}
+    .recipe-slot.filled{background:rgba(46,111,64,.12);border:2px solid rgba(46,111,64,.3);font-size:1.5rem;display:flex;align-items:center;justify-content:center}
+    .game-blend-btn{display:inline-flex;align-items:center;gap:6px;padding:12px 28px;background:var(--green);color:#fff;border:none;border-radius:50px;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .25s;font-family:inherit;box-shadow:0 4px 16px rgba(46,111,64,.25)}
+    .game-blend-btn:hover{background:#247a3a;transform:translateY(-2px);box-shadow:0 6px 24px rgba(46,111,64,.35)}
+    .game-blend-btn:active{transform:scale(.96)}
+    .game-blend-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .game-feedback{font-weight:700;font-size:.95rem;min-height:24px;transition:all .3s}
+    .game-feedback.success{color:var(--green);animation:fbBounce .4s ease}
+    .game-feedback.error{color:#e74c3c;animation:fbShake .4s ease}
+    @keyframes fbBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+    @keyframes fbShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    .game-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);border-radius:24px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;z-index:2;backdrop-filter:blur(4px)}
+    .game-overlay h2{font-family:Georgia,serif;color:#f5ead6;font-size:2rem}
+    .game-overlay p{color:rgba(255,255,255,.7)}
+    .game-overlay-btn{display:inline-flex;align-items:center;gap:6px;padding:14px 32px;background:#f5ead6;color:#2E6F40;border:none;border-radius:50px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:inherit;transition:all .25s}
+    .game-overlay-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+    .mixer-frame{width:100%;max-width:750px;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);padding:32px;display:flex;flex-direction:column;align-items:center;gap:20px;position:relative}
 
     @media(max-width:960px){
       .navbar{top:12px;border-radius:28px;width:90vw}.navbar__inner{padding:8px 20px;height:48px}.navbar__logo svg{height:24px}.navbar__hamburger{display:flex}
@@ -224,13 +241,15 @@
       </div>
       <div class="game-recipe">
         <p class="game-recipe-label">Target Recipe</p>
-        <div class="game-recipe-slots">
+        <div class="game-recipe-slots" id="recipeSlots">
           <span class="recipe-slot"></span>
           <span class="recipe-slot"></span>
           <span class="recipe-slot"></span>
         </div>
       </div>
-      <div class="game-fruits">
+      <div class="game-feedback" id="gFeedback"></div>
+      <button class="game-blend-btn" id="gBlendBtn">🔄 Blend</button>
+      <div class="game-fruits" id="gFruits">
         <button class="fruit-btn" data-fruit="orange">
           <span class="fruit-emoji">🍊</span>
           <span class="fruit-name">Orange</span>
@@ -275,6 +294,109 @@
   <div style="border-top:1px solid rgba(255,255,255,.08);padding:20px 32px;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:.82rem"><p>&copy; 2026 Frutex. All rights reserved.</p><div style="display:flex;gap:20px"><a href="#" style="color:rgba(255,255,255,.4);text-decoration:none">Privacy Policy</a><a href="#" style="color:rgba(255,255,255,.4);text-decoration:none">Terms</a></div></div>
 </footer>
 
-<script>(function(){const nm=document.getElementById('navMenu'),hb=document.getElementById('hamburger'),dd=document.querySelectorAll('.navbar__dropdown');dd.forEach(d=>{d.querySelector('.navbar__dropdown-toggle').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();dd.forEach(x=>{if(x!==d)x.classList.remove('open')});d.classList.toggle('open')})});document.addEventListener('click',e=>{dd.forEach(d=>{if(!d.contains(e.target))d.classList.remove('open')})});document.addEventListener('keydown',e=>{if(e.key==='Escape'){dd.forEach(d=>d.classList.remove('open'));if(nm.classList.contains('open'))cm()}});function cm(){nm.classList.remove('open');hb.classList.remove('open');hb.setAttribute('aria-expanded','false');document.body.style.overflow='';dd.forEach(d=>d.classList.remove('open'))}hb.addEventListener('click',()=>{if(nm.classList.contains('open'))cm();else{nm.classList.add('open');hb.classList.add('open');hb.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}});nm.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{if(nm.classList.contains('open'))cm()}))})();</script>
+<script>(function(){
+  // Mobile nav
+  const nm=document.getElementById('navMenu'),hb=document.getElementById('hamburger'),dd=document.querySelectorAll('.navbar__dropdown');
+  dd.forEach(d=>{d.querySelector('.navbar__dropdown-toggle').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();dd.forEach(x=>{if(x!==d)x.classList.remove('open')});d.classList.toggle('open')})});
+  document.addEventListener('click',e=>{dd.forEach(d=>{if(!d.contains(e.target))d.classList.remove('open')})});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){dd.forEach(d=>d.classList.remove('open'));if(nm.classList.contains('open'))cm()}});
+  function cm(){nm.classList.remove('open');hb.classList.remove('open');hb.setAttribute('aria-expanded','false');document.body.style.overflow='';dd.forEach(d=>d.classList.remove('open'))}
+  hb.addEventListener('click',()=>{if(nm.classList.contains('open'))cm();else{nm.classList.add('open');hb.classList.add('open');hb.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}});
+  nm.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{if(nm.classList.contains('open'))cm()}));
+
+  // Juice Mixer game
+  const fruits=['orange','lemon','apple','strawberry','grape','peach'];
+  const emojis={orange:'🍊',lemon:'🍋',apple:'🍏',strawberry:'🍓',grape:'🍇',peach:'🍑'};
+  const scoreEl=document.getElementById('gScore'),timerEl=document.getElementById('gTimer');
+  const slotsEl=document.getElementById('recipeSlots'),feedbackEl=document.getElementById('gFeedback');
+  const blendBtn=document.getElementById('gBlendBtn'),frameEl=document.querySelector('.mixer-frame');
+  let score=0,time=60,timerId=null,recipe=[],selected=[];
+  let gameActive=false;
+
+  function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+  function randomRecipe(){const picked=shuffle([...fruits]).slice(0,3);return picked.sort()}
+
+  function renderRecipe(){
+    const slots=slotsEl.querySelectorAll('.recipe-slot');
+    slots.forEach((s,i)=>{s.className='recipe-slot';s.textContent=i<recipe.length?emojis[recipe[i]]:''});
+  }
+
+  function renderSelected(){
+    const slots=slotsEl.querySelectorAll('.recipe-slot');
+    slots.forEach((s,i)=>{
+      if(i<selected.length){s.className='recipe-slot filled';s.textContent=emojis[selected[i]]}
+      else{s.className='recipe-slot';s.textContent=''}
+    });
+    document.querySelectorAll('.fruit-btn').forEach(b=>b.classList.remove('selected'));
+    selected.forEach(f=>{const b=document.querySelector(`.fruit-btn[data-fruit="${f}"]`);if(b)b.classList.add('selected')});
+    blendBtn.disabled=selected.length!==3;
+  }
+
+  function feedback(msg,type){
+    feedbackEl.textContent=msg;feedbackEl.className='game-feedback '+type;
+    setTimeout(()=>{feedbackEl.textContent='';feedbackEl.className='game-feedback'},1500);
+  }
+
+  function nextRecipe(){
+    recipe=randomRecipe();
+    selected=[];
+    renderRecipe();
+    renderSelected();
+  }
+
+  function checkBlend(){
+    if(selected.length!==3)return;
+    const sorted=[...selected].sort();
+    const match=recipe.every((f,i)=>sorted[i]===f);
+    if(match){
+      score+=10;scoreEl.textContent=score;
+      feedback('✓ Perfect Mix! +10','success');
+      document.querySelector('.game-blender svg path[fill*="200,100"]').setAttribute('fill','rgba(46,200,100,.6)');
+      setTimeout(()=>document.querySelector('.game-blender svg path[fill*="200,100"]').setAttribute('fill','rgba(46,200,100,.3)'),500);
+    }else{
+      score=Math.max(0,score-5);scoreEl.textContent=score;
+      feedback('✗ Wrong ingredients! -5','error');
+    }
+    setTimeout(nextRecipe,1200);
+  }
+
+  function startGame(){
+    score=0;time=60;recipe=randomRecipe();selected=[];
+    gameActive=true;
+    scoreEl.textContent='0';timerEl.textContent='60';
+    renderRecipe();renderSelected();
+    blendBtn.disabled=true;
+    const ov=frameEl.querySelector('.game-overlay');if(ov)ov.remove();
+
+    timerId=setInterval(()=>{
+      time--;timerEl.textContent=time;
+      if(time<=0){endGame();}
+    },1000);
+  }
+
+  function endGame(){
+    gameActive=false;clearInterval(timerId);
+    blendBtn.disabled=true;
+    document.querySelectorAll('.fruit-btn').forEach(b=>b.classList.remove('selected'));
+    const ov=document.createElement('div');ov.className='game-overlay';
+    ov.innerHTML=`<h2>Time's Up!</h2><p>Final Score: ${score}</p><button class="game-overlay-btn" onclick="document.querySelector('.game-overlay').remove();document.__startGame()">🔄 Play Again</button>`;
+    frameEl.appendChild(ov);
+  }
+
+  document.__startGame=startGame;
+
+  // Fruit click handlers
+  document.getElementById('gFruits').addEventListener('click',e=>{
+    if(!gameActive)return;
+    const btn=e.target.closest('.fruit-btn');if(!btn)return;
+    const fruit=btn.dataset.fruit;
+    if(selected.includes(fruit)){selected=selected.filter(f=>f!==fruit)}
+    else if(selected.length<3){selected.push(fruit)}
+    renderSelected();
+  });
+
+  blendBtn.addEventListener('click',()=>{if(gameActive)checkBlend()});
+  startGame();
+})();</script>
 </body>
 </html>
