@@ -346,39 +346,39 @@
       <div class="game-feedback" id="gFeedback"></div>
       <button class="game-blend-btn" id="gBlendBtn"><span class="blend-icon">⚡</span> Blend</button>
       <div class="game-fruits" id="gFruits">
-        <button class="fruit-btn" data-fruit="strawberry">
+        <button class="fruit-btn" draggable="true" data-fruit="strawberry">
           <img src="images/strawnerry.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Strawberry</span>
         </button>
-        <button class="fruit-btn" data-fruit="apple">
+        <button class="fruit-btn" draggable="true" data-fruit="apple">
           <img src="images/apple.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Apple</span>
         </button>
-        <button class="fruit-btn" data-fruit="orange">
+        <button class="fruit-btn" draggable="true" data-fruit="orange">
           <img src="images/orange.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Orange</span>
         </button>
-        <button class="fruit-btn" data-fruit="peach">
+        <button class="fruit-btn" draggable="true" data-fruit="peach">
           <span class="fruit-emoji">🍑</span>
           <span class="fruit-name">Peach</span>
         </button>
-        <button class="fruit-btn" data-fruit="grape">
+        <button class="fruit-btn" draggable="true" data-fruit="grape">
           <span class="fruit-emoji">🍇</span>
           <span class="fruit-name">Grape</span>
         </button>
-        <button class="fruit-btn" data-fruit="sourcherry">
+        <button class="fruit-btn" draggable="true" data-fruit="sourcherry">
           <span class="fruit-emoji">🍒</span>
           <span class="fruit-name">Cherry</span>
         </button>
-        <button class="fruit-btn" data-fruit="pear">
+        <button class="fruit-btn" draggable="true" data-fruit="pear">
           <img src="images/pear.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Pear</span>
         </button>
-        <button class="fruit-btn" data-fruit="carrot">
+        <button class="fruit-btn" draggable="true" data-fruit="carrot">
           <img src="images/carrot.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Carrot</span>
         </button>
-        <button class="fruit-btn" data-fruit="blueberry">
+        <button class="fruit-btn" draggable="true" data-fruit="blueberry">
           <img src="images/blueberry.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Blueberry</span>
         </button>
@@ -450,10 +450,10 @@
   const blendBtn=document.getElementById('gBlendBtn'),frameEl=document.querySelector('.mixer-frame');
   const blenderEl=document.getElementById('gBlender'),splashEl=document.getElementById('gSplash'),finishedEl=document.getElementById('gFinished');
   const liquidPath=blenderEl.querySelector('path[fill*="liquidGrad"]');
-  const pitcherLid=document.getElementById('pitcherLid');
   let score=0,time=60,timerId=null,recipe=[],selected=[],roundNum=1;
   let totalAttempts=0,correctAttempts=0;
   let gameActive=false;
+  blendBtn.disabled=true;
 
   function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
   function randomRecipe(){
@@ -462,15 +462,14 @@
 
   function updateTarget(){
     const r=recipe;
-    targetFruitsEl.innerHTML=(r.img?`<img src="${r.img}" style="height:50px;vertical-align:middle;border-radius:6px;margin-right:8px">`:'')+`<strong>${r.name}</strong> `+r.ingredients.map(f=>fruitImages[f]?`<img src="${fruitImages[f]}" style="height:24px;vertical-align:middle;border-radius:3px">`:emojis[f]).join(' ');
+    const imgHtml=r.img?`<img src="${r.img}" style="height:70px;vertical-align:middle;border-radius:8px">`:'';
+    targetFruitsEl.innerHTML=imgHtml||`<span style="font-size:1.8rem">${r.name}</span>`;
   }
 
   function renderSelected(){
     document.querySelectorAll('.fruit-btn').forEach(b=>b.classList.remove('selected'));
     selected.forEach(f=>{const b=document.querySelector(`.fruit-btn[data-fruit="${f}"]`);if(b)b.classList.add('selected')});
-    blendBtn.disabled=selected.length!==recipe.ingredients.length;
-    if(selected.length===recipe.ingredients.length&&gameActive){pitcherLid.classList.remove('open');pitcherLid.classList.add('closed')}
-    else{pitcherLid.classList.add('open');pitcherLid.classList.remove('closed')}
+    blendBtn.disabled=selected.length===0;
   }
 
   function nextRecipe(){
@@ -482,14 +481,14 @@
   }
 
   function checkBlend(){
-    if(selected.length!==recipe.length||!gameActive)return;
+    if(selected.length===0||!gameActive)return;
     gameActive=false;
     blendBtn.disabled=true;
     selected.forEach((f,i)=>{setTimeout(()=>fruitDrop(emojis[f]),i*150)});
     setTimeout(()=>doBlendSequence(),600);
-    const sorted=[...selected].sort();
-    const targetSorted=[...recipe.ingredients].sort();
-    const match=sorted.length===targetSorted.length&&sorted.every((f,i)=>f===targetSorted[i]);
+    // Match: every selected fruit must be needed, and all recipe fruits must be selected
+    const match=selected.length===recipe.ingredients.length&&
+      [...recipe.ingredients].sort().every((f,i)=>[...selected].sort()[i]===f);
     totalAttempts++;
     if(match){
       correctAttempts++;
@@ -647,7 +646,7 @@
     scoreEl.textContent='0';timerEl.textContent='60';roundEl.textContent='1';
     updateTarget();
     renderSelected();
-    blendBtn.disabled=true;
+    blendBtn.disabled=false;
     const ov=frameEl.querySelector('.game-overlay');if(ov)ov.remove();
 
     timerId=setInterval(()=>{
@@ -679,9 +678,30 @@
 
   document.__startGame=startGame;
 
+  // Drag & drop
+  document.getElementById('gFruits').addEventListener('dragstart',e=>{
+    const btn=e.target.closest('.fruit-btn');if(!btn)return;
+    e.dataTransfer.setData('text/plain',btn.dataset.fruit);
+    e.dataTransfer.effectAllowed='move';
+    btn.style.opacity='.5';
+  });
+  document.getElementById('gFruits').addEventListener('dragend',e=>{
+    const btn=e.target.closest('.fruit-btn');if(btn)btn.style.opacity='';
+  });
+  blenderEl.addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect='move'});
+  blenderEl.addEventListener('drop',e=>{
+    e.preventDefault();
+    const fruit=e.dataTransfer.getData('text/plain');
+    if(!fruit||!gameActive)return;
+    if(selected.includes(fruit)){selected=selected.filter(f=>f!==fruit)}
+    else{selected.push(fruit)}
+    renderSelected();
+    fruitDrop(emojis[fruit],selected.length-1);
+  });
+
   // Fruit click handlers
   document.getElementById('gFruits').addEventListener('click',e=>{
-    if(!gameActive||pitcherLid.classList.contains('closed'))return;
+    if(!gameActive)return;
     const btn=e.target.closest('.fruit-btn');if(!btn)return;
     const fruit=btn.dataset.fruit;
     if(selected.includes(fruit)){selected=selected.filter(f=>f!==fruit)}
