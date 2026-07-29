@@ -84,9 +84,9 @@
     @keyframes splashAnim{0%{opacity:1;transform:translateX(-50%) translateY(0) scale(.5)}50%{opacity:1;transform:translateX(-50%) translateY(-30px) scale(1.2)}100%{opacity:0;transform:translateX(-50%) translateY(-60px) scale(.8)}}
     .bubble{position:absolute;width:8px;height:8px;border-radius:50%;background:rgba(46,200,100,.4);pointer-events:none;animation:bubUp .8s ease-out forwards}
     @keyframes bubUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-50px) scale(0)}}
-    .fruit-drop{position:absolute;font-size:1.8rem;pointer-events:none;animation:fdDrop .7s cubic-bezier(.22,.61,.36,1) forwards;z-index:3}
-    @keyframes fdDrop{0%{transform:translateY(-80px) scale(.6);opacity:0}40%{transform:translateY(0) scale(1.15);opacity:1}55%{transform:translateY(-8px) scale(.95)}70%{transform:translateY(0) scale(1.05)}85%{transform:translateY(-3px) scale(.98)}100%{transform:translateY(0) scale(1);opacity:1}}
-    .fruit-in-blender{position:absolute;font-size:1.6rem;pointer-events:none;z-index:4;transition:opacity .3s}
+    .fruit-drop{position:absolute;font-size:1.8rem;pointer-events:none;animation:fdDrop .7s cubic-bezier(.22,.61,.36,1) forwards;z-index:3;top:5px}
+    @keyframes fdDrop{0%{transform:translateY(-60px) scale(.5);opacity:0}35%{transform:translateY(0) scale(1.2);opacity:1}50%{transform:translateY(-10px) scale(.9)}70%{transform:translateY(0) scale(1.05)}85%{transform:translateY(-4px) scale(.97)}100%{transform:translateY(0) scale(1);opacity:1}}
+    .fruit-in-blender{position:absolute;font-size:1.5rem;pointer-events:none;z-index:4;transition:opacity .3s}
     .blender-finished{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;transition:opacity .4s;z-index:5}
     .blender-finished.show{opacity:1;animation:juicePop .6s ease}
     @keyframes juicePop{0%{transform:translate(-50%,-50%) scale(0);opacity:0}60%{transform:translate(-50%,-50%) scale(1.2);opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
@@ -516,18 +516,18 @@
   }
 
   function fruitDrop(emoji,i){
-    // Staggered positions stacked inside pitcher
-    const xPos=[40,55,38,48,42,52][i]||45;
-    const yPos=[190,170,155,140,125,110][i]||160;
+    // Position inside pitcher opening — centered horizontally, stacked vertically inside glass
+    const xPct=50; // center of blender
+    const yPositions=[175,155,135,115,100,85];
+    const yPos=yPositions[i]||160;
     const d=document.createElement('div');d.className='fruit-drop';d.textContent=emoji;
-    d.style.left=xPos+'%';d.style.top='10px';
+    d.style.left=`calc(${xPct}% - 14px)`;d.style.top='5px';
     blenderEl.appendChild(d);
 
-    // Keep fruit visible inside blender after drop
     const s=document.createElement('div');s.className='fruit-in-blender';s.textContent=emoji;
-    s.style.left=xPos+'%';s.style.top=yPos+'px';s.style.opacity='0';
+    s.style.left=`calc(${xPct}% - 12px)`;s.style.top=yPos+'px';s.style.opacity='0';
     blenderEl.appendChild(s);
-    setTimeout(()=>{s.style.opacity='1'},600);
+    setTimeout(()=>{s.style.opacity='1'},550);
     setTimeout(()=>d.remove(),800);
     return s;
   }
