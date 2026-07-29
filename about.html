@@ -54,8 +54,10 @@
     .about-hero-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,0,0,.3)}
     /* Company Story */
     .story{max-width:1000px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .story-img{position:relative}
+    .story-img{position:relative;min-height:400px}
     .story-img img{width:100%;border-radius:20px;display:block;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+    .story-gallery-img{position:absolute;top:0;left:0;width:100%;border-radius:20px;opacity:0;transition:opacity .8s ease;box-shadow:0 20px 60px rgba(0,0,0,.1);object-fit:contain;background:#fff;height:100%}
+    .story-gallery-img.active{opacity:1;position:relative}
     .story-img::after{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,rgba(46,111,64,.15),transparent 60%);pointer-events:none}
     .story-text .story-badge{display:inline-block;padding:6px 16px;background:rgba(46,111,64,.1);color:var(--green);border-radius:20px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
     .story-text h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3.5vw,2.4rem);color:#1a1a1a;line-height:1.15;margin-bottom:16px}
@@ -157,8 +159,12 @@
         <div class="story-hl"><div class="story-hl-n">500+</div><div class="story-hl-l">Employees</div></div>
       </div>
     </div>
-    <div class="story-img reveal" style="transition-delay:.2s">
-      <img src="https://goldeneagle-ks.com/wp-content/uploads/2024/03/Prodhim-4.png" alt="Frutex Production Facility" style="width:100%;border-radius:20px;display:block;box-shadow:0 20px 60px rgba(0,0,0,.1)">
+    <div class="story-img reveal" style="transition-delay:.2s" id="storyGallery">
+      <img src="images/ketchap.png" alt="Art Food Ketchup" class="story-gallery-img active">
+      <img src="images/zero.png" alt="ZEROS Ice Tea" class="story-gallery-img">
+      <img src="images/relax.png" alt="Relax Ice Tea" class="story-gallery-img">
+      <img src="images/natyral.png" alt="Natural 100 Juice" class="story-gallery-img">
+      <img src="https://frutex-ks.com/wp-content/uploads/2026/01/GoldenEagle-716x716-1.png" alt="Golden Eagle" class="story-gallery-img">
     </div>
   </section>
 
@@ -220,6 +226,11 @@
   // Scroll reveal
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-})();</script>
+
+  // Product gallery rotation
+  const gImgs=document.querySelectorAll('.story-gallery-img');
+  let gIdx=0;
+  if(gImgs.length>1)setInterval(()=>{gImgs[gIdx].classList.remove('active');gIdx=(gIdx+1)%gImgs.length;gImgs[gIdx].classList.add('active');},3500);
+})();
 </body>
 </html>
