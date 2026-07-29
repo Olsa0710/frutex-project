@@ -479,7 +479,7 @@
     selected.forEach(f=>{const b=document.querySelector(`.fruit-btn[data-fruit="${f}"]`);if(b)b.classList.add('selected')});
     blendBtn.disabled=selected.length!==recipe.length;
     // Auto-close lid when all ingredients selected
-    if(selected.length===recipe.length&&gameActive){pitcherLid.classList.remove('open');pitcherLid.classList.add('closed')}
+    if(selected.length===recipe.length&&gameActive){pitcherLid.classList.remove('open');pitcherLid.classList.add('closed');playClickSound()}
     else{pitcherLid.classList.add('open');pitcherLid.classList.remove('closed')}
   }
 
@@ -525,7 +525,64 @@
   }
 
   function playBlendSound(){
-    try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(80,ctx.currentTime);o.frequency.linearRampToValueAtTime(200,ctx.currentTime+.3);o.frequency.linearRampToValueAtTime(60,ctx.currentTime+.6);g.gain.setValueAtTime(.08,ctx.currentTime);g.gain.linearRampToValueAtTime(0,ctx.currentTime+.6);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.6)}catch(e){}
+    try{
+      const ctx=new(window.AudioContext||window.webkitAudioContext)();
+      // Base motor hum — low frequency, fades in
+      const motor=ctx.createOscillator();motor.type='sawtooth';
+      const motorGain=ctx.createGain();motorGain.gain.setValueAtTime(.02,ctx.currentTime);
+      motorGain.gain.linearRampToValueAtTime(.04,ctx.currentTime+.3);
+      motorGain.gain.linearRampToValueAtTime(.04,ctx.currentTime+1.8);
+      motorGain.gain.linearRampToValueAtTime(0,ctx.currentTime+2.2);
+      motor.frequency.setValueAtTime(60,ctx.currentTime);
+      motor.frequency.linearRampToValueAtTime(150,ctx.currentTime+.5);
+      motor.frequency.linearRampToValueAtTime(150,ctx.currentTime+1.8);
+      motor.frequency.linearRampToValueAtTime(40,ctx.currentTime+2.2);
+      motor.connect(motorGain);motorGain.connect(ctx.destination);
+      motor.start();motor.stop(ctx.currentTime+2.3);
+
+      // High whir — adds realism
+      const whir=ctx.createOscillator();whir.type='sine';
+      const whirGain=ctx.createGain();whirGain.gain.setValueAtTime(.01,ctx.currentTime);
+      whirGain.gain.linearRampToValueAtTime(.03,ctx.currentTime+.4);
+      whirGain.gain.linearRampToValueAtTime(.03,ctx.currentTime+1.8);
+      whirGain.gain.linearRampToValueAtTime(0,ctx.currentTime+2.2);
+      whir.frequency.setValueAtTime(400,ctx.currentTime);
+      whir.frequency.linearRampToValueAtTime(800,ctx.currentTime+.4);
+      whir.frequency.linearRampToValueAtTime(800,ctx.currentTime+1.8);
+      whir.frequency.linearRampToValueAtTime(200,ctx.currentTime+2.2);
+      whir.connect(whirGain);whirGain.connect(ctx.destination);
+      whir.start();whir.stop(ctx.currentTime+2.3);
+
+      // Noise texture for blade chopping
+      const bufferSize=ctx.sampleRate*.3;
+      const noiseBuffer=ctx.createBuffer(1,bufferSize,ctx.sampleRate);
+      const data=noiseBuffer.getChannelData(0);
+      for(let i=0;i<bufferSize;i++)data[i]=Math.random()*2-1;
+      const noise=ctx.createBufferSource();noise.buffer=noiseBuffer;
+      const noiseFilter=ctx.createBiquadFilter();noiseFilter.type='bandpass';
+      noiseFilter.frequency.setValueAtTime(800,ctx.currentTime);
+      noiseFilter.frequency.linearRampToValueAtTime(1200,ctx.currentTime+.3);
+      noiseFilter.Q.setValueAtTime(5,ctx.currentTime);
+      const noiseGain=ctx.createGain();noiseGain.gain.setValueAtTime(.005,ctx.currentTime);
+      noiseGain.gain.linearRampToValueAtTime(.015,ctx.currentTime+.2);
+      noiseGain.gain.linearRampToValueAtTime(.015,ctx.currentTime+1.8);
+      noiseGain.gain.linearRampToValueAtTime(0,ctx.currentTime+2.2);
+      noise.connect(noiseFilter);noiseFilter.connect(noiseGain);noiseGain.connect(ctx.destination);
+      noise.start();noise.stop(ctx.currentTime+2.3);
+    }catch(e){}
+  }
+
+  function playClickSound(){
+    try{
+      const ctx=new(window.AudioContext||window.webkitAudioContext)();
+      const o=ctx.createOscillator();o.type='sine';
+      const g=ctx.createGain();g.gain.setValueAtTime(.08,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.06);
+      o.frequency.setValueAtTime(800,ctx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(200,ctx.currentTime+.06);
+      o.connect(g);g.connect(ctx.destination);
+      o.start();o.stop(ctx.currentTime+.07);
+    }catch(e){}
   }
 
   function fruitDrop(emoji,i){
@@ -597,6 +654,7 @@
       document.getElementById('gLid').classList.remove('show');
       splashEl.classList.remove('active');
       pitcherLid.classList.add('open');pitcherLid.classList.remove('closed');
+      playClickSound();
     },2500);
   }
 
