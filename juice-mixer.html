@@ -159,11 +159,15 @@
     @keyframes blVibrate{0%,100%{transform:translate(0,0)}25%{transform:translate(2px,-1px)}50%{transform:translate(-2px,2px)}75%{transform:translate(-1px,-2px)}}
     .game-blender.motor-on .blade-spin{animation:bladeSpin .25s linear infinite;transform-origin:100px 280px;will-change:transform}
     @keyframes bladeSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-    .fruit-in-blender.spinning{animation:fSpin 1.5s ease-in forwards}
-    @keyframes fSpin{0%{transform:rotate(0deg) translate(0,0);opacity:1}40%{transform:rotate(180deg) translate(-5px,-20px);opacity:.8}70%{transform:rotate(360deg) translate(-8px,-35px);opacity:.3}100%{transform:rotate(540deg) translate(0,-50px);opacity:0}}
-    .liquid-swirl{position:absolute;top:50%;left:50%;width:80px;height:60px;margin-left:-40px;margin-top:-20px;border-radius:50%;pointer-events:none;opacity:0;z-index:2}
-    .liquid-swirl.active{animation:swirlAnim 2s ease-out forwards;background:radial-gradient(ellipse,rgba(46,200,100,.5) 0%,rgba(46,200,100,.1) 60%,transparent 100%)}
-    @keyframes swirlAnim{0%{opacity:0;transform:scale(.3) rotate(0deg)}30%{opacity:.8;transform:scale(1) rotate(180deg)}70%{opacity:.6;transform:scale(1.1) rotate(360deg)}100%{opacity:.3;transform:scale(1) rotate(540deg)}}
+    .fruit-in-blender.spinning{animation:fSpin 2s ease-in forwards}
+    @keyframes fSpin{0%{transform:rotate(0deg) translate(0,0);opacity:1}20%{transform:rotate(90deg) translate(-3px,-8px);opacity:1}40%{transform:rotate(200deg) translate(-6px,-18px);opacity:.9}60%{transform:rotate(340deg) translate(-4px,-30px);opacity:.5}80%{transform:rotate(480deg) translate(-2px,-45px);opacity:.15}100%{transform:rotate(600deg) translate(0,-60px);opacity:0}}
+    .liquid-swirl{position:absolute;top:50%;left:50%;width:90px;height:70px;margin-left:-45px;margin-top:-25px;border-radius:50%;pointer-events:none;opacity:0;z-index:2}
+    .liquid-swirl.active{animation:swirlAnim 2.5s ease-out forwards;background:radial-gradient(ellipse at 40% 50%,rgba(46,200,100,.6) 0%,rgba(46,200,100,.2) 40%,transparent 70%)}
+    @keyframes swirlAnim{0%{opacity:0;transform:scale(.2) rotate(0deg)}20%{opacity:.7;transform:scale(.8) rotate(90deg)}50%{opacity:.9;transform:scale(1.1) rotate(270deg)}80%{opacity:.5;transform:scale(1.05) rotate(450deg)}100%{opacity:.1;transform:scale(.95) rotate(540deg)}}
+    @keyframes bladeSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    .game-blender.motor-on .blade-spin{animation:bladeSpin .15s linear infinite;transform-origin:110px 295px;will-change:transform}
+    .game-blender.motor-on{animation:blVibrate .08s ease-in-out infinite;will-change:transform}
+    @keyframes blVibrate{0%,100%{transform:translate(0,0)}15%{transform:translate(3px,-1px)}30%{transform:translate(-2px,2px)}45%{transform:translate(-3px,-2px)}60%{transform:translate(1px,2px)}75%{transform:translate(-1px,-1px)}}
     .lid-closed{position:absolute;top:28px;left:50%;transform:translate(-50%,-30px);font-size:1.2rem;opacity:0;pointer-events:none;z-index:6;transition:all .3s ease}
     .lid-closed.show{opacity:1;transform:translate(-50%,10px)}
     .pitcher-lid{position:absolute;top:18px;left:50%;transform:translate(-50%,0);width:52px;height:24px;border-radius:26px 26px 8px 8px;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.5));border:1.5px solid rgba(255,255,255,.12);pointer-events:none;z-index:6;transition:all .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 12px rgba(0,0,0,.2)}
