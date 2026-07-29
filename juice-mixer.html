@@ -426,23 +426,19 @@
     sourcherry:'https://goldeneagle-ks.com/wp-content/uploads/2023/12/01.-Sourcherry.jpg.webp'
   };
   const fruitImages={strawberry:'images/strawnerry.png',apple:'images/apple.png',orange:'images/orange.png',pear:'images/pear.png',carrot:'images/carrot.png',blueberry:'images/blueberry.png'};
-  // Real Natural 100 recipes
+  // Real Natural 100 recipes from frutex-ks.com/natural-100
   const recipes=[
     {name:'Strawberry',ingredients:['strawberry'],img:juiceImages.strawberry},
     {name:'Apple',ingredients:['apple'],img:juiceImages.apple},
-    {name:'Sourcherry',ingredients:['sourcherry'],img:juiceImages.sourcherry},
     {name:'Orange',ingredients:['orange'],img:juiceImages.orange},
     {name:'Peach',ingredients:['peach'],img:''},
     {name:'Grape',ingredients:['grape'],img:''},
+    {name:'Sourcherry',ingredients:['sourcherry'],img:juiceImages.sourcherry},
     {name:'Pear',ingredients:['pear'],img:juiceImages.pear},
     {name:'Carrot',ingredients:['carrot'],img:juiceImages.carrot},
     {name:'Blueberry',ingredients:['blueberry'],img:juiceImages.blueberry},
+    {name:'Apple Clear',ingredients:['apple'],img:''},
     {name:'Multivitamin',ingredients:['orange','apple','carrot'],img:juiceImages.multivitamin},
-    {name:'Peach Orange',ingredients:['peach','orange'],img:''},
-    {name:'Strawberry Peach',ingredients:['strawberry','peach'],img:''},
-    {name:'Berry Mix',ingredients:['strawberry','blueberry','grape'],img:''},
-    {name:'Orchard Blend',ingredients:['apple','pear'],img:''},
-    {name:'Cherry Apple',ingredients:['sourcherry','apple'],img:''},
   ];
   const scoreEl=document.getElementById('gScore'),timerEl=document.getElementById('gTimer'),roundEl=document.getElementById('gRound');
   const feedbackEl=document.getElementById('gFeedback');
@@ -462,7 +458,7 @@
 
   function updateTarget(){
     const r=recipe;
-    const imgHtml=r.img?`<img src="${r.img}" style="height:70px;vertical-align:middle;border-radius:8px">`:'';
+    const imgHtml=r.img?`<img src="${r.img}" style="height:90px;vertical-align:middle;border-radius:8px">`:'';
     targetFruitsEl.innerHTML=imgHtml||`<span style="font-size:1.8rem">${r.name}</span>`;
   }
 
