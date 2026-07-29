@@ -96,11 +96,15 @@
     .game-timer .game-score-val{color:#e67e22}
     .game-blender{padding:10px 0}
     .game-blender svg{filter:drop-shadow(0 4px 12px rgba(0,0,0,.1))}
-    .game-recipe{text-align:center}
+    .game-recipe{text-align:center;position:relative;width:100%}
     .game-recipe-label{font-size:.75rem;color:#999;text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:10px}
     .game-recipe-slots{display:flex;gap:12px;justify-content:center}
-    .recipe-slot{width:40px;height:40px;border-radius:10px;background:rgba(46,111,64,.06);border:2px dashed rgba(46,111,64,.2)}
-    .game-fruits{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .recipe-slot{width:40px;height:40px;border-radius:10px;background:rgba(46,111,64,.06);border:2px dashed rgba(46,111,64,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+    .recipe-card{position:absolute;top:0;left:50%;transform:translateX(-50%);background:#fff;border-radius:16px;padding:14px 24px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:flex;align-items:center;gap:14px;z-index:10;animation:rcSlideIn 1.2s cubic-bezier(.22,1,.36,1) forwards;pointer-events:none}
+    @keyframes rcSlideIn{0%{top:-100px;opacity:0;transform:translateX(-50%) scale(.9)}40%{top:0;opacity:1;transform:translateX(-50%) scale(1)}60%{top:0;opacity:1;transform:translateX(-50%) scale(1)}100%{top:-10px;opacity:.9;transform:translateX(-50%) scale(.85)}}
+    .recipe-card .rc-fruit{font-size:1.6rem;line-height:1}
+    .recipe-card .rc-name{font-size:.75rem;color:#888;text-transform:uppercase;font-weight:600;letter-spacing:.04em}
+    .recipe-slot.filled{background:rgba(46,111,64,.12);border:2px solid rgba(46,111,64,.3);font-size:1.5rem}
     .fruit-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 16px;background:rgba(46,111,64,.04);border:2px solid transparent;border-radius:14px;cursor:pointer;transition:all .25s;font-family:inherit;min-width:80px}
     .fruit-btn:hover{border-color:rgba(46,111,64,.25);background:rgba(46,111,64,.08);transform:translateY(-2px)}
     .fruit-btn:active{transform:scale(.95)}
@@ -310,8 +314,9 @@
           <rect x="93" y="10" width="14" height="10" rx="3" fill="rgba(0,0,0,.2)"/>
         </svg>
       </div>
-      <div class="game-recipe">
-        <p class="game-recipe-label">Target Recipe</p>
+      <div class="game-recipe" id="gRecipe">
+        <div class="recipe-card" id="recipeCard"></div>
+        <p class="game-recipe-label">Select the matching fruits</p>
         <div class="game-recipe-slots" id="recipeSlots">
           <span class="recipe-slot"></span>
           <span class="recipe-slot"></span>
@@ -383,6 +388,7 @@
   const blendBtn=document.getElementById('gBlendBtn'),frameEl=document.querySelector('.mixer-frame');
   const blenderEl=document.getElementById('gBlender'),splashEl=document.getElementById('gSplash'),finishedEl=document.getElementById('gFinished');
   const liquidPath=blenderEl.querySelector('path[fill*="liquidGrad"]');
+  const recipeCard=document.getElementById('recipeCard');
   let score=0,time=60,timerId=null,recipe=[],selected=[],roundNum=1;
   let totalAttempts=0,correctAttempts=0;
   let gameActive=false;
@@ -398,7 +404,13 @@
   function renderRecipe(){
     const container=slotsEl;
     container.innerHTML='';
-    recipe.forEach(f=>{const s=document.createElement('span');s.className='recipe-slot';s.textContent=emojis[f];container.appendChild(s)});
+    // Populate recipe card
+    recipeCard.innerHTML=recipe.map(f=>`<span class="rc-fruit">${emojis[f]}</span>`).join('');
+    recipeCard.style.animation='none';
+    void recipeCard.offsetWidth;
+    recipeCard.style.animation='rcSlideIn 1.2s cubic-bezier(.22,1,.36,1) forwards';
+    // Populate slots
+    recipe.forEach(f=>{const s=document.createElement('span');s.className='recipe-slot';s.textContent='';container.appendChild(s)});
   }
 
   function renderSelected(){
