@@ -81,9 +81,10 @@
     @keyframes splashAnim{0%{opacity:1;transform:translateX(-50%) translateY(0) scale(.5)}50%{opacity:1;transform:translateX(-50%) translateY(-30px) scale(1.2)}100%{opacity:0;transform:translateX(-50%) translateY(-60px) scale(.8)}}
     .bubble{position:absolute;width:8px;height:8px;border-radius:50%;background:rgba(46,200,100,.4);pointer-events:none;animation:bubUp .8s ease-out forwards}
     @keyframes bubUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-50px) scale(0)}}
-    .fruit-drop{position:absolute;top:-30px;font-size:2rem;pointer-events:none;animation:fdDrop .4s ease-in forwards}
-    @keyframes fdDrop{0%{transform:translateY(-40px);opacity:0}60%{transform:translateY(10px);opacity:1}100%{transform:translateY(0);opacity:1}}
-    .blender-finished{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.5rem;opacity:0;pointer-events:none;transition:opacity .4s}
+    .fruit-drop{position:absolute;font-size:1.8rem;pointer-events:none;animation:fdDrop .7s cubic-bezier(.22,.61,.36,1) forwards;z-index:3}
+    @keyframes fdDrop{0%{transform:translateY(-80px) scale(.6);opacity:0}40%{transform:translateY(0) scale(1.15);opacity:1}55%{transform:translateY(-8px) scale(.95)}70%{transform:translateY(0) scale(1.05)}85%{transform:translateY(-3px) scale(.98)}100%{transform:translateY(0) scale(1);opacity:1}}
+    .fruit-in-blender{position:absolute;font-size:1.6rem;pointer-events:none;z-index:4;transition:opacity .3s}
+    .blender-finished{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.5rem;opacity:0;pointer-events:none;transition:opacity .4s;z-index:5}
     .blender-finished.show{opacity:1;animation:juicePop .6s ease}
     .mixer-frame{width:100%;max-width:750px;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);padding:32px;display:flex;flex-direction:column;align-items:center;gap:20px}
     .game-scoreboard{display:flex;justify-content:space-evenly;width:100%}
@@ -436,10 +437,25 @@
     try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(80,ctx.currentTime);o.frequency.linearRampToValueAtTime(200,ctx.currentTime+.3);o.frequency.linearRampToValueAtTime(60,ctx.currentTime+.6);g.gain.setValueAtTime(.08,ctx.currentTime);g.gain.linearRampToValueAtTime(0,ctx.currentTime+.6);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.6)}catch(e){}
   }
 
-  function fruitDrop(emoji){
+  function fruitDrop(emoji,i){
+    // Staggered positions stacked inside pitcher
+    const xPos=[40,55,38,48,42,52][i]||45;
+    const yPos=[190,170,155,140,125,110][i]||160;
     const d=document.createElement('div');d.className='fruit-drop';d.textContent=emoji;
-    d.style.left=(35+Math.random()*30)+'%';blenderEl.appendChild(d);
-    setTimeout(()=>d.remove(),500);
+    d.style.left=xPos+'%';d.style.top='10px';
+    blenderEl.appendChild(d);
+
+    // Keep fruit visible inside blender after drop
+    const s=document.createElement('div');s.className='fruit-in-blender';s.textContent=emoji;
+    s.style.left=xPos+'%';s.style.top=yPos+'px';s.style.opacity='0';
+    blenderEl.appendChild(s);
+    setTimeout(()=>{s.style.opacity='1'},600);
+    setTimeout(()=>d.remove(),800);
+    return s;
+  }
+
+  function clearBlenderFruits(){
+    blenderEl.querySelectorAll('.fruit-in-blender').forEach(f=>{f.style.opacity='0';setTimeout(()=>f.remove(),300)});
   }
 
   function spawnBubbles(){
@@ -456,6 +472,7 @@
   }
 
   function doBlendSequence(){
+    clearBlenderFruits();
     blenderEl.classList.add('spinning');
     playBlendSound();
     splashEl.classList.add('active');
