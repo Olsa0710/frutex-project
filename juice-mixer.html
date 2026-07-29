@@ -61,9 +61,25 @@
     @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
     .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 32px}
-    .mixer-frame{width:100%;max-width:800px;aspect-ratio:16/10;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);border:2px dashed rgba(46,111,64,.15);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px}
-    .mixer-frame .mixer-placeholder{width:72px;height:72px;border-radius:50%;background:rgba(46,111,64,.08);display:flex;align-items:center;justify-content:center;font-size:2.2rem}
-    .mixer-frame p{color:#aaa;font-size:1.1rem;font-weight:500}
+    .mixer-frame{width:100%;max-width:750px;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);padding:32px;display:flex;flex-direction:column;align-items:center;gap:20px}
+    .game-scoreboard{display:flex;justify-content:space-between;width:100%}
+    .game-score,.game-timer{display:flex;flex-direction:column;align-items:center;gap:2px}
+    .game-score-label{font-size:.72rem;color:#999;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+    .game-score-val{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#1a1a1a}
+    .game-timer .game-score-val{color:#e67e22}
+    .game-blender{padding:10px 0}
+    .game-blender svg{filter:drop-shadow(0 4px 12px rgba(0,0,0,.1))}
+    .game-recipe{text-align:center}
+    .game-recipe-label{font-size:.75rem;color:#999;text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:10px}
+    .game-recipe-slots{display:flex;gap:12px;justify-content:center}
+    .recipe-slot{width:40px;height:40px;border-radius:10px;background:rgba(46,111,64,.06);border:2px dashed rgba(46,111,64,.2)}
+    .game-fruits{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .fruit-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 16px;background:rgba(46,111,64,.04);border:2px solid transparent;border-radius:14px;cursor:pointer;transition:all .25s;font-family:inherit;min-width:80px}
+    .fruit-btn:hover{border-color:rgba(46,111,64,.25);background:rgba(46,111,64,.08);transform:translateY(-2px)}
+    .fruit-btn:active{transform:scale(.95)}
+    .fruit-emoji{font-size:2rem;line-height:1}
+    .fruit-name{font-size:.7rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+    @media(max-width:500px){.game-fruits{gap:8px}.fruit-btn{min-width:65px;padding:10px 12px}.fruit-emoji{font-size:1.6rem}}
 
     @media(max-width:960px){
       .navbar{top:12px;border-radius:28px;width:90vw}.navbar__inner{padding:8px 20px;height:48px}.navbar__logo svg{height:24px}.navbar__hamburger{display:flex}
@@ -129,8 +145,68 @@
   </section>
   <section class="mixer-area" id="game">
     <div class="mixer-frame">
-      <div class="mixer-placeholder">🧃</div>
-      <p>The game is being prepared.</p>
+      <div class="game-scoreboard">
+        <div class="game-score">
+          <span class="game-score-label">Score</span>
+          <span class="game-score-val" id="gScore">0</span>
+        </div>
+        <div class="game-timer">
+          <span class="game-score-label">Time</span>
+          <span class="game-score-val" id="gTimer">60</span>
+        </div>
+      </div>
+      <div class="game-blender">
+        <svg viewBox="0 0 180 260" width="140" height="200">
+          <!-- Base -->
+          <rect x="55" y="230" width="70" height="20" rx="6" fill="#3a3a3a"/>
+          <rect x="60" y="226" width="60" height="8" rx="3" fill="#555"/>
+          <!-- Body -->
+          <path d="M40 180 Q35 120 45 80 L55 40 Q65 20 90 18 Q115 20 125 40 L135 80 Q145 120 140 180 Z" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+          <!-- Liquid -->
+          <path d="M48 170 Q45 130 55 100 L65 60 Q80 45 90 44 Q100 45 115 60 L125 100 Q135 130 132 170 Z" fill="rgba(46,200,100,.3)"/>
+          <!-- Handle -->
+          <path d="M140 100 Q170 95 170 120 Q170 140 140 135" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="5" stroke-linecap="round"/>
+          <!-- Lid -->
+          <rect x="60" y="14" width="60" height="12" rx="4" fill="rgba(255,255,255,.2)"/>
+          <rect x="75" y="6" width="30" height="10" rx="5" fill="rgba(255,255,255,.15)"/>
+          <!-- Button -->
+          <circle cx="90" cy="235" r="6" fill="rgba(46,200,100,.5)"/>
+        </svg>
+      </div>
+      <div class="game-recipe">
+        <p class="game-recipe-label">Target Recipe</p>
+        <div class="game-recipe-slots">
+          <span class="recipe-slot"></span>
+          <span class="recipe-slot"></span>
+          <span class="recipe-slot"></span>
+        </div>
+      </div>
+      <div class="game-fruits">
+        <button class="fruit-btn" data-fruit="orange">
+          <span class="fruit-emoji">🍊</span>
+          <span class="fruit-name">Orange</span>
+        </button>
+        <button class="fruit-btn" data-fruit="lemon">
+          <span class="fruit-emoji">🍋</span>
+          <span class="fruit-name">Lemon</span>
+        </button>
+        <button class="fruit-btn" data-fruit="apple">
+          <span class="fruit-emoji">🍏</span>
+          <span class="fruit-name">Apple</span>
+        </button>
+        <button class="fruit-btn" data-fruit="strawberry">
+          <span class="fruit-emoji">🍓</span>
+          <span class="fruit-name">Strawberry</span>
+        </button>
+        <button class="fruit-btn" data-fruit="grape">
+          <span class="fruit-emoji">🍇</span>
+          <span class="fruit-name">Grape</span>
+        </button>
+        <button class="fruit-btn" data-fruit="peach">
+          <span class="fruit-emoji">🍑</span>
+          <span class="fruit-name">Peach</span>
+        </button>
+      </div>
     </div>
   </section>
 </main>
