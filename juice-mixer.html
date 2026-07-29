@@ -119,10 +119,13 @@
     /* ── Game state ── */
     .fruit-btn.selected{border-color:var(--green);background:rgba(46,111,64,.15);transform:scale(1.05)}
     .recipe-slot.filled{background:rgba(46,111,64,.12);border:2px solid rgba(46,111,64,.3);font-size:1.5rem;display:flex;align-items:center;justify-content:center}
-    .game-blend-btn{display:inline-flex;align-items:center;gap:6px;padding:12px 28px;background:var(--green);color:#fff;border:none;border-radius:50px;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .25s;font-family:inherit;box-shadow:0 4px 16px rgba(46,111,64,.25)}
-    .game-blend-btn:hover{background:#247a3a;transform:translateY(-2px);box-shadow:0 6px 24px rgba(46,111,64,.35)}
-    .game-blend-btn:active{transform:scale(.96)}
-    .game-blend-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .game-blend-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,#3d8a52 0%,#2E6F40 50%,#1f542e 100%);color:#fff;border:none;border-radius:50px;font-weight:700;font-size:1.1rem;cursor:pointer;transition:all .3s ease;font-family:inherit;box-shadow:0 6px 24px rgba(46,111,64,.35);letter-spacing:.02em;position:relative;overflow:hidden}
+    .game-blend-btn::before{content:'';position:absolute;inset:0;border-radius:50px;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);pointer-events:none}
+    .game-blend-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 32px rgba(46,111,64,.45)}
+    .game-blend-btn:active{transform:translateY(-1px) scale(.97);box-shadow:0 4px 16px rgba(46,111,64,.3)}
+    .game-blend-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:0 2px 8px rgba(46,111,64,.15)!important;animation:none}
+    .game-blend-btn .blend-icon{font-size:1.3rem;transition:transform .3s}
+    .game-blend-btn:not(:disabled):hover .blend-icon{transform:rotate(-15deg)}
     .game-feedback{font-weight:700;font-size:.95rem;min-height:24px;transition:all .3s}
     .game-feedback.success{color:var(--green);animation:fbBounce .4s ease}
     .game-feedback.error{color:#e74c3c;animation:fbShake .4s ease}
@@ -330,7 +333,7 @@
         </div>
       </div>
       <div class="game-feedback" id="gFeedback"></div>
-      <button class="game-blend-btn" id="gBlendBtn">🔄 Blend</button>
+      <button class="game-blend-btn" id="gBlendBtn"><span class="blend-icon">⚡</span> Blend</button>
       <div class="game-fruits" id="gFruits">
         <button class="fruit-btn" data-fruit="orange">
           <span class="fruit-emoji">🍊</span>
@@ -454,8 +457,9 @@
   }
 
   function checkBlend(){
-    if(selected.length!==recipe.length)return;
+    if(selected.length!==recipe.length||!gameActive)return;
     gameActive=false;
+    blendBtn.disabled=true;
     selected.forEach((f,i)=>{setTimeout(()=>fruitDrop(emojis[f]),i*150)});
     setTimeout(()=>doBlendSequence(),600);
     const sorted=[...selected].sort();
@@ -468,7 +472,7 @@
       setTimeout(()=>{score=Math.max(0,score-5);scoreEl.textContent=score;feedback('✗ Wrong ingredients! -5','error')},1800);
     }
     setTimeout(()=>{showFinished()},2800);
-    setTimeout(()=>{gameActive=true;nextRecipe()},4000);
+    setTimeout(()=>{gameActive=true;nextRecipe();blendBtn.disabled=true},4000);
   }
 
   function feedback(msg,type){
