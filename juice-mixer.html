@@ -121,6 +121,7 @@
     .fruit-btn:nth-child(5){animation-delay:.24s}
     .fruit-btn:nth-child(6){animation-delay:.3s}
     .fruit-emoji{font-size:2rem;line-height:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.06))}
+    img.fruit-emoji{width:32px;height:32px;object-fit:contain;font-size:0}
     .fruit-name{font-size:.68rem;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
     /* ── Game state ── */
     .fruit-btn.selected{border-color:var(--green);background:rgba(46,111,64,.14);transform:scale(1.06);box-shadow:0 4px 12px rgba(46,111,64,.12)}
@@ -346,15 +347,15 @@
       <button class="game-blend-btn" id="gBlendBtn"><span class="blend-icon">⚡</span> Blend</button>
       <div class="game-fruits" id="gFruits">
         <button class="fruit-btn" data-fruit="strawberry">
-          <span class="fruit-emoji">🍓</span>
+          <img src="images/strawnerry.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Strawberry</span>
         </button>
         <button class="fruit-btn" data-fruit="apple">
-          <span class="fruit-emoji">🍏</span>
+          <img src="images/apple.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Apple</span>
         </button>
         <button class="fruit-btn" data-fruit="orange">
-          <span class="fruit-emoji">🍊</span>
+          <img src="images/orange.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Orange</span>
         </button>
         <button class="fruit-btn" data-fruit="peach">
@@ -370,15 +371,15 @@
           <span class="fruit-name">Cherry</span>
         </button>
         <button class="fruit-btn" data-fruit="pear">
-          <span class="fruit-emoji">🍐</span>
+          <img src="images/pear.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Pear</span>
         </button>
         <button class="fruit-btn" data-fruit="carrot">
-          <span class="fruit-emoji">🥕</span>
+          <img src="images/carrot.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Carrot</span>
         </button>
         <button class="fruit-btn" data-fruit="blueberry">
-          <span class="fruit-emoji">🫐</span>
+          <img src="images/blueberry.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
           <span class="fruit-name">Blueberry</span>
         </button>
       </div>
@@ -415,23 +416,28 @@
   const fruits=['strawberry','apple','orange','peach','grape','sourcherry','pear','carrot','blueberry'];
   const emojis={strawberry:'🍓',apple:'🍏',orange:'🍊',peach:'🍑',grape:'🍇',sourcherry:'🍒',pear:'🍐',carrot:'🥕',blueberry:'🫐'};
   const juiceImages={
-    strawberry:'https://frutex-ks.com/wp-content/uploads/2026/03/Natural-Strawberry-200ml.webp',
-    apple:'https://frutex-ks.com/wp-content/uploads/2026/03/Natural-Apple-750ml.webp',
+    strawberry:'images/strawnerry.png',
+    apple:'images/apple.png',
+    orange:'images/orange.png',
+    pear:'images/pear.png',
+    carrot:'images/carrot.png',
+    blueberry:'images/blueberry.png',
+    multivitamin:'images/multivitamin.png',
     sourcherry:'https://goldeneagle-ks.com/wp-content/uploads/2023/12/01.-Sourcherry.jpg.webp'
   };
-  // Real Natural 100 recipes — most are single fruit
+  const fruitImages={strawberry:'images/strawnerry.png',apple:'images/apple.png',orange:'images/orange.png',pear:'images/pear.png',carrot:'images/carrot.png',blueberry:'images/blueberry.png'};
+  // Real Natural 100 recipes
   const recipes=[
     {name:'Strawberry',ingredients:['strawberry'],img:juiceImages.strawberry},
     {name:'Apple',ingredients:['apple'],img:juiceImages.apple},
     {name:'Sourcherry',ingredients:['sourcherry'],img:juiceImages.sourcherry},
-    {name:'Orange',ingredients:['orange'],img:''},
+    {name:'Orange',ingredients:['orange'],img:juiceImages.orange},
     {name:'Peach',ingredients:['peach'],img:''},
     {name:'Grape',ingredients:['grape'],img:''},
-    {name:'Pear',ingredients:['pear'],img:''},
-    {name:'Apple Clear',ingredients:['apple'],img:''},
-    {name:'Carrot',ingredients:['carrot'],img:''},
-    {name:'Blueberry',ingredients:['blueberry'],img:''},
-    {name:'Multivitamin',ingredients:['orange','apple','carrot'],img:''},
+    {name:'Pear',ingredients:['pear'],img:juiceImages.pear},
+    {name:'Carrot',ingredients:['carrot'],img:juiceImages.carrot},
+    {name:'Blueberry',ingredients:['blueberry'],img:juiceImages.blueberry},
+    {name:'Multivitamin',ingredients:['orange','apple','carrot'],img:juiceImages.multivitamin},
     {name:'Peach Orange',ingredients:['peach','orange'],img:''},
     {name:'Strawberry Peach',ingredients:['strawberry','peach'],img:''},
     {name:'Berry Mix',ingredients:['strawberry','blueberry','grape'],img:''},
@@ -456,7 +462,7 @@
 
   function updateTarget(){
     const r=recipe;
-    targetFruitsEl.innerHTML=(r.img?`<img src="${r.img}" style="height:36px;vertical-align:middle;border-radius:4px;margin-right:4px">`:'')+`<strong>${r.name}:</strong> `+r.ingredients.map(f=>emojis[f]).join(' ');
+    targetFruitsEl.innerHTML=(r.img?`<img src="${r.img}" style="height:50px;vertical-align:middle;border-radius:6px;margin-right:8px">`:'')+`<strong>${r.name}</strong> `+r.ingredients.map(f=>fruitImages[f]?`<img src="${fruitImages[f]}" style="height:24px;vertical-align:middle;border-radius:3px">`:emojis[f]).join(' ');
   }
 
   function renderSelected(){

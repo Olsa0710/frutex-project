@@ -1,0 +1,136 @@
+(function () {
+  'use strict';
+
+  if (window.__GEC_TRACKER_V3_RUNNING__) return;
+  window.__GEC_TRACKER_V3_RUNNING__ = true;
+
+  var cfg = window.GECTrackerV3 || {};
+  var visitorKey = 'gec_carnival_visitor_id_v3';
+  var defaultSelector = '[data-gec-track="join"], [data-gec-join], #gecJoinButton, #joinCarnivalBtn, #joinCarnival, .gec-join-btn, .gec-join-top';
+  var selector = cfg.buttonSelector || defaultSelector;
+  var viewSentKey = 'gec_view_sent_' + (window.location.pathname || 'home');
+
+  function safeUUID() {
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    } catch (e) {}
+    return 'gec-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2) + '-' + Math.random().toString(36).slice(2);
+  }
+
+  function setCookie(name, value, days) {
+    try {
+      var expires = new Date(Date.now() + days * 864e5).toUTCString();
+      document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+    } catch (e) {}
+  }
+
+  function getCookie(name) {
+    try {
+      var parts = document.cookie.split('; ');
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i].split('=');
+        if (p[0] === name) return decodeURIComponent(p.slice(1).join('='));
+      }
+    } catch (e) {}
+    return '';
+  }
+
+  function getVisitorId() {
+    var id = '';
+    try { id = localStorage.getItem(visitorKey) || ''; } catch (e) {}
+    if (!id) id = getCookie(visitorKey);
+    if (!id) {
+      id = safeUUID();
+      try { localStorage.setItem(visitorKey, id); } catch (e) {}
+      setCookie(visitorKey, id, 365);
+    }
+    return id;
+  }
+
+  function endpointUrl(type) {
+    if (type === 'rest') return cfg.restUrl || (window.location.origin + '/wp-json/gec/v3/track');
+    return cfg.ajaxUrl || (window.location.origin + '/wp-admin/admin-ajax.php');
+  }
+
+  function makePayload(eventName) {
+    return {
+      event: eventName,
+      visitor_id: getVisitorId(),
+      url: window.location.href,
+      path: window.location.pathname,
+      referrer: document.referrer || '',
+      title: document.title || '',
+      screen: (window.screen ? (window.screen.width + 'x' + window.screen.height) : ''),
+      source: 'frontend-v3'
+    };
+  }
+
+  function ajaxFallback(payload) {
+    var fd = new FormData();
+    fd.append('action', cfg.action || 'gec_track_event_v3');
+    Object.keys(payload).forEach(function (key) { fd.append(key, payload[key]); });
+
+    if (navigator.sendBeacon) {
+      try {
+        navigator.sendBeacon(endpointUrl('ajax'), fd);
+        return;
+      } catch (e) {}
+    }
+
+    try {
+      fetch(endpointUrl('ajax'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        body: fd,
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
+  }
+
+  function sendTrackingEvent(eventName) {
+    var payload = makePayload(eventName);
+
+    try {
+      fetch(endpointUrl('rest'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (res) {
+        if (!res.ok) ajaxFallback(payload);
+      }).catch(function () {
+        ajaxFallback(payload);
+      });
+    } catch (e) {
+      ajaxFallback(payload);
+    }
+  }
+
+  function trackViewOncePerTab() {
+    try {
+      if (sessionStorage.getItem(viewSentKey)) return;
+      sessionStorage.setItem(viewSentKey, '1');
+    } catch (e) {}
+    sendTrackingEvent('view');
+  }
+
+  function bindJoinClick() {
+    document.addEventListener('click', function (event) {
+      var target = event.target;
+      if (!target || !target.closest) return;
+      var button = target.closest(selector);
+      if (!button) return;
+      sendTrackingEvent('join_click');
+    }, true);
+  }
+
+  function init() {
+    trackViewOncePerTab();
+    bindJoinClick();
+    document.documentElement.setAttribute('data-gec-tracker', 'active');
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
