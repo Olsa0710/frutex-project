@@ -40,24 +40,30 @@
     .navbar__hamburger.open .navbar__hamburger-line:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
     /* ── Page ── */
-    .page{padding-top:100px;min-height:100vh;display:flex;flex-direction:column}
+    .page{padding-top:0;min-height:100vh;display:flex;flex-direction:column}
 
-    .mixer-hero{text-align:center;padding:60px 32px 30px}
-    .mixer-hero .mixer-badge{display:inline-block;padding:6px 16px;background:rgba(46,111,64,.1);color:var(--green);border-radius:20px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
-    .mixer-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5vw,3rem);color:#1a1a1a;margin-bottom:10px}
-    .mixer-hero h1 span{color:var(--green)}
-    .mixer-hero p{font-size:1.05rem;color:#888;max-width:500px;margin:0 auto;line-height:1.6}
+    .mixer-hero{position:relative;height:70vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a3a28 0%,#2E6F40 30%,#3d7a50 60%,#1e4d2c 100%)}
+    .mixer-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,200,100,.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(46,200,100,.06) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.03) 0%,transparent 60%);pointer-events:none}
+    .mixer-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,5,.1) 0%,rgba(0,25,10,.3) 60%,rgba(0,0,0,.45) 100%);pointer-events:none}
+    .mixer-hero-fruit{position:absolute;font-size:6rem;opacity:.12;pointer-events:none;animation:fruitFloat 7s ease-in-out infinite}
+    .mixer-hero-fruit:nth-child(1){top:15%;left:10%;animation-delay:0s;font-size:5rem}
+    .mixer-hero-fruit:nth-child(2){top:60%;right:8%;animation-delay:2s;font-size:7rem}
+    .mixer-hero-fruit:nth-child(3){top:20%;right:20%;animation-delay:4s;font-size:4rem}
+    .mixer-hero-fruit:nth-child(4){bottom:20%;left:15%;animation-delay:1s;font-size:5.5rem}
+    @keyframes fruitFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(5deg)}}
+    .mixer-hero-content{position:relative;z-index:1;text-align:center;padding:0 32px}
+    .mixer-hero-badge{display:inline-block;padding:8px 20px;background:rgba(46,111,64,.3);border:1px solid rgba(255,255,255,.15);color:#d4e8d0;border-radius:30px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px;backdrop-filter:blur(4px);animation:fIn .8s ease both}
+    .mixer-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.4rem,6vw,4.2rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:16px;letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.3);animation:fIn .8s .15s ease both}
+    .mixer-hero h1 span{color:#ffb74d}
+    .mixer-hero p{font-size:clamp(.95rem,1.5vw,1.1rem);color:rgba(255,255,255,.7);max-width:480px;margin:0 auto 32px;line-height:1.6;animation:fIn .8s .3s ease both}
+    .mixer-hero-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:#f5ead6;color:#2E6F40;border-radius:50px;text-decoration:none;font-weight:600;font-size:1rem;transition:transform .3s,box-shadow .3s;box-shadow:0 6px 28px rgba(0,0,0,.25),0 0 40px rgba(46,111,64,.15);animation:fIn .8s .45s ease both}
+    .mixer-hero-btn:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.35)}
+    @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-    .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:30px 32px}
+    .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 32px}
     .mixer-frame{width:100%;max-width:800px;aspect-ratio:16/10;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);border:2px dashed rgba(46,111,64,.15);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px}
     .mixer-frame .mixer-placeholder{width:72px;height:72px;border-radius:50%;background:rgba(46,111,64,.08);display:flex;align-items:center;justify-content:center;font-size:2.2rem}
     .mixer-frame p{color:#aaa;font-size:1.1rem;font-weight:500}
-
-    @keyframes fIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    .mixer-hero>*{animation:fIn .6s ease both}
-    .mixer-hero>*:nth-child(2){animation-delay:.1s}
-    .mixer-hero>*:nth-child(3){animation-delay:.2s}
-    .mixer-frame{animation:fIn .6s .3s ease both}
 
     @media(max-width:960px){
       .navbar{top:12px;border-radius:28px;width:90vw}.navbar__inner{padding:8px 20px;height:48px}.navbar__logo svg{height:24px}.navbar__hamburger{display:flex}
@@ -110,11 +116,18 @@
 
 <main class="page">
   <section class="mixer-hero">
-    <div class="mixer-badge">Interactive Experience</div>
-    <h1>Juice <span>Mixer</span></h1>
-    <p>Mix your own Frutex creation. Coming soon.</p>
+    <div class="mixer-hero-fruit">🍊</div>
+    <div class="mixer-hero-fruit">🍋</div>
+    <div class="mixer-hero-fruit">🍏</div>
+    <div class="mixer-hero-fruit">🍓</div>
+    <div class="mixer-hero-content">
+      <div class="mixer-hero-badge">Interactive Experience</div>
+      <h1>Juice Mixer<br><span>Challenge</span></h1>
+      <p>Create the perfect Frutex juice by choosing the correct ingredients.</p>
+      <a href="#game" class="mixer-hero-btn">Start Mixing <span>→</span></a>
+    </div>
   </section>
-  <section class="mixer-area">
+  <section class="mixer-area" id="game">
     <div class="mixer-frame">
       <div class="mixer-placeholder">🧃</div>
       <p>The game is being prepared.</p>
