@@ -103,8 +103,8 @@
     .game-score-val.pop{animation:sPop .4s cubic-bezier(.34,1.56,.64,1)}
     @keyframes sPop{0%{transform:scale(1)}30%{transform:scale(1.35)}100%{transform:scale(1)}}
     .game-timer .game-score-val{color:#e67e22}
-    .game-blender{position:relative;padding:12px 0;will-change:transform}
-    .game-blender svg{filter:drop-shadow(0 8px 20px rgba(0,0,0,.08))}
+    .game-blender{position:relative;padding:12px 0;will-change:transform;transform:translateZ(0)}
+    .game-blender svg{filter:drop-shadow(0 8px 20px rgba(0,0,0,.08));transform:translateZ(0)}
     .game-recipe{text-align:center;position:relative;width:100%;min-height:48px}
     .game-recipe-label{font-size:.7rem;color:#bbb;text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:8px}
     .game-recipe-slots{display:flex;gap:10px;justify-content:center}
@@ -300,8 +300,8 @@
           <defs>
             <linearGradient id="metalGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#888"/><stop offset="15%" stop-color="#bbb"/><stop offset="35%" stop-color="#ddd"/><stop offset="55%" stop-color="#999"/><stop offset="100%" stop-color="#555"/></linearGradient>
             <linearGradient id="metalBase" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#666"/><stop offset="50%" stop-color="#444"/><stop offset="100%" stop-color="#222"/></linearGradient>
-            <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(255,255,255,.2)"/><stop offset="8%" stop-color="rgba(255,255,255,.05)"/><stop offset="85%" stop-color="rgba(255,255,255,.02)"/><stop offset="100%" stop-color="rgba(255,255,255,.15)"/></linearGradient>
-            <linearGradient id="liquidGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(46,200,100,.2)"/><stop offset="100%" stop-color="rgba(46,180,90,.45)"/></linearGradient>
+            <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(255,255,255,.25)"/><stop offset="6%" stop-color="rgba(255,255,255,.04)"/><stop offset="80%" stop-color="rgba(255,255,255,.01)"/><stop offset="92%" stop-color="rgba(255,255,255,.08)"/><stop offset="100%" stop-color="rgba(255,255,255,.18)"/></linearGradient>
+            <linearGradient id="liquidGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(46,200,100,.15)"/><stop offset="40%" stop-color="rgba(46,200,100,.25)"/><stop offset="100%" stop-color="rgba(46,180,90,.4)"/></linearGradient>
             <clipPath id="pitcher"><path d="M64 280 L58 100 Q55 45 72 25 Q85 12 110 10 Q135 12 148 25 Q165 45 162 100 L156 280 Z"/></clipPath>
             <radialGradient id="bladeLight" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ddd"/><stop offset="100%" stop-color="#999"/></radialGradient>
           </defs>
@@ -333,14 +333,17 @@
           <path d="M64 280 L58 100 Q55 45 72 25 Q85 12 110 10 Q135 12 148 25 Q165 45 162 100 L156 280 Z" fill="url(#glassGrad)" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
           <!-- Green liquid -->
           <path d="M66 280 L61 170 Q60 148 72 130 Q85 112 110 108 Q135 112 148 130 Q160 148 159 170 L154 280 Z" fill="url(#liquidGrad)" clip-path="url(#pitcher)"/>
-          <!-- Glass reflection left -->
-          <path d="M67 260 L63 120 Q68 100 78 88 Q75 105 72 135 L72 260 Z" fill="rgba(255,255,255,.15)"/>
-          <!-- Glass reflection right -->
-          <path d="M151 250 L155 140 Q150 118 142 105 Q147 125 150 155 L150 250 Z" fill="rgba(255,255,255,.06)"/>
-          <!-- Glass curve highlight -->
-          <path d="M160 200 Q164 170 162 145" stroke="rgba(255,255,255,.12)" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <!-- Pitcher rim -->
-          <ellipse cx="110" cy="12" rx="52" ry="8" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+          <!-- Glass reflection left — strong edge highlight -->
+          <path d="M67 260 L63 115 Q66 90 74 75 Q68 100 66 140 L68 260 Z" fill="rgba(255,255,255,.18)"/>
+          <!-- Glass reflection right — soft edge -->
+          <path d="M153 250 L156 135 Q152 110 145 95 Q150 120 152 160 L152 250 Z" fill="rgba(255,255,255,.04)"/>
+          <!-- Glass curve highlight — surface sheen -->
+          <path d="M160 220 Q165 180 162 130" stroke="rgba(255,255,255,.15)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- Secondary highlight -->
+          <path d="M66 180 L64 140" stroke="rgba(255,255,255,.1)" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- Pitcher rim — double ring for depth -->
+          <ellipse cx="110" cy="12" rx="52" ry="8" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+          <ellipse cx="110" cy="14" rx="50" ry="7" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
           <!-- Spout -->
           <path d="M162 85 Q172 82 175 90 Q178 102 162 105" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
           <!-- Handle -->
