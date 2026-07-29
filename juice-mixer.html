@@ -126,6 +126,18 @@
     .game-overlay.high-score{background:rgba(0,30,15,.85)}
     .game-overlay.high-score h2{animation:celebrate .6s ease;font-size:2.2rem}
     @keyframes celebrate{0%,100%{transform:scale(1)}30%{transform:scale(1.2)}60%{transform:scale(.95)}}
+    /* ── Blending motor ── */
+    .game-blender.motor-on{animation:blVibrate .15s ease-in-out infinite}
+    @keyframes blVibrate{0%,100%{transform:translate(0,0)}25%{transform:translate(2px,-1px)}50%{transform:translate(-1px,2px)}75%{transform:translate(-2px,-1px)}}
+    .game-blender.motor-on .blade-spin{animation:bladeSpin .3s linear infinite;transform-origin:100px 280px}
+    @keyframes bladeSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    .fruit-in-blender.spinning{animation:fSpin 1.5s ease-in forwards}
+    @keyframes fSpin{0%{transform:rotate(0deg) translate(0,0);opacity:1}40%{transform:rotate(180deg) translate(-5px,-20px);opacity:.8}70%{transform:rotate(360deg) translate(-8px,-35px);opacity:.3}100%{transform:rotate(540deg) translate(0,-50px);opacity:0}}
+    .liquid-swirl{position:absolute;top:50%;left:50%;width:80px;height:60px;margin-left:-40px;margin-top:-20px;border-radius:50%;pointer-events:none;opacity:0;z-index:2}
+    .liquid-swirl.active{animation:swirlAnim 2s ease-out forwards;background:radial-gradient(ellipse,rgba(46,200,100,.5) 0%,rgba(46,200,100,.1) 60%,transparent 100%)}
+    @keyframes swirlAnim{0%{opacity:0;transform:scale(.3) rotate(0deg)}30%{opacity:.8;transform:scale(1) rotate(180deg)}70%{opacity:.6;transform:scale(1.1) rotate(360deg)}100%{opacity:.3;transform:scale(1) rotate(540deg)}}
+    .lid-closed{position:absolute;top:28px;left:50%;transform:translate(-50%,-30px);font-size:1.2rem;opacity:0;pointer-events:none;z-index:6;transition:all .3s ease}
+    .lid-closed.show{opacity:1;transform:translate(-50%,10px)}
     .mixer-frame{width:100%;max-width:750px;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);padding:32px;display:flex;flex-direction:column;align-items:center;gap:20px;position:relative}
 
     @media(max-width:960px){
@@ -246,6 +258,8 @@
       <div class="game-blender" id="gBlender">
         <div class="blender-splash" id="gSplash">💦</div>
         <div class="blender-finished" id="gFinished">🧃</div>
+        <div class="lid-closed" id="gLid">🔒</div>
+        <div class="liquid-swirl" id="gSwirl"></div>
         <svg viewBox="0 0 200 340" width="180" height="300">
           <!-- Soft shadow under base -->
           <ellipse cx="100" cy="325" rx="55" ry="8" fill="rgba(0,0,0,.1)"/>
@@ -416,12 +430,12 @@
     totalAttempts++;
     if(match){
       correctAttempts++;
-      setTimeout(()=>{score+=10;scoreEl.textContent=score;animateScore();feedback('✓ Perfect Mix! +10','success')},1000);
+      setTimeout(()=>{score+=10;scoreEl.textContent=score;animateScore();feedback('✓ Perfect Mix! +10','success')},1800);
     }else{
-      setTimeout(()=>{score=Math.max(0,score-5);scoreEl.textContent=score;feedback('✗ Wrong ingredients! -5','error')},1000);
+      setTimeout(()=>{score=Math.max(0,score-5);scoreEl.textContent=score;feedback('✗ Wrong ingredients! -5','error')},1800);
     }
-    setTimeout(()=>{showFinished()},1200);
-    setTimeout(()=>{gameActive=true;nextRecipe()},3200);
+    setTimeout(()=>{showFinished()},2800);
+    setTimeout(()=>{gameActive=true;nextRecipe()},4000);
   }
 
   function feedback(msg,type){
@@ -472,12 +486,33 @@
   }
 
   function doBlendSequence(){
-    clearBlenderFruits();
-    blenderEl.classList.add('spinning');
+    // Close lid
+    document.getElementById('gLid').classList.add('show');
+    // Start motor vibration
+    setTimeout(()=>{blenderEl.classList.add('motor-on')},200);
+    // Spin blade element
+    const bladeEl=blenderEl.querySelector('ellipse[cx="100"][cy="280"]');
+    if(bladeEl)bladeEl.classList.add('blade-spin');
+    // Spin fruits
+    blenderEl.querySelectorAll('.fruit-in-blender').forEach(f=>f.classList.add('spinning'));
+    // Swirl liquid
+    setTimeout(()=>{document.getElementById('gSwirl').classList.add('active')},400);
+    // Bubbles
+    setTimeout(()=>spawnBubbles(),500);
+    // Blend sound
     playBlendSound();
+    // Splash
     splashEl.classList.add('active');
-    spawnBubbles();
-    setTimeout(()=>{blenderEl.classList.remove('spinning');splashEl.classList.remove('active')},700);
+    // Clear fruits
+    setTimeout(()=>clearBlenderFruits(),1500);
+    // Stop after 2.5s
+    setTimeout(()=>{
+      blenderEl.classList.remove('motor-on');
+      if(bladeEl)bladeEl.classList.remove('blade-spin');
+      document.getElementById('gSwirl').classList.remove('active');
+      document.getElementById('gLid').classList.remove('show');
+      splashEl.classList.remove('active');
+    },2500);
   }
 
   function startGame(){
