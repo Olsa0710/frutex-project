@@ -335,22 +335,52 @@
   let gameActive=false;
 
   function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-  function randomRecipe(){const picked=shuffle([...fruits]).slice(0,3);return picked.sort()}
+  function randomRecipe(){
+    // Difficulty: more ingredients as rounds progress
+    const count=roundNum<=3?3:roundNum<=6?4:roundNum<=9?5:6;
+    const picked=shuffle([...fruits]).slice(0,count);
+    return picked; // Not sorted — random order
+  }
 
   function renderRecipe(){
-    const slots=slotsEl.querySelectorAll('.recipe-slot');
-    slots.forEach((s,i)=>{s.className='recipe-slot';s.textContent=i<recipe.length?emojis[recipe[i]]:''});
+    const container=slotsEl;
+    container.innerHTML='';
+    recipe.forEach(f=>{const s=document.createElement('span');s.className='recipe-slot';s.textContent=emojis[f];container.appendChild(s)});
   }
 
   function renderSelected(){
     const slots=slotsEl.querySelectorAll('.recipe-slot');
     slots.forEach((s,i)=>{
       if(i<selected.length){s.className='recipe-slot filled';s.textContent=emojis[selected[i]]}
-      else{s.className='recipe-slot';s.textContent=''}
+      else{s.className='recipe-slot';s.textContent=i<recipe.length?emojis[recipe[i]]:''}
     });
     document.querySelectorAll('.fruit-btn').forEach(b=>b.classList.remove('selected'));
     selected.forEach(f=>{const b=document.querySelector(`.fruit-btn[data-fruit="${f}"]`);if(b)b.classList.add('selected')});
-    blendBtn.disabled=selected.length!==3;
+    blendBtn.disabled=selected.length!==recipe.length;
+  }
+
+  function nextRecipe(){
+    recipe=randomRecipe();
+    selected=[];
+    roundNum++;roundEl.textContent=roundNum;
+    renderRecipe();
+    renderSelected();
+  }
+
+  function checkBlend(){
+    if(selected.length!==recipe.length)return;
+    gameActive=false;
+    selected.forEach((f,i)=>{setTimeout(()=>fruitDrop(emojis[f]),i*150)});
+    setTimeout(()=>doBlendSequence(),600);
+    const sorted=[...selected].sort();
+    const match=recipe.length===selected.length&&recipe.every((f,i)=>sorted.includes(f)&&selected.includes(recipe[i]));
+    if(match){
+      setTimeout(()=>{score+=10;scoreEl.textContent=score;animateScore();feedback('✓ Perfect Mix! +10','success')},1000);
+    }else{
+      setTimeout(()=>{score=Math.max(0,score-5);scoreEl.textContent=score;feedback('✗ Wrong ingredients! -5','error')},1000);
+    }
+    setTimeout(()=>{showFinished()},1200);
+    setTimeout(()=>{gameActive=true;nextRecipe()},3200);
   }
 
   function feedback(msg,type){
@@ -391,32 +421,6 @@
     splashEl.classList.add('active');
     spawnBubbles();
     setTimeout(()=>{blenderEl.classList.remove('spinning');splashEl.classList.remove('active')},700);
-  }
-
-  function nextRecipe(){
-    recipe=randomRecipe();
-    selected=[];
-    roundNum++;roundEl.textContent=roundNum;
-    renderRecipe();
-    renderSelected();
-  }
-
-  function checkBlend(){
-    if(selected.length!==3)return;
-    gameActive=false;
-    // Drop fruits
-    selected.forEach((f,i)=>{setTimeout(()=>fruitDrop(emojis[f]),i*150)});
-    // Blend
-    setTimeout(()=>doBlendSequence(),600);
-    const sorted=[...selected].sort();
-    const match=recipe.every((f,i)=>sorted[i]===f);
-    if(match){
-      setTimeout(()=>{score+=10;scoreEl.textContent=score;animateScore();feedback('✓ Perfect Mix! +10','success')},1000);
-    }else{
-      setTimeout(()=>{score=Math.max(0,score-5);scoreEl.textContent=score;feedback('✗ Wrong ingredients! -5','error')},1000);
-    }
-    setTimeout(()=>{showFinished()},1200);
-    setTimeout(()=>{gameActive=true;nextRecipe()},3200);
   }
 
   function startGame(){
