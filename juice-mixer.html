@@ -122,6 +122,9 @@
     .game-overlay p{color:rgba(255,255,255,.7)}
     .game-overlay-btn{display:inline-flex;align-items:center;gap:6px;padding:14px 32px;background:#f5ead6;color:#2E6F40;border:none;border-radius:50px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:inherit;transition:all .25s}
     .game-overlay-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+    .game-overlay.high-score{background:rgba(0,30,15,.85)}
+    .game-overlay.high-score h2{animation:celebrate .6s ease;font-size:2.2rem}
+    @keyframes celebrate{0%,100%{transform:scale(1)}30%{transform:scale(1.2)}60%{transform:scale(.95)}}
     .mixer-frame{width:100%;max-width:750px;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);padding:32px;display:flex;flex-direction:column;align-items:center;gap:20px;position:relative}
 
     @media(max-width:960px){
@@ -332,6 +335,7 @@
   const blendBtn=document.getElementById('gBlendBtn'),frameEl=document.querySelector('.mixer-frame');
   const blenderEl=document.getElementById('gBlender'),splashEl=document.getElementById('gSplash'),finishedEl=document.getElementById('gFinished');
   let score=0,time=60,timerId=null,recipe=[],selected=[],roundNum=1;
+  let totalAttempts=0,correctAttempts=0;
   let gameActive=false;
 
   function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
@@ -374,7 +378,9 @@
     setTimeout(()=>doBlendSequence(),600);
     const sorted=[...selected].sort();
     const match=recipe.length===selected.length&&recipe.every((f,i)=>sorted.includes(f)&&selected.includes(recipe[i]));
+    totalAttempts++;
     if(match){
+      correctAttempts++;
       setTimeout(()=>{score+=10;scoreEl.textContent=score;animateScore();feedback('✓ Perfect Mix! +10','success')},1000);
     }else{
       setTimeout(()=>{score=Math.max(0,score-5);scoreEl.textContent=score;feedback('✗ Wrong ingredients! -5','error')},1000);
@@ -425,6 +431,7 @@
 
   function startGame(){
     score=0;time=60;recipe=randomRecipe();selected=[];roundNum=1;
+    totalAttempts=0;correctAttempts=0;
     gameActive=true;
     scoreEl.textContent='0';timerEl.textContent='60';roundEl.textContent='1';
     renderRecipe();renderSelected();
@@ -441,8 +448,20 @@
     gameActive=false;clearInterval(timerId);
     blendBtn.disabled=true;
     document.querySelectorAll('.fruit-btn').forEach(b=>b.classList.remove('selected'));
-    const ov=document.createElement('div');ov.className='game-overlay';
-    ov.innerHTML=`<h2>Time's Up!</h2><p>Final Score: ${score}</p><button class="game-overlay-btn" onclick="document.querySelector('.game-overlay').remove();document.__startGame()">🔄 Play Again</button>`;
+    const acc=totalAttempts>0?Math.round((correctAttempts/totalAttempts)*100):0;
+    const isHigh=score>=100;
+    const ov=document.createElement('div');ov.className='game-overlay'+(isHigh?' high-score':'');
+    ov.innerHTML=`<h2>${isHigh?'🎉 Amazing!':'Time\'s Up!'}</h2>
+      <div style="display:flex;gap:24px;margin:8px 0">
+        <div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">${score}</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Score</div></div>
+        <div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">${correctAttempts}</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Correct</div></div>
+        <div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">${acc}%</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Accuracy</div></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+        <button class="game-overlay-btn" onclick="document.querySelector('.game-overlay').remove();document.__startGame()">🔄 Play Again</button>
+        <a href="index.html" class="game-overlay-btn" style="background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff">🏠 Home</a>
+        <a href="index.html#products" class="game-overlay-btn" style="background:transparent;border:2px solid rgba(46,111,64,.5);color:#8fbc8f">🥤 Products</a>
+      </div>`;
     frameEl.appendChild(ov);
   }
 
