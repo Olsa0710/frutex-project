@@ -168,12 +168,6 @@
     .game-blender.motor-on .blade-spin{animation:bladeSpin .15s linear infinite;transform-origin:110px 295px;will-change:transform}
     .game-blender.motor-on{animation:blVibrate .08s ease-in-out infinite;will-change:transform}
     @keyframes blVibrate{0%,100%{transform:translate(0,0)}15%{transform:translate(3px,-1px)}30%{transform:translate(-2px,2px)}45%{transform:translate(-3px,-2px)}60%{transform:translate(1px,2px)}75%{transform:translate(-1px,-1px)}}
-    .lid-closed{position:absolute;top:28px;left:50%;transform:translate(-50%,-30px);font-size:1.2rem;opacity:0;pointer-events:none;z-index:6;transition:all .3s ease}
-    .lid-closed.show{opacity:1;transform:translate(-50%,10px)}
-    .pitcher-lid{position:absolute;top:18px;left:50%;transform:translate(-50%,0);width:52px;height:24px;border-radius:26px 26px 8px 8px;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.5));border:1.5px solid rgba(255,255,255,.12);pointer-events:none;z-index:6;transition:all .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 12px rgba(0,0,0,.2)}
-    .pitcher-lid.open{transform:translate(-50%,-50px) rotate(30deg);opacity:0}
-    .pitcher-lid.closed{transform:translate(-50%,0) rotate(0deg);opacity:1}
-    .pitcher-lid .lid-knob{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:18px;height:10px;border-radius:9px 9px 3px 3px;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.6));border:1px solid rgba(255,255,255,.08)}
 
     @media(max-width:960px){
       .navbar{top:12px;border-radius:28px;width:90vw}.navbar__inner{padding:8px 20px;height:48px}.navbar__logo svg{height:24px}.navbar__hamburger{display:flex}
@@ -293,9 +287,7 @@
       <div class="game-blender" id="gBlender">
         <div class="blender-splash" id="gSplash">💦</div>
         <div class="blender-finished" id="gFinished">🧃</div>
-        <div class="lid-closed" id="gLid">🔒</div>
         <div class="liquid-swirl" id="gSwirl"></div>
-        <div class="pitcher-lid open" id="pitcherLid"><div class="lid-knob"></div></div>
         <svg viewBox="0 0 220 380" width="200" height="340">
           <defs>
             <linearGradient id="metalGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#888"/><stop offset="15%" stop-color="#bbb"/><stop offset="35%" stop-color="#ddd"/><stop offset="55%" stop-color="#999"/><stop offset="100%" stop-color="#555"/></linearGradient>
@@ -437,7 +429,6 @@
   const blenderEl=document.getElementById('gBlender'),splashEl=document.getElementById('gSplash'),finishedEl=document.getElementById('gFinished');
   const liquidPath=blenderEl.querySelector('path[fill*="liquidGrad"]');
   const recipeCard=document.getElementById('recipeCard');
-  const pitcherLid=document.getElementById('pitcherLid');
   let score=0,time=60,timerId=null,recipe=[],selected=[],roundNum=1;
   let totalAttempts=0,correctAttempts=0;
   let gameActive=false;
@@ -481,9 +472,6 @@
     document.querySelectorAll('.fruit-btn').forEach(b=>b.classList.remove('selected'));
     selected.forEach(f=>{const b=document.querySelector(`.fruit-btn[data-fruit="${f}"]`);if(b)b.classList.add('selected')});
     blendBtn.disabled=selected.length!==recipe.length;
-    // Auto-close lid when all ingredients selected
-    if(selected.length===recipe.length&&gameActive){pitcherLid.classList.remove('open');pitcherLid.classList.add('closed');playClickSound()}
-    else{pitcherLid.classList.add('open');pitcherLid.classList.remove('closed')}
   }
 
   function nextRecipe(){
@@ -630,12 +618,10 @@
   }
 
   function doBlendSequence(){
-    // Close lid
-    document.getElementById('gLid').classList.add('show');
     // Start motor vibration
     setTimeout(()=>{blenderEl.classList.add('motor-on')},200);
     // Spin blade element
-    const bladeEl=blenderEl.querySelector('ellipse[cx="100"][cy="280"]');
+    const bladeEl=blenderEl.querySelector('ellipse[cx="110"][cy="295"]');
     if(bladeEl)bladeEl.classList.add('blade-spin');
     // Spin fruits
     blenderEl.querySelectorAll('.fruit-in-blender').forEach(f=>f.classList.add('spinning'));
@@ -654,10 +640,7 @@
       blenderEl.classList.remove('motor-on');
       if(bladeEl)bladeEl.classList.remove('blade-spin');
       document.getElementById('gSwirl').classList.remove('active');
-      document.getElementById('gLid').classList.remove('show');
       splashEl.classList.remove('active');
-      pitcherLid.classList.add('open');pitcherLid.classList.remove('closed');
-      playClickSound();
     },2500);
   }
 
@@ -701,7 +684,7 @@
 
   // Fruit click handlers
   document.getElementById('gFruits').addEventListener('click',e=>{
-    if(!gameActive||pitcherLid.classList.contains('closed'))return;
+    if(!gameActive)return;
     const btn=e.target.closest('.fruit-btn');if(!btn)return;
     const fruit=btn.dataset.fruit;
     if(selected.includes(fruit)){selected=selected.filter(f=>f!==fruit)}
