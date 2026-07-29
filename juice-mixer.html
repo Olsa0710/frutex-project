@@ -73,6 +73,18 @@
     @media(max-width:768px){.htp-grid{grid-template-columns:1fr}}
     .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 32px}
     @media(max-width:500px){.game-fruits{gap:8px}.fruit-btn{min-width:65px;padding:10px 12px}.fruit-emoji{font-size:1.6rem}}
+    .game-blender{position:relative;padding:10px 0;transition:transform .5s}
+    .game-blender.spinning{animation:blSpin .6s ease-in-out}
+    @keyframes blSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    .blender-splash{position:absolute;top:30px;left:50%;transform:translateX(-50%);pointer-events:none;font-size:2rem;opacity:0}
+    .blender-splash.active{animation:splashAnim .8s ease-out forwards}
+    @keyframes splashAnim{0%{opacity:1;transform:translateX(-50%) translateY(0) scale(.5)}50%{opacity:1;transform:translateX(-50%) translateY(-30px) scale(1.2)}100%{opacity:0;transform:translateX(-50%) translateY(-60px) scale(.8)}}
+    .bubble{position:absolute;width:8px;height:8px;border-radius:50%;background:rgba(46,200,100,.4);pointer-events:none;animation:bubUp .8s ease-out forwards}
+    @keyframes bubUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-50px) scale(0)}}
+    .fruit-drop{position:absolute;top:-30px;font-size:2rem;pointer-events:none;animation:fdDrop .4s ease-in forwards}
+    @keyframes fdDrop{0%{transform:translateY(-40px);opacity:0}60%{transform:translateY(10px);opacity:1}100%{transform:translateY(0);opacity:1}}
+    .blender-finished{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.5rem;opacity:0;pointer-events:none;transition:opacity .4s}
+    .blender-finished.show{opacity:1;animation:juicePop .6s ease}
     .mixer-frame{width:100%;max-width:750px;background:#fff;border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);padding:32px;display:flex;flex-direction:column;align-items:center;gap:20px}
     .game-scoreboard{display:flex;justify-content:space-evenly;width:100%}
     .game-score,.game-timer{display:flex;flex-direction:column;align-items:center;gap:2px}
@@ -227,7 +239,9 @@
           <span class="game-score-val" id="gTimer">60</span>
         </div>
       </div>
-      <div class="game-blender">
+      <div class="game-blender" id="gBlender">
+        <div class="blender-splash" id="gSplash">💦</div>
+        <div class="blender-finished" id="gFinished">🧃</div>
         <svg viewBox="0 0 180 260" width="140" height="200">
           <!-- Base -->
           <rect x="55" y="230" width="70" height="20" rx="6" fill="#3a3a3a"/>
@@ -316,6 +330,7 @@
   const scoreEl=document.getElementById('gScore'),timerEl=document.getElementById('gTimer'),roundEl=document.getElementById('gRound');
   const slotsEl=document.getElementById('recipeSlots'),feedbackEl=document.getElementById('gFeedback');
   const blendBtn=document.getElementById('gBlendBtn'),frameEl=document.querySelector('.mixer-frame');
+  const blenderEl=document.getElementById('gBlender'),splashEl=document.getElementById('gSplash'),finishedEl=document.getElementById('gFinished');
   let score=0,time=60,timerId=null,recipe=[],selected=[],roundNum=1;
   let gameActive=false;
 
@@ -347,6 +362,37 @@
     scoreEl.classList.remove('pop');void scoreEl.offsetWidth;scoreEl.classList.add('pop');
   }
 
+  function playBlendSound(){
+    try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(80,ctx.currentTime);o.frequency.linearRampToValueAtTime(200,ctx.currentTime+.3);o.frequency.linearRampToValueAtTime(60,ctx.currentTime+.6);g.gain.setValueAtTime(.08,ctx.currentTime);g.gain.linearRampToValueAtTime(0,ctx.currentTime+.6);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.6)}catch(e){}
+  }
+
+  function fruitDrop(emoji){
+    const d=document.createElement('div');d.className='fruit-drop';d.textContent=emoji;
+    d.style.left=(35+Math.random()*30)+'%';blenderEl.appendChild(d);
+    setTimeout(()=>d.remove(),500);
+  }
+
+  function spawnBubbles(){
+    for(let i=0;i<6;i++){const b=document.createElement('div');b.className='bubble';
+      b.style.left=(30+Math.random()*40)+'%';b.style.top=(50+Math.random()*30)+'px';
+      b.style.animationDelay=(i*.1)+'s';b.style.width=(4+Math.random()*6)+'px';
+      b.style.height=b.style.width;blenderEl.appendChild(b);
+      setTimeout(()=>b.remove(),900)}
+  }
+
+  function showFinished(){
+    finishedEl.classList.add('show');
+    setTimeout(()=>finishedEl.classList.remove('show'),1800);
+  }
+
+  function doBlendSequence(){
+    blenderEl.classList.add('spinning');
+    playBlendSound();
+    splashEl.classList.add('active');
+    spawnBubbles();
+    setTimeout(()=>{blenderEl.classList.remove('spinning');splashEl.classList.remove('active')},700);
+  }
+
   function nextRecipe(){
     recipe=randomRecipe();
     selected=[];
@@ -357,18 +403,20 @@
 
   function checkBlend(){
     if(selected.length!==3)return;
+    gameActive=false;
+    // Drop fruits
+    selected.forEach((f,i)=>{setTimeout(()=>fruitDrop(emojis[f]),i*150)});
+    // Blend
+    setTimeout(()=>doBlendSequence(),600);
     const sorted=[...selected].sort();
     const match=recipe.every((f,i)=>sorted[i]===f);
     if(match){
-      score+=10;scoreEl.textContent=score;animateScore();
-      feedback('✓ Perfect Mix! +10','success');
-      document.querySelector('.game-blender svg path[fill*="200,100"]').setAttribute('fill','rgba(46,200,100,.6)');
-      setTimeout(()=>document.querySelector('.game-blender svg path[fill*="200,100"]').setAttribute('fill','rgba(46,200,100,.3)'),500);
+      setTimeout(()=>{score+=10;scoreEl.textContent=score;animateScore();feedback('✓ Perfect Mix! +10','success')},1000);
     }else{
-      score=Math.max(0,score-5);scoreEl.textContent=score;
-      feedback('✗ Wrong ingredients! -5','error');
+      setTimeout(()=>{score=Math.max(0,score-5);scoreEl.textContent=score;feedback('✗ Wrong ingredients! -5','error')},1000);
     }
-    setTimeout(nextRecipe,1200);
+    setTimeout(()=>{showFinished()},1200);
+    setTimeout(()=>{gameActive=true;nextRecipe()},3200);
   }
 
   function startGame(){
