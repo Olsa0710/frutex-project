@@ -282,6 +282,11 @@
           <span class="game-score-val" id="gTimer">60</span>
         </div>
       </div>
+      <div class="game-overlay" id="gameStartOverlay">
+        <h2>🥤 Juice Mixer</h2>
+        <p>Drag fruits into the blender to match the recipe!</p>
+        <button class="game-overlay-btn" onclick="document.getElementById('gameStartOverlay').remove();document.__startGame()">▶ Play</button>
+      </div>
       <div class="game-target" id="gTarget">
         <span class="target-label">Make this:</span>
         <span class="target-fruits" id="targetFruits"></span>
@@ -706,7 +711,6 @@
   });
 
   blendBtn.addEventListener('click',()=>{if(gameActive)checkBlend()});
-  startGame();
 })();</script>
 </body>
 </html>
