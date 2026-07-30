@@ -101,10 +101,10 @@
     .htp-card h3{font-size:.95rem;color:#111;margin-bottom:6px}
     .htp-card p{font-size:.82rem;color:#888;line-height:1.5}
     @media(max-width:768px){.htp-grid{grid-template-columns:1fr}.mixer-frame{padding:28px 18px 20px;gap:16px}}
-    .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 32px}
+    .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:80px 32px;background:linear-gradient(180deg,#f8faf7 0%,#f0f5ef 40%,#eaf0e8 100%)}
     .game-fruits{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;justify-content:center}
-    .fruit-btn{display:flex;flex-direction:row;align-items:center;gap:4px;padding:6px 8px;background:rgba(46,111,64,.03);border:2px solid transparent;border-radius:12px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:inherit;min-width:0;will-change:transform;white-space:nowrap}
-    .fruit-btn:hover{border-color:rgba(46,111,64,.28);background:rgba(46,111,64,.07);transform:translateY(-3px);box-shadow:0 6px 16px rgba(46,111,64,.08)}
+    .fruit-btn{display:flex;flex-direction:row;align-items:center;gap:5px;padding:8px 12px;background:#fff;border:1.5px solid rgba(46,111,64,.08);border-radius:14px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:inherit;min-width:0;will-change:transform;white-space:nowrap}
+    .fruit-btn:hover{border-color:rgba(46,111,64,.25);background:rgba(46,111,64,.05);transform:translateY(-4px);box-shadow:0 8px 24px rgba(46,111,64,.1)}
     .fruit-btn:active{transform:scale(.94)}
     .fruit-btn{animation:fBtnIn .5s cubic-bezier(.22,1,.36,1) both}
     .game-blender{position:relative;padding:12px 0;will-change:transform}
@@ -125,15 +125,15 @@
     .finished-juice::after{content:'';position:absolute;top:4px;right:15%;width:20%;height:8px;background:rgba(255,255,255,.25);border-radius:50%;transform:rotate(-5deg)}
     .juice-bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,.4);animation:jbRise 2s ease-in infinite}
     @keyframes jbRise{0%{transform:translateY(0);opacity:.6}100%{transform:translateY(-30px);opacity:0}}
-    .mixer-frame{width:95%;max-width:960px;background:#fff;border-radius:28px;box-shadow:0 2px 8px rgba(0,0,0,.04),0 12px 48px rgba(0,0,0,.08);padding:36px 40px 28px;display:flex;flex-direction:column;align-items:center;gap:22px;position:relative;transform:translateZ(0)}
-    .game-scoreboard{display:flex;justify-content:space-evenly;width:100%;padding:6px 0}
+    .mixer-frame{width:95%;max-width:920px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,111,64,.08);border-radius:32px;box-shadow:0 2px 4px rgba(0,0,0,.03),0 8px 32px rgba(46,111,64,.06),0 20px 60px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.9);padding:40px 40px 32px;display:flex;flex-direction:column;align-items:center;gap:24px;position:relative;transform:translateZ(0)}
+    .game-scoreboard{display:flex;justify-content:space-evenly;width:100%;padding:8px 0;background:linear-gradient(135deg,rgba(46,111,64,.04),rgba(46,111,64,.02));border-radius:16px;margin-bottom:4px}
     .game-score,.game-timer{display:flex;flex-direction:column;align-items:center;gap:2px;will-change:transform}
     .game-score-label{font-size:.7rem;color:#aaa;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
-    .game-score-val{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#1a1a1a;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+    .game-score-val{font-family:Georgia,serif;font-size:2.2rem;font-weight:700;color:#111;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
     .game-score-val.pop{animation:sPop .4s cubic-bezier(.34,1.56,.64,1)}
     @keyframes sPop{0%{transform:scale(1)}30%{transform:scale(1.35)}100%{transform:scale(1)}}
     .game-timer .game-score-val{color:var(--green)}
-    .game-target{display:flex;align-items:center;gap:10px;font-size:.85rem}
+    .game-target{display:flex;align-items:center;justify-content:center;gap:12px;font-size:.85rem;padding:8px 0}
     .target-label{color:#888;font-weight:600}
     .target-fruits{display:flex;gap:6px;font-size:1.6rem}
     .game-blender{position:relative;padding:12px 0;will-change:transform;transform:translateZ(0)}
@@ -143,7 +143,7 @@
     .game-recipe-slots{display:flex;gap:10px;justify-content:center}
     .recipe-slot{width:48px;height:48px;border-radius:14px;background:#fff;border:2px solid rgba(46,111,64,.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:all .3s;box-shadow:inset 0 1px 3px rgba(0,0,0,.03)}
     .recipe-slot.filled{background:rgba(46,111,64,.08);border:2px solid rgba(46,111,64,.3);box-shadow:0 2px 8px rgba(46,111,64,.1)}
-    .game-feedback{font-weight:700;font-size:1rem;min-height:28px;transition:all .3s}
+    .game-feedback{font-weight:700;font-size:1rem;min-height:32px;transition:all .3s;padding:4px 0}
     .fruit-btn:nth-child(1){animation-delay:0s}
     .fruit-btn:nth-child(2){animation-delay:.06s}
     .fruit-btn:nth-child(3){animation-delay:.12s}
@@ -155,24 +155,24 @@
     .fruit-name{font-size:.62rem;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
     /* ── Game state ── */
     .fruit-btn.selected{border-color:var(--green);background:rgba(46,111,64,.14);transform:scale(1.06);box-shadow:0 4px 12px rgba(46,111,64,.12)}
-    .game-blend-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 44px;background:linear-gradient(135deg,#3d8a52 0%,#2E6F40 50%,#1f542e 100%);color:#fff;border:none;border-radius:50px;font-weight:700;font-size:1.15rem;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);font-family:inherit;box-shadow:0 6px 24px rgba(46,111,64,.35),0 2px 6px rgba(0,0,0,.1);letter-spacing:.02em;position:relative;overflow:hidden;will-change:transform}
+    .game-blend-btn{display:inline-flex;align-items:center;gap:10px;padding:20px 48px;background:linear-gradient(135deg,#4a9e5e 0%,#2E6F40 40%,#1a4526 100%);color:#fff;border:none;border-radius:60px;font-weight:700;font-size:1.2rem;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);font-family:inherit;box-shadow:0 6px 24px rgba(46,111,64,.35),0 2px 6px rgba(0,0,0,.1);letter-spacing:.02em;position:relative;overflow:hidden;will-change:transform}
     .game-blend-btn::before{content:'';position:absolute;inset:0;border-radius:50px;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 60%);pointer-events:none}
     .game-blend-btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 36px rgba(46,111,64,.5),0 4px 8px rgba(0,0,0,.12)}
     .game-blend-btn:active{transform:translateY(-1px) scale(.97);box-shadow:0 4px 16px rgba(46,111,64,.3)}
     .game-blend-btn:disabled{opacity:.35;cursor:not-allowed;transform:none!important;box-shadow:0 2px 8px rgba(46,111,64,.12)!important;animation:none;filter:grayscale(.3)}
     .game-blend-btn .blend-icon{font-size:1.4rem;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
     .game-blend-btn:not(:disabled):hover .blend-icon{transform:rotate(-20deg) scale(1.1)}
-    .game-feedback{font-weight:700;font-size:1rem;min-height:28px;transition:all .3s}
+    .game-feedback{font-weight:700;font-size:1rem;min-height:32px;transition:all .3s;padding:4px 0}
     .game-feedback.success{color:var(--green);animation:fbBounce .5s cubic-bezier(.34,1.56,.64,1)}
     .game-feedback.error{color:#e74c3c;animation:fbShake .5s ease}
     @keyframes fbBounce{0%,100%{transform:scale(1)}40%{transform:scale(1.2)}}
     @keyframes fbShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
-    .game-overlay{position:absolute;inset:0;background:rgba(0,0,0,.72);border-radius:28px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;z-index:20;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:overlayIn .4s ease}
+    .game-overlay{position:absolute;inset:0;background:rgba(0,0,0,.78);border-radius:32px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;z-index:20;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:overlayIn .5s ease}
     @keyframes overlayIn{from{opacity:0}to{opacity:1}}
     .game-overlay h2{font-family:Georgia,serif;color:#f5ead6;font-size:2rem;margin:0}
     .game-overlay p{color:rgba(255,255,255,.65);margin:0}
     .game-overlay a{text-decoration:none}
-    .game-overlay-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:#f5ead6;color:#2E6F40;border:none;border-radius:50px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:inherit;transition:all .25s cubic-bezier(.34,1.56,.64,1);text-decoration:none}
+    .game-overlay-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:#f5ead6;color:#2E6F40;border:none;border-radius:60px;font-weight:600;font-size:1rem;cursor:pointer;font-family:inherit;transition:all .3s cubic-bezier(.34,1.56,.64,1);text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.15)}
     .game-overlay-btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
     .game-overlay-btn:active{transform:scale(.96)}
     .game-overlay.high-score{background:rgba(0,30,15,.88)}
