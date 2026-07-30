@@ -366,9 +366,9 @@
   var stage=document.getElementById('mapStage'),tip=document.getElementById('mapTip');
   if(stage){
     stage.addEventListener('mouseover',function(e){
-      var t=e.target.closest('.country-shape');
+      var t=e.target.closest('.export-ctry');
       if(!t)return;
-      t.classList.add('highlight');
+      t.setAttribute('fill','rgba(46,111,64,.3)');
       var route=stage.querySelector('.export-route[data-to="'+t.dataset.name+'"]');
       if(route)route.classList.add('active');
       tip.innerHTML='<div class="tt-name"><span></span>'+t.dataset.name+'</div><div class="tt-year">Since '+t.dataset.year+'</div><div class="tt-products"><strong>Products:</strong><br>'+t.dataset.products+'</div>';
@@ -381,9 +381,9 @@
       tip.style.top=(e.clientY-r.top-20)+'px';
     });
     stage.addEventListener('mouseout',function(e){
-      var t=e.target.closest('.country-shape');
+      var t=e.target.closest('.export-ctry');
       if(!t)return;
-      t.classList.remove('highlight');
+      t.setAttribute('fill','rgba(46,111,64,.18)');
       var route=stage.querySelector('.export-route.active');
       if(route)route.classList.remove('active');
       tip.classList.remove('show');
