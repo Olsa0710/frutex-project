@@ -72,8 +72,8 @@
     .htp-card p{font-size:.82rem;color:#888;line-height:1.5}
     @media(max-width:768px){.htp-grid{grid-template-columns:1fr}.mixer-frame{padding:28px 18px 20px;gap:16px}}
     .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 32px}
-    .game-fruits{display:flex;gap:14px;flex-wrap:nowrap;overflow-x:auto;justify-content:center}
-    .fruit-btn{display:flex;flex-direction:row;align-items:center;gap:8px;padding:10px 14px;background:rgba(46,111,64,.03);border:2px solid transparent;border-radius:16px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:inherit;min-width:70px;will-change:transform}
+    .game-fruits{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;justify-content:center}
+    .fruit-btn{display:flex;flex-direction:row;align-items:center;gap:4px;padding:6px 8px;background:rgba(46,111,64,.03);border:2px solid transparent;border-radius:12px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:inherit;min-width:0;will-change:transform;white-space:nowrap}
     .fruit-btn:hover{border-color:rgba(46,111,64,.28);background:rgba(46,111,64,.07);transform:translateY(-3px);box-shadow:0 6px 16px rgba(46,111,64,.08)}
     .fruit-btn:active{transform:scale(.94)}
     .fruit-btn{animation:fBtnIn .5s cubic-bezier(.22,1,.36,1) both}
@@ -120,9 +120,9 @@
     .fruit-btn:nth-child(4){animation-delay:.18s}
     .fruit-btn:nth-child(5){animation-delay:.24s}
     .fruit-btn:nth-child(6){animation-delay:.3s}
-    .fruit-emoji{font-size:2rem;line-height:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.06))}
-    img.fruit-emoji{width:32px;height:32px;object-fit:contain;font-size:0}
-    .fruit-name{font-size:.68rem;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+    .fruit-emoji{font-size:1.4rem;line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.06))}
+    img.fruit-emoji{width:22px;height:22px;object-fit:contain;font-size:0}
+    .fruit-name{font-size:.62rem;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
     /* ── Game state ── */
     .fruit-btn.selected{border-color:var(--green);background:rgba(46,111,64,.14);transform:scale(1.06);box-shadow:0 4px 12px rgba(46,111,64,.12)}
     .game-blend-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 44px;background:linear-gradient(135deg,#3d8a52 0%,#2E6F40 50%,#1f542e 100%);color:#fff;border:none;border-radius:50px;font-weight:700;font-size:1.15rem;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);font-family:inherit;box-shadow:0 6px 24px rgba(46,111,64,.35),0 2px 6px rgba(0,0,0,.1);letter-spacing:.02em;position:relative;overflow:hidden;will-change:transform}
@@ -351,15 +351,15 @@
       <button class="game-blend-btn" id="gBlendBtn"><span class="blend-icon">⚡</span> Blend</button>
       <div class="game-fruits" id="gFruits">
         <button class="fruit-btn" draggable="true" data-fruit="strawberry">
-          <img src="images/strawnerry.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
+          <img src="images/strawnerry.png" class="fruit-emoji" style="width:22px;height:22px;object-fit:contain">
           <span class="fruit-name">Strawberry</span>
         </button>
         <button class="fruit-btn" draggable="true" data-fruit="apple">
-          <img src="images/apple.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
+          <img src="images/apple.png" class="fruit-emoji" style="width:22px;height:22px;object-fit:contain">
           <span class="fruit-name">Apple</span>
         </button>
         <button class="fruit-btn" draggable="true" data-fruit="orange">
-          <img src="images/orange.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
+          <img src="images/orange.png" class="fruit-emoji" style="width:22px;height:22px;object-fit:contain">
           <span class="fruit-name">Orange</span>
         </button>
         <button class="fruit-btn" draggable="true" data-fruit="peach">
@@ -375,15 +375,15 @@
           <span class="fruit-name">Cherry</span>
         </button>
         <button class="fruit-btn" draggable="true" data-fruit="pear">
-          <img src="images/pear.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
+          <img src="images/pear.png" class="fruit-emoji" style="width:22px;height:22px;object-fit:contain">
           <span class="fruit-name">Pear</span>
         </button>
         <button class="fruit-btn" draggable="true" data-fruit="carrot">
-          <img src="images/carrot.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
+          <img src="images/carrot.png" class="fruit-emoji" style="width:22px;height:22px;object-fit:contain">
           <span class="fruit-name">Carrot</span>
         </button>
         <button class="fruit-btn" draggable="true" data-fruit="blueberry">
-          <img src="images/blueberry.png" class="fruit-emoji" style="width:32px;height:32px;object-fit:contain">
+          <img src="images/blueberry.png" class="fruit-emoji" style="width:22px;height:22px;object-fit:contain">
           <span class="fruit-name">Blueberry</span>
         </button>
       </div>
