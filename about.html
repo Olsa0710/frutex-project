@@ -33,8 +33,6 @@
     @keyframes dPop{0%{transform:translateX(-50%) translateY(8px) scale(.92);opacity:0}60%{transform:translateX(-50%) translateY(-2px) scale(1.02);opacity:1}100%{transform:translateX(-50%) translateY(0) scale(1);opacity:1}}
 
     .page{padding-top:0}
-
-    /* Hero */
     .about-hero{position:relative;height:60vh;min-height:420px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a3a28 0%,#2E6F40 40%,#1e4d2c 70%,#0f2418 100%)}
     .about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
     .about-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,5,.15) 0%,rgba(0,25,10,.3) 60%,rgba(0,0,0,.4) 100%)}
@@ -46,7 +44,6 @@
     .about-hero-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,0,0,.3)}
     @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-    /* Story */
     .story{max-width:1000px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
     .story-img{border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.12)}.story-img img{width:100%;display:block}
     .story-badge{display:inline-block;padding:6px 16px;background:rgba(46,111,64,.1);color:var(--green);border-radius:20px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
@@ -55,44 +52,57 @@
     .story-milestones{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
     .story-milestone{background:#fff;border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 12px rgba(0,0,0,.04);border-left:3px solid var(--green)}
     .story-milestone-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-    .story-milestone h4{font-size:.85rem;color:#111;font-weight:700;margin-bottom:2px}
-    .story-milestone span{font-size:.7rem;color:#888}
+    .story-milestone h4{font-size:.85rem;color:#111;font-weight:700;margin-bottom:2px}.story-milestone span{font-size:.7rem;color:#888}
 
-    /* Export Map */
-    .export-section{max-width:1000px;margin:0 auto;padding:60px 32px;text-align:center}
-    .export-section h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:8px}
-    .export-section h2 span{color:var(--green)}
-    .export-sub{color:#888;font-size:.95rem;margin-bottom:40px}
-    .export-map-wrap{position:relative;max-width:800px;margin:0 auto;background:linear-gradient(180deg,#f8faf8,#f0f5f0);border-radius:24px;padding:20px;box-shadow:0 2px 16px rgba(0,0,0,.04);overflow:hidden}
-    .export-map-wrap svg{width:100%;height:auto;display:block}
-    .export-target{cursor:pointer;transition:fill .3s}
-    .export-target:hover{fill:rgba(46,111,64,.2)!important}
-    .export-route{fill:none;stroke:var(--green);stroke-width:1.2;stroke-dasharray:6 4;opacity:.3}
-    .kosovo-marker{fill:#2E6F40;filter:drop-shadow(0 0 8px rgba(46,111,64,.5))}
-    .export-tooltip{position:absolute;background:#fff;border-radius:12px;padding:14px 18px;box-shadow:0 8px 30px rgba(0,0,0,.12);pointer-events:none;opacity:0;transform:translate(-50%,-120%);transition:opacity .2s;font-size:.82rem;text-align:left;z-index:10;white-space:nowrap;border:1px solid rgba(46,111,64,.1)}
-    .export-tooltip.show{opacity:1}
-    .export-tooltip strong{color:var(--green);display:block;margin-bottom:4px;font-size:.9rem}
-    .export-tooltip span{color:#777;display:block;font-size:.75rem;margin-top:2px}
-    .export-legend{display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap}
-    .export-legend-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:#666}
-    .export-legend-dot{width:10px;height:10px;border-radius:50%;background:var(--green)}
+    /* ── EXPORT MAP ── */
+    .export-section{max-width:1100px;margin:0 auto;padding:80px 32px;text-align:center}
+    .export-section h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:8px}.export-section h2 span{color:var(--green)}
+    .export-sub{color:#888;font-size:.95rem;margin-bottom:50px}
+    .map-container{position:relative;max-width:900px;margin:0 auto;perspective:1200px}
+    .map-stage{position:relative;background:linear-gradient(145deg,#eaf0e8,#dce5d8,#e8efe5);border-radius:28px;padding:30px;box-shadow:0 4px 8px rgba(0,0,0,.03),0 20px 60px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.6);transform:rotateX(2deg);transition:transform .5s ease}
+    .map-stage:hover{transform:rotateX(0deg) scale(1.01)}
+    .map-stage svg{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 16px rgba(0,0,0,.06))}
+    .country-shape{fill:#d5ddd3;stroke:rgba(0,0,0,.06);stroke-width:1.5;transition:all .4s cubic-bezier(.34,1.56,.64,1);cursor:pointer;transform-origin:center}
+    .country-shape:hover{fill:rgba(46,111,64,.18);stroke:var(--green);stroke-width:2;filter:drop-shadow(0 8px 16px rgba(46,111,64,.2));transform:translateY(-2px)}
+    .country-shape.highlight{fill:rgba(46,111,64,.22);stroke:var(--green);stroke-width:2.5;filter:drop-shadow(0 8px 20px rgba(46,111,64,.25))}
+    .export-route{fill:none;stroke:var(--green);stroke-width:1.4;stroke-dasharray:8 5;opacity:.28;stroke-linecap:round}
+    .export-route.active{opacity:.5;stroke-width:2;stroke-dasharray:4 3;animation:routeFlow .8s linear infinite}
+    @keyframes routeFlow{to{stroke-dashoffset:-14}}
+    .route-particle{fill:var(--green);opacity:0}
+    .route-particle.moving{opacity:.8;animation:particleMove 3s ease-in-out infinite}
+    @keyframes particleMove{0%{opacity:0;r:1.5}20%{opacity:.7;r:3}60%{opacity:.9;r:3.5}80%{opacity:.5;r:2.5}100%{opacity:0;r:1.5}}
+    .kosovo-dot{fill:#2E6F40;filter:drop-shadow(0 0 12px rgba(46,111,64,.6))}
+    .kosovo-ring{fill:none;stroke:#2E6F40;stroke-width:2;opacity:.5}
+    .kosovo-ring:nth-child(1){animation:kRing 2s ease-out infinite}
+    .kosovo-ring:nth-child(2){animation:kRing 2s ease-out .7s infinite}
+    .kosovo-ring:nth-child(3){animation:kRing 2s ease-out 1.4s infinite}
+    @keyframes kRing{0%{r:6;opacity:.7}100%{r:28;opacity:0}}
 
-    /* Mission */
+    .map-tooltip{position:absolute;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(46,111,64,.15);border-radius:16px;padding:16px 20px;box-shadow:0 12px 40px rgba(0,0,0,.1);pointer-events:none;opacity:0;transform:translate(-50%,-110%) scale(.9);transition:all .25s cubic-bezier(.34,1.56,.64,1);font-size:.82rem;text-align:left;z-index:10;white-space:nowrap;min-width:160px}
+    .map-tooltip.show{opacity:1;transform:translate(-50%,-110%) scale(1)}
+    .map-tooltip .tt-name{color:var(--green);font-weight:700;font-size:.95rem;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+    .map-tooltip .tt-name span{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(46,111,64,.4)}
+    .map-tooltip .tt-year{color:#888;font-size:.72rem;margin-bottom:6px}
+    .map-tooltip .tt-products{color:#555;font-size:.78rem;line-height:1.5}
+    .map-tooltip .tt-products strong{color:var(--green)}
+
+    .export-stats{display:flex;justify-content:center;gap:40px;margin-top:40px;flex-wrap:wrap}
+    .export-stat{text-align:center}
+    .export-stat-n{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:var(--green)}
+    .export-stat-l{font-size:.78rem;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+
     .mission{max-width:900px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
     .mission-text h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:16px}.mission-text h2 span{color:var(--green)}
     .mission-text p{font-size:1.05rem;color:#555;line-height:1.75;margin-bottom:16px}
     .mission-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.04);border-left:4px solid var(--green)}
 
-    /* Values */
     .values{max-width:1000px;margin:0 auto;padding:60px 32px}
     .values h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;text-align:center;margin-bottom:40px}.values h2 span{color:var(--green)}
     .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    .value-card{background:#fff;border-radius:14px;padding:32px 20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .3s}
-    .value-card:hover{transform:translateY(-4px)}
+    .value-card{background:#fff;border-radius:14px;padding:32px 20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .3s}.value-card:hover{transform:translateY(-4px)}
     .value-icon{width:56px;height:56px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
     .value-card h3{font-size:1.05rem;color:#111;margin-bottom:8px}.value-card p{font-size:.88rem;color:#777;line-height:1.5}
 
-    /* Team */
     .team{max-width:900px;margin:0 auto;padding:60px 32px}
     .team h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;text-align:center;margin-bottom:12px}.team h2 span{color:var(--green)}
     .team-sub{text-align:center;color:#888;font-size:.95rem;margin-bottom:40px}
@@ -141,7 +151,7 @@
     <div class="story-text">
       <div class="story-badge">Our Journey</div>
       <h2>From a <span>family workshop</span><br>to a global brand.</h2>
-      <p>Founded in <strong style="color:var(--green)">1994</strong> in Suhareka, Kosovo — Frutex began as a modest family workshop producing natural juices from locally grown fruit. What started small has grown into something extraordinary.</p>
+      <p>Founded in <strong style="color:var(--green)">1994</strong> in Suhareka, Kosovo — Frutex began as a modest family workshop producing natural juices from locally grown fruit.</p>
       <p>Today we operate from a <strong style="color:var(--green)">state-of-the-art facility</strong> with <strong style="color:var(--green)">500+ employees</strong>, exporting to <strong style="color:var(--green)">35+ markets</strong> worldwide.</p>
       <div class="story-milestones">
         <div class="story-milestone"><div class="story-milestone-icon" style="background:rgba(46,111,64,.1)">🏭</div><div><h4>1994 Founded</h4><span>Family workshop in Suhareka</span></div></div>
@@ -157,41 +167,73 @@
 
   <section class="export-section" id="exports">
     <h2>Where We <span>Export</span></h2>
-    <p class="export-sub">Bringing Kosovan quality to over 35 markets worldwide.</p>
-    <div class="export-map-wrap" id="exportMap">
-      <div class="export-tooltip" id="exportTip"></div>
-      <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
-        <rect width="800" height="500" fill="#eef3ee" rx="12"/>
-        <path d="M120,80 L180,70 L200,90 L190,130 L160,150 L130,140 L100,120Z" class="export-target" data-name="Germany" data-year="2010" data-products="Golden Eagle, Natural 100" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M80,120 L120,80 L100,120 L80,140 L50,130Z" class="export-target" data-name="Netherlands" data-year="2014" data-products="Relax, ZEROS" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M190,80 L260,70 L280,90 L270,130 L240,140 L210,120Z" class="export-target" data-name="Poland" data-year="2015" data-products="Golden Eagle, Freesia" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M50,170 L100,160 L130,150 L150,170 L140,200 L100,210 L60,200Z" class="export-target" data-name="France" data-year="2012" data-products="Natural 100, Relax" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M280,80 L340,70 L360,90 L350,130 L320,150 L290,130Z" class="export-target" data-name="Ukraine" data-year="2016" data-products="Golden Eagle, ZEROS" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M60,200 L100,210 L130,230 L110,270 L80,280 L50,250Z" class="export-target" data-name="Spain" data-year="2013" data-products="Natural 100, Freesia" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M130,230 L170,220 L190,240 L180,280 L150,290 L120,270Z" class="export-target" data-name="Italy" data-year="2011" data-products="Natural 100, Relax, Golden Eagle" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M350,65 L430,60 L440,80 L430,110 L400,120 L370,100Z" class="export-target" data-name="Turkey" data-year="2015" data-products="Golden Eagle, ZEROS" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M500,60 L570,50 L590,70 L580,100 L550,110 L510,90Z" class="export-target" data-name="UAE" data-year="2018" data-products="Golden Eagle, Natural 100" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M600,120 L670,110 L690,130 L680,160 L650,170 L610,150Z" class="export-target" data-name="Saudi Arabia" data-year="2019" data-products="Golden Eagle, ZEROS" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M20,100 L80,50 L100,70 L90,110 L60,120Z" class="export-target" data-name="UK" data-year="2010" data-products="Natural 100, Relax" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M650,200 L710,190 L730,210 L720,250 L690,260 L660,240Z" class="export-target" data-name="Australia" data-year="2024" data-products="Golden Eagle, Natural 100, Freesia" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <path d="M700,80 L760,70 L780,90 L770,120 L740,130 L710,110Z" class="export-target" data-name="USA" data-year="2020" data-products="Golden Eagle, ZEROS" fill="#dce6dc" stroke="#c5d2c5" stroke-width="1"/>
-        <!-- Kosovo -->
-        <circle cx="355" cy="275" r="7" class="kosovo-marker"/>
-        <circle cx="355" cy="275" r="5" fill="none" stroke="#2E6F40" stroke-width="2" opacity=".5"><animate attributeName="r" values="5;16" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="2s" repeatCount="indefinite"/></circle>
-        <text x="355" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#2E6F40">KOSOVO</text>
-        <!-- Routes -->
-        <line x1="362" y1="270" x2="180" y2="90" class="export-route"/><line x1="362" y1="270" x2="90" y2="150" class="export-route"/>
-        <line x1="362" y1="270" x2="260" y2="110" class="export-route"/><line x1="362" y1="270" x2="120" y2="200" class="export-route"/>
-        <line x1="362" y1="270" x2="160" y2="260" class="export-route"/><line x1="362" y1="270" x2="80" y2="250" class="export-route"/>
-        <line x1="362" y1="270" x2="420" y2="100" class="export-route"/><line x1="362" y1="270" x2="560" y2="85" class="export-route"/>
-        <line x1="362" y1="270" x2="660" y2="150" class="export-route"/><line x1="362" y1="270" x2="60" y2="80" class="export-route"/>
-        <line x1="362" y1="270" x2="700" y2="230" class="export-route"/><line x1="362" y1="270" x2="750" y2="100" class="export-route"/>
-      </svg>
+    <p class="export-sub">Premium Kosovan beverages delivered to over 35 markets worldwide.</p>
+
+    <div class="map-container">
+      <div class="map-stage" id="mapStage">
+        <div class="map-tooltip" id="mapTip"></div>
+        <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="mapShadow"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity=".08"/></filter>
+            <filter id="countryGlow"><feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#2E6F40" flood-opacity=".3"/></filter>
+          </defs>
+          <!-- Background water -->
+          <rect width="900" height="540" fill="none"/>
+          <!-- Country shapes -->
+          <g filter="url(#mapShadow)">
+            <path d="M130,90 L195,80 L215,100 L205,140 L170,160 L140,150 L110,130Z" class="country-shape" data-name="Germany" data-year="2010" data-products="Golden Eagle Energy, Natural 100 Juices" data-cx="170" data-cy="120"/>
+            <path d="M85,135 L130,90 L110,130 L85,150 L55,140Z" class="country-shape" data-name="Netherlands" data-year="2014" data-products="Relax Ice Tea, ZEROS" data-cx="95" data-cy="125"/>
+            <path d="M205,90 L280,80 L300,100 L290,140 L255,155 L225,135Z" class="country-shape" data-name="Poland" data-year="2015" data-products="Golden Eagle, Freesia" data-cx="255" data-cy="115"/>
+            <path d="M55,185 L110,175 L140,165 L160,185 L150,215 L110,225 L65,215Z" class="country-shape" data-name="France" data-year="2012" data-products="Natural 100, Relax Ice Tea" data-cx="110" data-cy="195"/>
+            <path d="M295,90 L355,80 L375,100 L365,140 L335,160 L300,140Z" class="country-shape" data-name="Ukraine" data-year="2016" data-products="Golden Eagle, ZEROS" data-cx="335" data-cy="120"/>
+            <path d="M65,215 L110,225 L140,245 L120,285 L85,295 L55,265Z" class="country-shape" data-name="Spain" data-year="2013" data-products="Natural 100, Freesia" data-cx="100" data-cy="255"/>
+            <path d="M140,245 L180,235 L200,255 L190,295 L160,305 L130,285Z" class="country-shape" data-name="Italy" data-year="2011" data-products="Natural 100, Relax, Golden Eagle" data-cx="165" data-cy="270"/>
+            <path d="M370,75 L450,70 L460,90 L450,120 L420,130 L380,110Z" class="country-shape" data-name="Turkey" data-year="2015" data-products="Golden Eagle, ZEROS" data-cx="415" data-cy="100"/>
+            <path d="M530,70 L600,60 L620,80 L610,110 L580,120 L540,100Z" class="country-shape" data-name="UAE" data-year="2018" data-products="Golden Eagle, Natural 100" data-cx="575" data-cy="90"/>
+            <path d="M640,130 L710,120 L730,140 L720,170 L690,180 L650,160Z" class="country-shape" data-name="Saudi Arabia" data-year="2019" data-products="Golden Eagle, ZEROS" data-cx="690" data-cy="150"/>
+            <path d="M25,110 L85,60 L105,80 L95,120 L60,130Z" class="country-shape" data-name="United Kingdom" data-year="2010" data-products="Natural 100, Relax Ice Tea" data-cx="65" data-cy="95"/>
+            <path d="M690,210 L750,200 L770,220 L760,260 L730,270 L700,250Z" class="country-shape" data-name="Australia" data-year="2024" data-products="Golden Eagle, Natural 100, Freesia" data-cx="735" data-cy="235"/>
+            <path d="M740,90 L800,80 L820,100 L810,130 L780,140 L750,120Z" class="country-shape" data-name="United States" data-year="2020" data-products="Golden Eagle, ZEROS" data-cx="785" data-cy="110"/>
+          </g>
+          <!-- Export routes -->
+          <g opacity=".5">
+            <line x1="445" y1="255" x2="170" y2="120" class="export-route" data-to="Germany"/>
+            <line x1="445" y1="255" x2="95" y2="125" class="export-route" data-to="Netherlands"/>
+            <line x1="445" y1="255" x2="255" y2="115" class="export-route" data-to="Poland"/>
+            <line x1="445" y1="255" x2="110" y2="195" class="export-route" data-to="France"/>
+            <line x1="445" y1="255" x2="165" y2="270" class="export-route" data-to="Italy"/>
+            <line x1="445" y1="255" x2="100" y2="255" class="export-route" data-to="Spain"/>
+            <line x1="445" y1="255" x2="335" y2="120" class="export-route" data-to="Ukraine"/>
+            <line x1="445" y1="255" x2="415" y2="100" class="export-route" data-to="Turkey"/>
+            <line x1="445" y1="255" x2="575" y2="90" class="export-route" data-to="UAE"/>
+            <line x1="445" y1="255" x2="690" y2="150" class="export-route" data-to="Saudi Arabia"/>
+            <line x1="445" y1="255" x2="65" y2="95" class="export-route" data-to="United Kingdom"/>
+            <line x1="445" y1="255" x2="735" y2="235" class="export-route" data-to="Australia"/>
+            <line x1="445" y1="255" x2="785" y2="110" class="export-route" data-to="United States"/>
+          </g>
+          <!-- Route particles -->
+          <g id="particlesGroup">
+            <circle cx="390" cy="235" r="2.5" class="route-particle" data-route="Germany"/>
+            <circle cx="380" cy="230" r="2.5" class="route-particle" data-route="Netherlands"/>
+            <circle cx="400" cy="225" r="2.5" class="route-particle" data-route="Poland"/>
+            <circle cx="360" cy="240" r="2.5" class="route-particle" data-route="France"/>
+            <circle cx="420" cy="260" r="2.5" class="route-particle" data-route="Italy"/>
+            <circle cx="350" cy="252" r="2.5" class="route-particle" data-route="Spain"/>
+          </g>
+          <!-- Kosovo marker -->
+          <circle cx="445" cy="255" r="7" class="kosovo-dot"/>
+          <circle cx="445" cy="255" r="6" class="kosovo-ring"/>
+          <circle cx="445" cy="255" r="6" class="kosovo-ring"/>
+          <circle cx="445" cy="255" r="6" class="kosovo-ring"/>
+          <text x="445" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="#2E6F40" letter-spacing=".05em">KOSOVO</text>
+        </svg>
+      </div>
     </div>
-    <div class="export-legend">
-      <div class="export-legend-item"><div class="export-legend-dot"></div> Active Export Route</div>
-      <div class="export-legend-item"><div style="width:10px;height:10px;border-radius:50%;background:#2E6F40;box-shadow:0 0 8px rgba(46,111,64,.5)"></div> Kosovo — Our Home</div>
-      <div class="export-legend-item"><div style="width:10px;height:10px;border-radius:50%;background:#dce6dc;border:1px solid #c5d2c5"></div> Export Market</div>
+
+    <div class="export-stats">
+      <div class="export-stat"><div class="export-stat-n">35+</div><div class="export-stat-l">Export Markets</div></div>
+      <div class="export-stat"><div class="export-stat-n">2010</div><div class="export-stat-l">First Export</div></div>
+      <div class="export-stat"><div class="export-stat-n">6</div><div class="export-stat-l">Continents</div></div>
     </div>
   </section>
 
@@ -249,29 +291,45 @@
   hb.addEventListener('click',function(){if(nm.classList.contains('open'))cm();else{nm.classList.add('open');hb.classList.add('open');hb.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}});
   nm.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){if(nm.classList.contains('open'))cm()})});
 
-  // Export map tooltips
-  var mapWrap=document.getElementById('exportMap');
-  if(mapWrap){
-    var tip=document.getElementById('exportTip');
-    mapWrap.addEventListener('mouseover',function(e){
-      var t=e.target.closest('.export-target');
+  // Interactive export map
+  var stage=document.getElementById('mapStage'),tip=document.getElementById('mapTip');
+  if(stage){
+    stage.addEventListener('mouseover',function(e){
+      var t=e.target.closest('.country-shape');
       if(!t)return;
-      t.setAttribute('fill','rgba(46,111,64,.2)');
-      tip.innerHTML='<strong>'+t.dataset.name+'</strong>Since: '+t.dataset.year+'<span>'+t.dataset.products+'</span>';
+      t.classList.add('highlight');
+      var route=stage.querySelector('.export-route[data-to="'+t.dataset.name+'"]');
+      if(route)route.classList.add('active');
+      tip.innerHTML='<div class="tt-name"><span></span>'+t.dataset.name+'</div><div class="tt-year">Since '+t.dataset.year+'</div><div class="tt-products"><strong>Products:</strong><br>'+t.dataset.products+'</div>';
       tip.classList.add('show');
     });
-    mapWrap.addEventListener('mousemove',function(e){
+    stage.addEventListener('mousemove',function(e){
       if(!tip.classList.contains('show'))return;
-      var rect=mapWrap.getBoundingClientRect();
-      tip.style.left=(e.clientX-rect.left)+'px';
-      tip.style.top=(e.clientY-rect.top-20)+'px';
+      var r=stage.getBoundingClientRect();
+      tip.style.left=(e.clientX-r.left)+'px';
+      tip.style.top=(e.clientY-r.top-20)+'px';
     });
-    mapWrap.addEventListener('mouseout',function(e){
-      var t=e.target.closest('.export-target');
+    stage.addEventListener('mouseout',function(e){
+      var t=e.target.closest('.country-shape');
       if(!t)return;
-      t.setAttribute('fill','#dce6dc');
+      t.classList.remove('highlight');
+      var route=stage.querySelector('.export-route.active');
+      if(route)route.classList.remove('active');
       tip.classList.remove('show');
     });
+
+    // Animate route particles
+    var particles=stage.querySelectorAll('.route-particle');
+    function animateParticles(){
+      particles.forEach(function(p,i){
+        setTimeout(function(){
+          p.classList.add('moving');
+          setTimeout(function(){p.classList.remove('moving')},3000);
+        },i*400);
+      });
+      setTimeout(animateParticles,5000);
+    }
+    animateParticles();
   }
 })();
 </script>
