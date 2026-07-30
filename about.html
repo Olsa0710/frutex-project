@@ -53,19 +53,20 @@
     .about-hero-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:#f5ead6;color:#2E6F40;border-radius:50px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .3s,box-shadow .3s;box-shadow:0 6px 28px rgba(0,0,0,.2),0 0 40px rgba(46,111,64,.15)}
     .about-hero-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,0,0,.3)}
     /* Company Story */
-    .story{max-width:1000px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .story-img{position:relative;aspect-ratio:1/1;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.1)}
-    .story-gallery-img{position:absolute;inset:0;width:100%;height:100%;border-radius:20px;opacity:0;transition:opacity .8s ease;object-fit:contain;background:#fff}
-    .story-gallery-img.active{opacity:1;position:absolute}
-    .story-img::after{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,rgba(46,111,64,.15),transparent 60%);pointer-events:none}
+    .story{max-width:1000px;margin:0 auto;padding:100px 32px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+    .story-img{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.12);transform:translateY(0)}
+    .story-img img{width:100%;height:100%;object-fit:cover;display:block;border-radius:24px}
+    .story-img::after{content:'';position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(46,111,64,.2),transparent 50%);pointer-events:none}
     .story-text .story-badge{display:inline-block;padding:6px 16px;background:rgba(46,111,64,.1);color:var(--green);border-radius:20px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
-    .story-text h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3.5vw,2.4rem);color:#1a1a1a;line-height:1.15;margin-bottom:16px}
+    .story-text h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3.5vw,2.4rem);color:#1a1a1a;line-height:1.15;margin-bottom:20px}
     .story-text h2 span{color:var(--green)}
-    .story-text p{font-size:1.05rem;color:#555;line-height:1.8;margin-bottom:16px}
-    .story-highlights{display:flex;gap:20px;margin-top:24px;flex-wrap:wrap}
-    .story-hl{display:flex;align-items:center;gap:10px}
-    .story-hl-n{font-family:Georgia,serif;font-size:1.8rem;font-weight:700;color:var(--green)}
-    .story-hl-l{font-size:.82rem;color:#888;text-transform:uppercase;letter-spacing:.04em}
+    .story-text p{font-size:1.05rem;color:#555;line-height:1.8;margin-bottom:20px}
+    .story-milestones{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+    .story-milestone{background:#fff;border-radius:14px;padding:18px 16px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px rgba(0,0,0,.04);border-left:3px solid var(--green);transition:transform .3s,box-shadow .3s}
+    .story-milestone:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .story-milestone-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .story-milestone h4{font-size:.85rem;color:#111;font-weight:700;margin-bottom:2px}
+    .story-milestone span{font-size:.72rem;color:#888;font-weight:500}
     .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
     @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
@@ -153,18 +154,15 @@
       <h2>From a <span>family workshop</span><br>to a global brand.</h2>
       <p>Founded in <strong style="color:var(--green)">1994</strong> by the Frutex family in the small town of Suhareka, Kosovo — the company began as a modest workshop producing natural juices from locally grown fruit. What started with a handful of employees and a single production line has grown into something extraordinary.</p>
       <p>Today, Frutex operates from a <strong style="color:var(--green)">state-of-the-art facility</strong>, employs over <strong style="color:var(--green)">500 people</strong>, and exports premium beverages to <strong style="color:var(--green)">35+ markets</strong> across six continents — all while staying true to the values that built it: quality, integrity, and a deep connection to the community.</p>
-      <div class="story-highlights">
-        <div class="story-hl"><div class="story-hl-n">1994</div><div class="story-hl-l">Founded</div></div>
-        <div class="story-hl"><div class="story-hl-n">35+</div><div class="story-hl-l">Markets</div></div>
-        <div class="story-hl"><div class="story-hl-n">500+</div><div class="story-hl-l">Employees</div></div>
+      <div class="story-milestones">
+        <div class="story-milestone reveal"><div class="story-milestone-icon" style="background:rgba(46,111,64,.1)">🏭</div><div><h4>1994 Founded</h4><span>Family workshop in Suhareka</span></div></div>
+        <div class="story-milestone reveal"><div class="story-milestone-icon" style="background:rgba(46,111,64,.1)">📈</div><div><h4>Growth</h4><span>State-of-the-art facility</span></div></div>
+        <div class="story-milestone reveal"><div class="story-milestone-icon" style="background:rgba(46,111,64,.1)">🌍</div><div><h4>International</h4><span>35+ markets worldwide</span></div></div>
+        <div class="story-milestone reveal"><div class="story-milestone-icon" style="background:rgba(46,111,64,.1)">💡</div><div><h4>Innovation</h4><span>New flavors & formats</span></div></div>
       </div>
     </div>
-    <div class="story-img reveal" style="transition-delay:.2s" id="storyGallery">
-      <img src="images/ketchap.png" alt="Art Food Ketchup" class="story-gallery-img active">
-      <img src="images/zero.png" alt="ZEROS Ice Tea" class="story-gallery-img">
-      <img src="images/relax.png" alt="Relax Ice Tea" class="story-gallery-img">
-      <img src="images/natyral.png" alt="Natural 100 Juice" class="story-gallery-img">
-      <img src="https://frutex-ks.com/wp-content/uploads/2026/01/GoldenEagle-716x716-1.png" alt="Golden Eagle" class="story-gallery-img">
+    <div class="story-img reveal" style="transition-delay:.2s">
+      <img src="https://goldeneagle-ks.com/wp-content/uploads/2024/03/Prodhim-4.png" alt="Frutex production facility">
     </div>
   </section>
 
@@ -227,10 +225,6 @@
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // Product gallery rotation
-  const gImgs=document.querySelectorAll('.story-gallery-img');
-  let gIdx=0;
-  if(gImgs.length>1)setInterval(()=>{gImgs[gIdx].classList.remove('active');gIdx=(gIdx+1)%gImgs.length;gImgs[gIdx].classList.add('active');},3500);
 })();
 </body>
 </html>
