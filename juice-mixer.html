@@ -7,7 +7,37 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--white-10:rgba(255,255,255,.1);--transition:.25s ease}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;animation:fPage .5s ease both}
+        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both;position:relative}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:
+      radial-gradient(ellipse 80% 50% at 20% 10%,rgba(46,111,64,.03) 0%,transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 30%,rgba(46,111,64,.025) 0%,transparent 55%),
+      radial-gradient(ellipse 70% 50% at 50% 70%,rgba(46,100,50,.02) 0%,transparent 60%),
+      radial-gradient(ellipse 40% 30% at 30% 85%,rgba(46,111,64,.015) 0%,transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.02'/%3E%3C/svg%3E"),
+      linear-gradient(180deg,#FAFBFA 0%,#f5f8f3 30%,#FAFBFA 50%,#f3f7f0 70%,#FAFBFA 100%)}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;background:
+      radial-gradient(circle 400px at 15% 20%,rgba(46,120,60,.04) 0%,transparent 70%),
+      radial-gradient(circle 350px at 85% 45%,rgba(46,100,50,.03) 0%,transparent 65%),
+      radial-gradient(circle 300px at 50% 80%,rgba(46,111,64,.025) 0%,transparent 60%)}
+
+    .bg-blob{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(120px);opacity:.04}
+    .bg-blob-1{width:600px;height:600px;background:#2E6F40;top:-200px;left:-150px;animation:blobFloat 20s ease-in-out infinite}
+    .bg-blob-2{width:500px;height:500px;background:#3d8a52;bottom:-150px;right:-100px;animation:blobFloat 25s ease-in-out infinite reverse}
+    .bg-blob-3{width:400px;height:400px;background:#5a9a3a;top:50%;left:50%;transform:translate(-50%,-50%);animation:blobFloat 22s ease-in-out infinite;animation-delay:-8s}
+    @keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,15px) scale(.95)}}
+
+    .bg-leaves{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.015}
+    .bg-leaf{position:absolute;fill:#2E6F40}
+    .bg-leaf-1{top:5%;left:2%;width:120px;animation:leafDrift 18s ease-in-out infinite}
+    .bg-leaf-2{top:15%;right:3%;width:100px;animation:leafDrift 22s ease-in-out infinite reverse}
+    .bg-leaf-3{bottom:10%;left:5%;width:90px;animation:leafDrift 20s ease-in-out infinite;animation-delay:-5s}
+    .bg-leaf-4{bottom:20%;right:8%;width:110px;animation:leafDrift 24s ease-in-out infinite reverse;animation-delay:-10s}
+    @keyframes leafDrift{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(15px,-10px) rotate(3deg)}50%{transform:translate(-10px,-5px) rotate(-2deg)}75%{transform:translate(5px,8px) rotate(1deg)}}
+
+    .section-wave{position:relative}
+    .section-wave::before{content:'';position:absolute;top:-1px;left:0;right:0;height:40px;background:linear-gradient(180deg,transparent,rgba(46,111,64,.025));pointer-events:none;z-index:1}
+
     @keyframes fPage{from{opacity:0}to{opacity:1}}
 
     /* ── Navbar ── */
@@ -182,6 +212,16 @@
   </style>
 </head>
 <body>
+<div class="bg-blob bg-blob-1"></div>
+<div class="bg-blob bg-blob-2"></div>
+<div class="bg-blob bg-blob-3"></div>
+<svg class="bg-leaves" xmlns="http://www.w3.org/2000/svg">
+  <path class="bg-leaf bg-leaf-1" d="M0,20 Q15,0 30,20 Q15,40 0,20Z M15,12 L15,4" stroke="#2E6F40" stroke-width=".5" fill="none" opacity=".3"/>
+  <path class="bg-leaf bg-leaf-2" d="M0,18 Q12,0 25,18 Q12,35 0,18Z M12,10 L12,3" stroke="#2E6F40" stroke-width=".5" fill="none" opacity=".3"/>
+  <path class="bg-leaf bg-leaf-3" d="M0,16 Q10,0 20,16 Q10,32 0,16Z M10,9 L10,3" stroke="#2E6F40" stroke-width=".5" fill="none" opacity=".3"/>
+  <path class="bg-leaf bg-leaf-4" d="M0,22 Q16,0 32,22 Q16,44 0,22Z M16,12 L16,5" stroke="#2E6F40" stroke-width=".5" fill="none" opacity=".3"/>
+</svg>
+
 
 <header class="navbar" id="navbar">
   <div class="navbar__inner">
