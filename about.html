@@ -43,7 +43,7 @@
     .page{padding-top:0}
 
     /* Hero */
-    .about-hero{position:relative;height:85vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a3a28 0%,#2E6F40 40%,#1e4d2c 70%,#0f2418 100%)}
+    .about-hero{position:relative;height:60vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a3a28 0%,#2E6F40 40%,#1e4d2c 70%,#0f2418 100%)}
     .about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
     .about-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,5,.15) 0%,rgba(0,25,10,.3) 60%,rgba(0,0,0,.4) 100%)}
     .about-hero-content{position:relative;z-index:1;text-align:center;padding:0 32px;animation:fIn .8s ease both}
@@ -67,9 +67,9 @@
     .story-milestone-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
     .story-milestone h4{font-size:.85rem;color:#111;font-weight:700;margin-bottom:2px}
     .story-milestone span{font-size:.72rem;color:#888;font-weight:500}
-    .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{transform:translateY(0)}
+    @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{transform:translateY(0)}}
 
     /* Mission */
     .mission{max-width:900px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
