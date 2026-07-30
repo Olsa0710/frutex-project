@@ -469,6 +469,7 @@
   const feedbackEl=document.getElementById('gFeedback');
   const targetFruitsEl=document.getElementById('targetFruits');
   const blendBtn=document.getElementById('gBlendBtn'),frameEl=document.querySelector('.mixer-frame');
+  const blenderEl=document.getElementById("gBlender"),splashEl=document.getElementById("gSplash"),finishedEl=document.getElementById("gFinished"),pitcherLid=document.getElementById("pitcherLid");
   const liquidPath=blenderEl.querySelector('path[fill*="liquidGrad"]');
   let score=0,time=60,timerId=null,recipe=[],selected=[],roundNum=1;
   let totalAttempts=0,correctAttempts=0;
