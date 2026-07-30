@@ -36,29 +36,29 @@
     .page{padding-top:0}
 
     /* Hero */
-    .mixer-hero{position:relative;height:50vh;min-height:340px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a3a28 0%,#2E6F40 40%,#1a4526 80%,#0f2418 100%)}
+    .mixer-hero{position:relative;height:35vh;min-height:220px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a3a28 0%,#2E6F40 40%,#1a4526 80%,#0f2418 100%)}
     .mixer-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,200,100,.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(46,200,100,.06) 0%,transparent 50%)}
     .mixer-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,5,.15) 0%,rgba(0,0,0,.3) 100%)}
     .mixer-hero-content{position:relative;z-index:1;text-align:center;padding:0 32px;animation:fIn .8s ease both}
     .mixer-hero-badge{display:inline-block;padding:8px 20px;background:rgba(46,111,64,.3);border:1px solid rgba(255,255,255,.15);color:#d4e8d0;border-radius:30px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px}
-    .mixer-hero h1{font-family:Georgia,serif;font-size:clamp(2.4rem,6vw,4.2rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:16px}
-    .mixer-hero p{font-size:1.1rem;color:rgba(255,255,255,.7);max-width:480px;margin:0 auto 28px;line-height:1.6}
+    .mixer-hero h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.2rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:10px}
+    .mixer-hero p{font-size:0.95rem;color:rgba(255,255,255,.7);max-width:480px;margin:0 auto 16px;line-height:1.5}
     @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
     /* How to Play */
-    .how-to-play{max-width:900px;margin:0 auto;padding:60px 32px 30px}
-    .how-to-play h2{font-family:Georgia,serif;font-size:1.8rem;color:#1a1a1a;text-align:center;margin-bottom:40px}
+    .how-to-play{max-width:900px;margin:0 auto;padding:40px 32px 20px}
+    .how-to-play h2{font-family:Georgia,serif;font-size:1.5rem;color:#1a1a1a;text-align:center;margin-bottom:24px}
     .how-to-play h2 span{color:var(--green)}
     .htp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .htp-card{background:#fff;border-radius:16px;padding:24px 16px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.03);transition:transform .3s}
+    .htp-card{background:#fff;border-radius:14px;padding:16px 14px;text-align:center;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:transform .3s}
     .htp-card:hover{transform:translateY(-3px)}
     .htp-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 12px}
     .htp-card h3{font-size:.9rem;color:#111;margin-bottom:6px}
     .htp-card p{font-size:.8rem;color:#888;line-height:1.5}
 
     /* Game Area */
-    .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:80px 32px;background:linear-gradient(180deg,#f8faf7 0%,#f0f5ef 40%,#eaf0e8 100%)}
-    .mixer-frame{width:95%;max-width:800px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,111,64,.08);border-radius:32px;box-shadow:0 2px 4px rgba(0,0,0,.03),0 8px 32px rgba(46,111,64,.06),0 20px 60px rgba(0,0,0,.04);padding:32px 36px 28px;display:flex;flex-direction:column;align-items:center;gap:20px;position:relative}
+    .mixer-area{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;background:linear-gradient(180deg,#f8faf7 0%,#f0f5ef 40%,#eaf0e8 100%)}
+    .mixer-frame{width:95%;max-width:800px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(46,111,64,.08);border-radius:32px;box-shadow:0 2px 4px rgba(0,0,0,.03),0 8px 32px rgba(46,111,64,.06),0 20px 60px rgba(0,0,0,.04);padding:20px 28px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;position:relative}
     .game-scoreboard{display:flex;justify-content:space-evenly;width:100%;padding:8px 0;background:linear-gradient(135deg,rgba(46,111,64,.04),rgba(46,111,64,.02));border-radius:16px}
     .game-score,.game-timer{display:flex;flex-direction:column;align-items:center;gap:2px}
     .game-score-label{font-size:.7rem;color:#aaa;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
@@ -67,7 +67,8 @@
     .game-timer .game-score-val{color:var(--green)}
     @keyframes sPop{0%{transform:scale(1)}30%{transform:scale(1.35)}100%{transform:scale(1)}}
     
-    .game-target{display:flex;align-items:center;justify-content:center;padding:6px 0;min-height:100px}
+    .game-target{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0;min-height:110px}
+    .game-target-label{font-size:.75rem;color:#999;text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:8px}
     .game-target img{max-height:100px;object-fit:contain;border-radius:8px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.1))}
 
     .game-blender{position:relative;padding:8px 0;will-change:transform;transform:translateZ(0)}
@@ -77,18 +78,18 @@
     .fruit-in-blender.spinning{animation:fSpin 2s ease-in forwards}
     @keyframes fSpin{0%{transform:rotate(0deg) translate(0,0);opacity:1}20%{transform:rotate(90deg) translate(-3px,-8px);opacity:1}40%{transform:rotate(200deg) translate(-6px,-18px);opacity:.9}60%{transform:rotate(340deg) translate(-4px,-30px);opacity:.5}80%{transform:rotate(480deg) translate(-2px,-45px);opacity:.15}100%{transform:rotate(600deg) translate(0,-60px);opacity:0}}
 
-    .fruit-drop{position:absolute;font-size:1.6rem;pointer-events:none;animation:fdDrop .7s cubic-bezier(.25,.46,.45,.94) forwards;z-index:3;top:5px}
-    @keyframes fdDrop{0%{transform:translateY(-80px) scale(.4);opacity:0}20%{opacity:1}60%{transform:translateY(0) scale(1.08)}70%{transform:translateY(-6px) scale(.96)}85%{transform:translateY(0) scale(1.02)}100%{transform:translateY(0) scale(1);opacity:1}}
+    .fruit-drop{position:absolute;font-size:1.6rem;pointer-events:none;animation:fdDrop .8s cubic-bezier(.5,.05,.6,.75) forwards;z-index:3;top:5px}
+    @keyframes fdDrop{0%{transform:translateY(-100px) scale(.3);opacity:0}15%{opacity:1}50%{transform:translateY(0) scale(1.1)}65%{transform:translateY(-8px) scale(.95)}80%{transform:translateY(0) scale(1.03)}100%{transform:translateY(0) scale(1);opacity:1}}
 
     .liquid-swirl{position:absolute;top:50%;left:50%;width:90px;height:70px;margin-left:-45px;margin-top:-25px;border-radius:50%;pointer-events:none;opacity:0;z-index:2}
     .liquid-swirl.active{animation:swirlAnim 2.5s ease-out forwards;background:radial-gradient(ellipse at 40% 50%,rgba(46,200,100,.6) 0%,rgba(46,200,100,.2) 40%,transparent 70%)}
     @keyframes swirlAnim{0%{opacity:0;transform:scale(.2) rotate(0deg)}20%{opacity:.7;transform:scale(.8) rotate(90deg)}50%{opacity:.9;transform:scale(1.1) rotate(270deg)}80%{opacity:.5;transform:scale(1.05) rotate(450deg)}100%{opacity:.1;transform:scale(.95) rotate(540deg)}}
 
-    .blender-finished{position:absolute;top:215px;left:50%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;transition:opacity .4s;z-index:5}
+    .blender-finished{position:absolute;top:200px;left:50%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;transition:opacity .4s;z-index:7}
     .blender-finished.show{opacity:1;animation:juicePop .6s ease}
     @keyframes juicePop{0%{transform:translate(-50%,-50%) scale(0);opacity:0}60%{transform:translate(-50%,-50%) scale(1.2);opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
 
-    .finished-juice{position:relative;width:73px;height:80px;border-radius:0 0 20px 20px;box-shadow:inset 0 4px 12px rgba(255,255,255,.3),0 4px 20px rgba(0,0,0,.15)}
+    .finished-juice{position:relative;width:65px;height:68px;border-radius:0 0 18px 18px;box-shadow:inset 0 4px 12px rgba(255,255,255,.3),0 4px 16px rgba(0,0,0,.15)}
     .finished-juice::before{content:'';position:absolute;top:8px;left:10%;width:40%;height:15px;background:rgba(255,255,255,.35);border-radius:50%;transform:rotate(-10deg)}
     .finished-juice::after{content:'';position:absolute;top:4px;right:15%;width:20%;height:8px;background:rgba(255,255,255,.25);border-radius:50%;transform:rotate(-5deg)}
 
@@ -106,8 +107,8 @@
     @keyframes fbBounce{0%,100%{transform:scale(1)}40%{transform:scale(1.2)}}
     @keyframes fbShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 
-    .game-fruits{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;justify-content:center;padding:4px 0}
-    .fruit-btn{display:flex;flex-direction:row;align-items:center;gap:5px;padding:9px 14px;background:#fff;border:1.5px solid rgba(46,111,64,.08);border-radius:14px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:inherit;white-space:nowrap}
+    .game-fruits{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:4px 0;max-width:100%}
+    .fruit-btn{display:flex;flex-direction:row;align-items:center;gap:5px;padding:8px 12px;background:#fff;border:1.5px solid rgba(46,111,64,.08);border-radius:14px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:inherit;white-space:nowrap;flex:0 1 auto;min-width:fit-content}
     .fruit-btn:hover{border-color:rgba(46,111,64,.25);background:rgba(46,111,64,.04);transform:translateY(-3px);box-shadow:0 6px 20px rgba(46,111,64,.08)}
     .fruit-btn:active{transform:scale(.94)}
     .fruit-btn.selected{border-color:var(--green);background:rgba(46,111,64,.12);box-shadow:0 4px 12px rgba(46,111,64,.1)}
@@ -125,12 +126,12 @@
     .game-overlay.high-score h2{animation:celebrate .6s cubic-bezier(.34,1.56,.64,1);font-size:2.4rem}
     @keyframes celebrate{0%,100%{transform:scale(1)}30%{transform:scale(1.25)}60%{transform:scale(.93)}}
 
-    .game-blender.motor-on{animation:blVibrate .2s ease-in-out infinite;will-change:transform}
-    @keyframes blVibrate{0%,100%{transform:translate(0,0)}50%{transform:translate(1px,0)}}
+    .game-blender.motor-on{animation:blVibrate .15s ease-in-out infinite;will-change:transform}
+    @keyframes blVibrate{0%,100%{transform:translate(0,0)}25%{transform:translate(-.4px,.2px)}50%{transform:translate(.4px,-.2px)}75%{transform:translate(-.2px,.4px)}}
     .game-blender.motor-on .blade-spin{animation:bladeSpin .15s linear infinite;transform-origin:110px 295px;will-change:transform}
     @keyframes bladeSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 
-    .pitcher-lid{position:absolute;top:18px;left:50%;transform:translate(-50%,0);width:52px;height:24px;border-radius:26px 26px 8px 8px;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.5));border:1.5px solid rgba(255,255,255,.12);pointer-events:none;z-index:6;transition:all .8s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+    .pitcher-lid{position:absolute;top:117px;left:50%;transform:translate(-50%,0);width:60px;height:28px;border-radius:30px 30px 10px 10px;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.6));border:2px solid rgba(255,255,255,.15);pointer-events:none;z-index:6;transition:all .8s cubic-bezier(.34,1.56,.64,1);box-shadow:0 6px 16px rgba(0,0,0,.25)}
     .pitcher-lid.open{transform:translate(-50%,-50px) rotate(30deg);opacity:0}
     .pitcher-lid.closed{transform:translate(-50%,0) rotate(0deg);opacity:1}
 
@@ -193,7 +194,10 @@
         <p>Drag fruits into the blender to match the recipe!</p>
         <button class="game-overlay-btn" onclick="document.getElementById('gameStartOverlay').remove();document.__startGame()">▶ Play</button>
       </div>
-      <div class="game-target" id="gTarget"><span id="targetFruits"></span></div>
+      <div class="game-target" id="gTarget">
+        <span class="game-target-label">Recipe to Match</span>
+        <span id="targetFruits"></span>
+      </div>
       <div class="game-blender" id="gBlender">
         <div class="blender-finished" id="gFinished"></div>
         <div class="liquid-swirl" id="gSwirl"></div>
@@ -211,10 +215,12 @@
           <rect x="68" y="338" width="84" height="8" rx="3" fill="#1a1a1a"/>
           <rect x="74" y="330" width="72" height="6" rx="2" fill="url(#metalGrad)"/>
           <circle cx="110" cy="325" r="5" fill="#4CAF50"/>
-          <ellipse cx="110" cy="295" rx="14" ry="5" fill="url(#bladeLight)"/>
           <rect x="108" y="285" width="4" height="12" rx="1" fill="#777"/>
-          <path d="M110 290 Q85 285 75 280" stroke="url(#bladeLight)" stroke-width="4" stroke-linecap="round" fill="none"/>
-          <path d="M110 290 Q135 285 145 280" stroke="url(#bladeLight)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <g class="blade-spin">
+            <ellipse cx="110" cy="295" rx="14" ry="5" fill="url(#bladeLight)"/>
+            <path d="M110 290 Q85 285 75 280" stroke="url(#bladeLight)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M110 290 Q135 285 145 280" stroke="url(#bladeLight)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </g>
           <rect x="80" y="280" width="60" height="8" rx="3" fill="#777"/>
           <rect x="82" y="278" width="56" height="3" rx="1" fill="#aaa"/>
           <path d="M64 280 L58 100 Q55 45 72 25 Q85 12 110 10 Q135 12 148 25 Q165 45 162 100 L156 280 Z" fill="url(#glassGrad)" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
@@ -308,8 +314,8 @@
 
   function updateTarget(){
     var r=recipe;
-    var imgHtml=r.img?'<img src="'+r.img+'" style="height:90px;vertical-align:middle;border-radius:8px" alt="'+r.name+'">':'';
-    targetFruitsEl.innerHTML=imgHtml||'<span style="font-size:1.8rem">'+r.name+'</span>';
+    var imgHtml=r.img?'<img src="'+r.img+'" style="height:100px;vertical-align:middle;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)" alt="'+r.name+'">':'';
+    targetFruitsEl.innerHTML=imgHtml||'<span style="font-size:2rem;font-weight:700;color:var(--green)">'+r.name+'</span>';
   }
 
   function renderSelected(){
@@ -333,6 +339,7 @@
     var d=document.createElement('div');d.className='fruit-drop';d.textContent=emoji;
     d.style.left='calc('+xPct+'% - 13px)';d.style.top='5px';
     blenderEl.appendChild(d);
+    
     var s=document.createElement('div');s.className='fruit-in-blender';s.textContent=emoji;
     s.style.left='calc('+xPct+'% - 12px)';s.style.top=yPos+'px';s.style.opacity='0';
     blenderEl.appendChild(s);
@@ -359,19 +366,25 @@
     }catch(e){}
   }
 
-  function doBlendSequence(){
+  function doBlendSequence(match){
+    // Close lid before blending starts
+    pitcherLid.classList.remove('open');
+    pitcherLid.classList.add('closed');
+    
     setTimeout(function(){blenderEl.classList.add('motor-on')},200);
-    var bladeEl=blenderEl.querySelector('ellipse[cx="110"][cy="295"]');
-    if(bladeEl)bladeEl.classList.add('blade-spin');
+    var bladeEl=blenderEl.querySelector('.blade-spin');
     blenderEl.querySelectorAll('.fruit-in-blender').forEach(function(f){f.classList.add('spinning')});
     setTimeout(function(){document.getElementById('gSwirl').classList.add('active')},400);
     playBlendSound();
     setTimeout(function(){clearBlenderFruits()},1500);
     setTimeout(function(){
       blenderEl.classList.remove('motor-on');
-      if(bladeEl)bladeEl.classList.remove('blade-spin');
       document.getElementById('gSwirl').classList.remove('active');
-      pitcherLid.classList.add('open');pitcherLid.classList.remove('closed');
+      // Open lid after blending is complete
+      pitcherLid.classList.add('open');
+      pitcherLid.classList.remove('closed');
+      // Show finished juice ONLY if recipe matched, AFTER shake completes
+      if(match)showFinished();
     },2500);
   }
 
@@ -387,12 +400,11 @@
   function checkBlend(){
     if(selected.length===0||!gameActive)return;
     gameActive=false;blendBtn.disabled=true;
-    selected.forEach(function(f,i){setTimeout(function(){fruitDrop(emojis[f],i)},i*150)});
-    setTimeout(function(){doBlendSequence()},600);
     var match=selected.length===recipe.ingredients.length&&[...recipe.ingredients].sort().every(function(f,i){return [...selected].sort()[i]===f});
     totalAttempts++;
-    if(match){correctAttempts++;score+=10;scoreEl.textContent=score;scoreEl.classList.add('pop');setTimeout(function(){scoreEl.classList.remove('pop')},400);feedbackEl.textContent='✓ +10';feedbackEl.className='game-feedback success';showFinished();setTimeout(function(){nextRecipe();gameActive=true;blendBtn.disabled=selected.length===0},3000)}
-    else{score=Math.max(0,score-5);scoreEl.textContent=score;feedbackEl.textContent='✗ -5';feedbackEl.className='game-feedback error';setTimeout(function(){feedbackEl.textContent='';feedbackEl.className='game-feedback';nextRecipe();gameActive=true;blendBtn.disabled=selected.length===0},2500)}
+    setTimeout(function(){doBlendSequence(match)},200);
+    if(match){correctAttempts++;score+=10;scoreEl.textContent=score;scoreEl.classList.add('pop');setTimeout(function(){scoreEl.classList.remove('pop')},400);feedbackEl.textContent='✓ +10';feedbackEl.className='game-feedback success';setTimeout(function(){nextRecipe();gameActive=true;blendBtn.disabled=selected.length===0},3500)}
+    else{score=Math.max(0,score-5);scoreEl.textContent=score;feedbackEl.textContent='✗ -5';feedbackEl.className='game-feedback error';setTimeout(function(){feedbackEl.textContent='';feedbackEl.className='game-feedback';nextRecipe();gameActive=true;blendBtn.disabled=selected.length===0},3000)}
   }
 
   function startGame(){
@@ -420,6 +432,16 @@
     var btn=e.target.closest('.fruit-btn');if(!btn)return;
     e.dataTransfer.setData('text/plain',btn.dataset.fruit);e.dataTransfer.effectAllowed='move';
     btn.style.opacity='.5';
+    // Create ghost showing only the fruit emoji (not the whole button)
+    var emojiEl=btn.querySelector('.fruit-emoji');
+    if(emojiEl){
+      var ghost=document.createElement('div');
+      ghost.textContent=emojiEl.textContent;
+      ghost.style.cssText='position:fixed;top:-1000px;left:-1000px;font-size:2rem;pointer-events:none;line-height:1;padding:4px;';
+      document.body.appendChild(ghost);
+      e.dataTransfer.setDragImage(ghost,16,16);
+      setTimeout(function(){ghost.remove()},0);
+    }
   });
   document.getElementById('gFruits').addEventListener('dragend',function(e){
     var btn=e.target.closest('.fruit-btn');if(btn)btn.style.opacity='';
