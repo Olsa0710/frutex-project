@@ -171,78 +171,66 @@
     <div class="map-container">
       <div class="map-stage" id="mapStage">
         <div class="map-tooltip" id="mapTip"></div>
-        <svg viewBox="400 100 900 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
           <defs>
-            <radialGradient id="kGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2E6F40" stop-opacity=".3"/><stop offset="100%" stop-color="#2E6F40" stop-opacity="0"/></radialGradient>
-            <filter id="shadow"><feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#000" flood-opacity=".04"/></filter>
+            <radialGradient id="kGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2E6F40" stop-opacity=".4"/><stop offset="100%" stop-color="#2E6F40" stop-opacity="0"/></radialGradient>
+            <filter id="sh"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity=".03"/></filter>
           </defs>
-          <rect width="100%" height="100%" fill="#f3f6f1"/>
-          
-          <!-- EUROPE: Real SVG paths from open-source map data -->
-          <!-- Iceland -->
-          <path d="M 548.35,89.78 L 567.54,94.39 L 562.44,87.82 L 568.95,87.82 L 563.24,81.88 L 568.45,72.73 L 566.75,69.82 L 555.37,62.43 L 545.87,76.74 L 533.17,80.82 L 541.86,89.78 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Norway -->
-          <path d="M 631.25,69.12 L 612.00,57.63 L 593.60,45.00 L 578.42,41.34 L 563.70,53.71 L 553.26,72.56 L 548.35,89.78 L 556.55,107.28 L 565.62,124.38 L 570.44,140.20 L 575.41,156.80 L 583.28,168.74 L 595.68,172.84 L 606.37,166.67 L 613.93,154.84 L 625.15,139.52 L 635.10,120.44 L 643.88,101.19 L 640.17,85.22 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Sweden -->
-          <path d="M 631.25,69.12 L 650.88,73.63 L 668.64,82.59 L 678.82,96.13 L 685.16,110.10 L 688.89,127.65 L 688.17,148.00 L 682.34,162.92 L 673.82,173.11 L 663.40,177.10 L 656.40,169.39 L 649.10,154.20 L 643.88,139.52 L 640.17,119.60 L 635.10,100.80 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Finland -->
-          <path d="M 688.89,68.22 L 705.33,55.58 L 730.28,53.49 L 753.90,63.19 L 768.49,80.17 L 772.43,102.74 L 762.27,123.55 L 748.20,137.65 L 731.50,142.00 L 716.52,136.45 L 705.60,120.40 L 694.53,100.15 L 688.17,80.00 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- UK -->
-          <path d="M 546.88,178.29 L 561.57,182.57 L 572.92,199.30 L 569.45,215.21 L 558.04,219.78 L 543.10,211.30 L 538.44,193.74 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Denmark -->
-          <path d="M 634.54,193.26 L 647.79,194.15 L 654.80,207.57 L 647.11,215.87 L 633.16,210.40 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Netherlands -->
-          <path d="M 612.49,235.60 L 625.80,228.88 L 634.54,235.60 L 632.50,248.00 L 619.62,252.00 L 608.78,245.50 Z" fill="#d5dfd2" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Netherlands" data-year="2014" data-desc="Strategic European hub for Relax Ice Tea and ZEROS distribution."/>
-          <!-- Belgium -->
-          <path d="M 595.68,252.10 L 612.49,248.00 L 619.62,252.00 L 614.53,265.00 L 598.40,264.20 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Germany -->
-          <path d="M 625.80,228.88 L 648.90,215.87 L 668.64,220.30 L 682.34,235.60 L 690.00,252.50 L 688.17,267.00 L 675.80,280.00 L 660.00,282.00 L 645.00,275.00 L 634.54,260.80 L 625.80,248.00 Z" fill="#d5dfd2" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Germany" data-year="2010" data-desc="One of our first and largest export markets. Golden Eagle Energy and Natural 100 Juices lead across major retail chains."/>
-          <!-- Poland -->
-          <path d="M 718.00,230.00 L 740.60,222.00 L 758.20,225.50 L 772.43,238.00 L 780.00,255.00 L 775.00,268.00 L 758.20,274.00 L 740.00,270.00 L 728.00,258.00 L 720.00,244.00 Z" fill="#d5dfd2" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Poland" data-year="2015" data-desc="Rapidly growing market with strong demand for Golden Eagle and Freesia products."/>
-          <!-- Czechia/Slovakia area -->
-          <path d="M 682.34,270.00 L 700.00,265.00 L 718.00,270.00 L 710.00,282.00 L 692.00,285.00 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Austria -->
-          <path d="M 660.00,282.00 L 678.00,280.00 L 692.00,275.00 L 700.00,265.00 L 682.34,270.00 L 668.00,275.00 L 658.00,282.00 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- France -->
-          <path d="M 568.75,258.00 L 595.68,252.10 L 614.53,265.00 L 625.80,280.00 L 632.50,295.00 L 628.00,310.00 L 608.78,318.00 L 590.00,315.00 L 575.00,302.00 L 562.44,282.00 L 555.00,270.00 Z" fill="#d5dfd2" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="France" data-year="2012" data-desc="Natural 100 juices perform exceptionally well across French supermarkets and specialty stores."/>
-          <!-- Switzerland -->
-          <path d="M 625.80,280.00 L 640.00,278.00 L 648.00,290.00 L 635.00,298.00 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Italy -->
-          <path d="M 632.50,295.00 L 650.00,290.00 L 662.00,298.00 L 672.00,310.00 L 678.00,328.00 L 672.00,342.00 L 655.00,348.00 L 638.00,340.00 L 624.00,325.00 L 618.00,308.00 Z" fill="#d5dfd2" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Italy" data-year="2011" data-desc="Strong market for Natural 100, Relax Ice Tea, and Golden Eagle Energy."/>
-          <!-- Spain -->
-          <path d="M 540.00,320.00 L 562.44,312.00 L 582.00,318.00 L 608.78,318.00 L 628.00,328.00 L 638.00,348.00 L 628.00,364.00 L 608.78,370.00 L 585.00,365.00 L 562.44,352.00 L 545.00,338.00 Z" fill="#d5dfd2" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Spain" data-year="2013" data-desc="Natural 100 and Freesia are consistent top sellers in the Spanish market."/>
-          <!-- Portugal -->
-          <path d="M 515.00,340.00 L 540.00,332.00 L 545.00,348.00 L 538.00,362.00 L 520.00,368.00 L 508.00,355.00 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Balkans -->
-          <path d="M 688.17,290.00 L 705.60,295.00 L 720.00,308.00 L 728.00,322.00 L 718.00,340.00 L 700.00,348.00 L 682.34,342.00 L 672.00,328.00 L 678.00,310.00 Z" fill="#e6ebe4" stroke="#d0d8ce" stroke-width=".5"/>
-          <!-- Turkey -->
-          <path d="M 780.00,310.00 L 810.00,300.00 L 840.00,305.00 L 860.00,320.00 L 870.00,340.00 L 865.00,360.00 L 845.00,370.00 L 820.00,365.00 L 800.00,348.00 L 785.00,332.00 Z" fill="#d5dfd2" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Turkey" data-year="2015" data-desc="Major strategic market. Golden Eagle and ZEROS distributed nationwide through key retail partnerships."/>
-          <!-- Ukraine -->
-          <path d="M 772.43,238.00 L 800.00,228.00 L 825.00,235.00 L 845.00,250.00 L 860.00,268.00 L 855.00,285.00 L 835.00,295.00 L 810.00,298.00 L 790.00,288.00 L 775.00,270.00 Z" fill="#d5dfd2" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Ukraine" data-year="2016" data-desc="Emerging powerhouse for Golden Eagle Energy and ZEROS with growing retail presence."/>
+          <rect width="1200" height="800" fill="#f4f7f2" rx="20"/>
+
+          <!-- SCANDINAVIA -->
+          <path id="NO" d="M620,55 L598,40 L572,32 L550,40 L536,62 L532,90 L540,112 L550,132 L560,148 L568,162 L572,178 L580,190 L590,195 L598,192 L604,180 L610,165 L618,145 L626,122 L632,98 L628,72 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".6"/>
+          <path id="SE" d="M620,55 L640,58 L658,65 L670,78 L678,95 L682,115 L680,138 L674,158 L666,172 L658,180 L648,182 L640,172 L632,158 L626,140 L618,122 L612,100 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".6"/>
+          <path id="FI" d="M678,50 L698,42 L722,40 L748,55 L764,72 L770,98 L762,122 L748,140 L732,148 L716,146 L702,134 L692,115 L682,95 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".6"/>
+
+          <!-- UK & IRELAND -->
+          <path id="GB" d="M535,195 L552,200 L562,215 L558,232 L546,238 L530,230 L526,212 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".6"/>
+          <path id="IE" d="M510,210 L522,215 L518,228 L505,225 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".6"/>
+
+          <!-- WESTERN EUROPE -->
+          <path id="FR" d="M558,265 L588,258 L610,270 L622,288 L630,305 L626,322 L612,332 L594,330 L578,320 L564,305 L552,288 L545,275 Z" fill="#d5dfd0" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="France" data-year="2012" data-desc="Natural 100 juices perform exceptionally well across French supermarkets and specialty stores."/>
+          <path id="DE" d="M610,238 L640,225 L660,230 L678,245 L690,265 L688,285 L678,300 L662,310 L648,305 L635,292 L626,275 L616,258 Z" fill="#d5dfd0" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Germany" data-year="2010" data-desc="One of our first and largest export markets. Golden Eagle Energy and Natural 100 Juices lead across major retail chains."/>
+          <path id="NL" d="M600,242 L616,236 L626,242 L624,256 L614,262 L604,256 Z" fill="#d5dfd0" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Netherlands" data-year="2014" data-desc="Strategic European hub for Relax Ice Tea and ZEROS distribution to neighboring markets."/>
+          <path id="BE" d="M586,258 L600,256 L608,260 L604,270 L594,268 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".5"/>
+          <path id="CH" d="M616,288 L632,285 L640,295 L628,302 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".5"/>
+          <path id="AT" d="M648,290 L662,288 L675,295 L670,308 L656,310 L648,300 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".5"/>
+
+          <!-- SOUTHERN EUROPE -->
+          <path id="IT" d="M622,308 L640,302 L655,312 L668,325 L676,342 L672,358 L660,368 L646,362 L634,348 L622,332 L615,318 Z" fill="#d5dfd0" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Italy" data-year="2011" data-desc="Strong market for Natural 100, Relax Ice Tea, and Golden Eagle Energy across all regions."/>
+          <path id="ES" d="M528,340 L552,332 L572,338 L598,340 L618,348 L630,362 L628,380 L614,390 L596,388 L575,378 L555,365 L538,352 Z" fill="#d5dfd0" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Spain" data-year="2013" data-desc="Natural 100 and Freesia are consistent top sellers in the Spanish beverage market."/>
+          <path id="PT" d="M505,360 L528,352 L535,368 L528,382 L512,388 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".5"/>
+
+          <!-- EASTERN EUROPE -->
+          <path id="PL" d="M700,235 L726,225 L748,232 L765,248 L776,268 L770,285 L752,295 L736,290 L720,275 L708,258 Z" fill="#d5dfd0" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Poland" data-year="2015" data-desc="Rapidly growing market with strong demand for Golden Eagle and Freesia products."/>
+          <path id="UA" d="M765,248 L798,238 L828,242 L855,258 L872,278 L868,298 L848,312 L822,318 L798,310 L778,295 L765,275 Z" fill="#d5dfd0" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Ukraine" data-year="2016" data-desc="Emerging powerhouse for Golden Eagle Energy and ZEROS with growing retail presence."/>
+          <path id="TR" d="M820,340 L858,328 L892,332 L918,348 L930,370 L926,392 L908,408 L882,412 L858,405 L838,390 L822,368 Z" fill="#d5dfd0" stroke="#b5c9ad" stroke-width=".7" class="export-ctry" data-name="Turkey" data-year="2015" data-desc="Major strategic market. Golden Eagle and ZEROS distributed nationwide."/>
+
+          <!-- BALKANS -->
+          <path id="BALKANS" d="M676,325 L698,318 L722,322 L740,335 L750,352 L742,368 L722,378 L700,372 L682,360 L672,345 Z" fill="#e8ece5" stroke="#d5dbd2" stroke-width=".6"/>
 
           <!-- KOSOVO marker -->
-          <circle cx="712" cy="335" r="28" fill="url(#kGlow)"/>
-          <circle cx="712" cy="335" r="5" fill="#2E6F40"/>
-          <circle cx="712" cy="335" r="5" fill="none" stroke="#2E6F40" stroke-width="1.8" opacity=".5">
-            <animate attributeName="r" values="5;20" dur="2.5s" repeatCount="indefinite"/>
+          <circle cx="718" cy="360" r="32" fill="url(#kGlow)"/>
+          <circle cx="718" cy="360" r="5" fill="#2E6F40"/>
+          <circle cx="718" cy="360" r="5" fill="none" stroke="#2E6F40" stroke-width="2" opacity=".5">
+            <animate attributeName="r" values="5;22" dur="2.5s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values=".5;0" dur="2.5s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="712" cy="335" r="5" fill="none" stroke="#2E6F40" stroke-width="1.8" opacity=".5">
-            <animate attributeName="r" values="5;20" dur="2.5s" begin="1.25s" repeatCount="indefinite"/>
+          <circle cx="718" cy="360" r="5" fill="none" stroke="#2E6F40" stroke-width="2" opacity=".5">
+            <animate attributeName="r" values="5;22" dur="2.5s" begin="1.25s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values=".5;0" dur="2.5s" begin="1.25s" repeatCount="indefinite"/>
           </circle>
-          <text x="712" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#2E6F40" letter-spacing=".06em">KOSOVO</text>
+          <text x="718" y="410" text-anchor="middle" font-size="11" font-weight="700" fill="#2E6F40" letter-spacing=".06em">KOSOVO</text>
 
           <!-- Export routes from Kosovo -->
-          <g opacity=".4">
-            <line x1="718" y1="330" x2="680" y2="248" stroke="#2E6F40" stroke-width="1.2" stroke-dasharray="5 4"/><circle cx="680" cy="248" r="3" fill="#2E6F40"/>
-            <line x1="718" y1="330" x2="622" y2="245" stroke="#2E6F40" stroke-width="1.2" stroke-dasharray="5 4"/><circle cx="622" cy="245" r="3" fill="#2E6F40"/>
-            <line x1="718" y1="330" x2="600" y2="280" stroke="#2E6F40" stroke-width="1.2" stroke-dasharray="5 4"/><circle cx="600" cy="280" r="3" fill="#2E6F40"/>
-            <line x1="718" y1="330" x2="640" y2="315" stroke="#2E6F40" stroke-width="1.2" stroke-dasharray="5 4"/><circle cx="640" cy="315" r="3" fill="#2E6F40"/>
-            <line x1="718" y1="330" x2="580" y2="330" stroke="#2E6F40" stroke-width="1.2" stroke-dasharray="5 4"/><circle cx="580" cy="330" r="3" fill="#2E6F40"/>
-            <line x1="718" y1="330" x2="740" y2="250" stroke="#2E6F40" stroke-width="1.2" stroke-dasharray="5 4"/><circle cx="740" cy="250" r="3" fill="#2E6F40"/>
-            <line x1="718" y1="330" x2="800" y2="260" stroke="#2E6F40" stroke-width="1.2" stroke-dasharray="5 4"/><circle cx="800" cy="260" r="3" fill="#2E6F40"/>
-            <line x1="718" y1="330" x2="845" y2="340" stroke="#2E6F40" stroke-width="1.2" stroke-dasharray="5 4"/><circle cx="845" cy="340" r="3" fill="#2E6F40"/>
+          <g opacity=".45">
+            <line x1="724" y1="355" x2="618" y2="258" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="6 5"/><circle cx="618" cy="258" r="3.5" fill="#2E6F40"/>
+            <line x1="724" y1="355" x2="656" y2="245" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="6 5"/><circle cx="656" cy="245" r="3.5" fill="#2E6F40"/>
+            <line x1="724" y1="355" x2="590" y2="282" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="6 5"/><circle cx="590" cy="282" r="3.5" fill="#2E6F40"/>
+            <line x1="724" y1="355" x2="636" y2="332" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="6 5"/><circle cx="636" cy="332" r="3.5" fill="#2E6F40"/>
+            <line x1="724" y1="355" x2="570" y2="348" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="6 5"/><circle cx="570" cy="348" r="3.5" fill="#2E6F40"/>
+            <line x1="724" y1="355" x2="732" y2="258" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="6 5"/><circle cx="732" cy="258" r="3.5" fill="#2E6F40"/>
+            <line x1="724" y1="355" x2="800" y2="265" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="6 5"/><circle cx="800" cy="265" r="3.5" fill="#2E6F40"/>
+            <line x1="724" y1="355" x2="890" y2="360" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="6 5"/><circle cx="890" cy="360" r="3.5" fill="#2E6F40"/>
           </g>
         </svg>
       </div>
