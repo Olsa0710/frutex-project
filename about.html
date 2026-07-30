@@ -376,4 +376,148 @@
 })();
 </script>
 </body>
+</html>    <div class="map-container">
+      <div class="map-stage" id="mapStage">
+        <div class="map-tooltip" id="mapTip"></div>
+        <svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+          <defs>
+            <filter id="mapSh"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity=".06"/></filter>
+            <filter id="glowG"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <radialGradient id="kosovoGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2E6F40" stop-opacity=".4"/><stop offset="100%" stop-color="#2E6F40" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="1000" height="620" fill="#f0f3ee" rx="16"/>
+          <path d="M180,90 L220,75 L280,60 L340,50 L400,45 L440,55 L470,70 L500,65 L530,80 L570,110 L590,140 L580,180 L560,210 L530,240 L510,260 L490,280 L470,300 L450,310 L420,325 L380,340 L360,320 L340,300 L310,290 L280,280 L260,295 L240,310 L220,320 L200,310 L180,290 L160,270 L140,250 L120,240 L100,230 L80,210 L70,180 L80,150 L100,120 L120,100 L150,90Z" fill="#e5e9e3" stroke="#d0d5ce" stroke-width="1"/>
+          <path d="M120,100 L150,90 L180,90 L170,110 L150,120 L130,115Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="Germany" data-year="2010" data-desc="One of our first export markets. Golden Eagle and Natural 100 are top sellers."/>
+          <path d="M100,120 L120,100 L130,115 L140,130 L125,145 L105,140Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="Netherlands" data-year="2014" data-desc="Key European hub for Relax Ice Tea and ZEROS distribution."/>
+          <path d="M50,210 L80,210 L100,230 L120,240 L130,260 L110,280 L80,285 L50,270 L35,245Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="France" data-year="2012" data-desc="Natural 100 juices and Relax Ice Tea are popular across French retail."/>
+          <path d="M100,230 L120,240 L140,250 L160,270 L180,290 L200,310 L170,330 L140,320 L120,300 L100,280 L80,260Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="Italy" data-year="2011" data-desc="Strong market for Natural 100, Relax, and Golden Eagle Energy."/>
+          <path d="M80,150 L100,140 L120,160 L130,180 L120,200 L105,210 L85,200 L70,180Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="Poland" data-year="2015" data-desc="Growing market for Golden Eagle and Freesia beverages."/>
+          <path d="M35,245 L50,270 L70,300 L55,320 L35,330 L15,310 L10,280 L20,260Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="Spain" data-year="2013" data-desc="Natural 100 and Freesia are top performers in the Spanish market."/>
+          <path d="M120,60 L160,50 L200,45 L240,55 L260,70 L250,90 L230,105 L210,100 L190,85 L170,80 L150,70Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="United Kingdom" data-year="2010" data-desc="One of our earliest markets. Natural 100 and Relax lead sales."/>
+          <path d="M280,60 L310,55 L340,50 L370,45 L400,50 L420,65 L430,85 L420,100 L400,110 L370,100 L340,90 L310,85Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="Ukraine" data-year="2016" data-desc="Golden Eagle and ZEROS are gaining strong momentum."/>
+          <path d="M420,65 L440,55 L470,70 L500,65 L530,80 L550,100 L560,120 L550,140 L530,150 L510,145 L490,130 L460,120 L440,100Z" fill="#dce3d8" stroke="#c8d0c4" stroke-width=".7" class="export-ctry" data-name="Turkey" data-year="2015" data-desc="Major market for Golden Eagle and ZEROS across retail chains."/>
+          <circle cx="370" cy="300" r="28" fill="url(#kosovoGlow)"/>
+          <circle cx="370" cy="300" r="5" fill="#2E6F40" filter="url(#glowG)"/>
+          <circle cx="370" cy="300" r="5" fill="none" stroke="#2E6F40" stroke-width="1.5" opacity=".6"><animate attributeName="r" values="5;22" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="2.5s" repeatCount="indefinite"/></circle>
+          <circle cx="370" cy="300" r="5" fill="none" stroke="#2E6F40" stroke-width="1.5" opacity=".6"><animate attributeName="r" values="5;22" dur="2.5s" begin="1.25s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="2.5s" begin="1.25s" repeatCount="indefinite"/></circle>
+          <text x="370" y="345" text-anchor="middle" font-size="11" font-weight="700" fill="#2E6F40" letter-spacing=".06em">KOSOVO</text>
+          <g opacity=".5">
+            <line x1="370" y1="295" x2="150" y2="100" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="150" cy="100" r="3.5" fill="#2E6F40" opacity=".7"/>
+            <line x1="370" y1="295" x2="115" y2="135" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="115" cy="135" r="3.5" fill="#2E6F40" opacity=".7"/>
+            <line x1="370" y1="295" x2="80" y2="245" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="80" cy="245" r="3.5" fill="#2E6F40" opacity=".7"/>
+            <line x1="370" y1="295" x2="140" y2="270" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="140" cy="270" r="3.5" fill="#2E6F40" opacity=".7"/>
+            <line x1="370" y1="295" x2="40" y2="290" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="40" cy="290" r="3.5" fill="#2E6F40" opacity=".7"/>
+            <line x1="370" y1="295" x2="200" y2="75" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="200" cy="75" r="3.5" fill="#2E6F40" opacity=".7"/>
+            <line x1="370" y1="295" x2="360" y2="75" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="360" cy="75" r="3.5" fill="#2E6F40" opacity=".7"/>
+            <line x1="370" y1="295" x2="105" y2="175" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="105" cy="175" r="3.5" fill="#2E6F40" opacity=".7"/>
+            <line x1="370" y1="295" x2="490" y2="110" stroke="#2E6F40" stroke-width="1.3" stroke-dasharray="5 4" opacity=".3"/><circle cx="490" cy="110" r="3.5" fill="#2E6F40" opacity=".7"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="export-stats">
+      <div class="export-stat"><div class="export-stat-n">35+</div><div class="export-stat-l">Export Markets</div></div>
+      <div class="export-stat"><div class="export-stat-n">2010</div><div class="export-stat-l">First Export</div></div>
+      <div class="export-stat"><div class="export-stat-n">6</div><div class="export-stat-l">Continents</div></div>
+    </div>
+  </section>
+
+  <section class="mission" id="mission">
+    <div class="mission-text">
+      <h2>Our <span>Mission</span></h2>
+      <p>To craft premium beverages that bring people together — rooted in Kosovo's finest ingredients, driven by innovation, and delivered with pride to every corner of the globe.</p>
+      <p>Every bottle carries the same promise: quality you can taste and freshness you can feel.</p>
+    </div>
+    <div class="mission-card">
+      <p style="font-family:Georgia,serif;font-size:1.15rem;color:var(--green);line-height:1.6;font-style:italic">"We don't just make drinks. We create moments — from the first sip of a Golden Eagle to the last drop of a Natural 100 juice."</p>
+    </div>
+  </section>
+
+  <section class="values">
+    <h2>Our <span>Values</span></h2>
+    <div class="values-grid">
+      <div class="value-card"><div class="value-icon" style="background:rgba(46,111,64,.1)">🌱</div><h3>Quality First</h3><p>Rigorous standards at every step of production.</p></div>
+      <div class="value-card"><div class="value-icon" style="background:rgba(230,150,30,.1)">🤝</div><h3>Community</h3><p>Rooted in Suhareka, investing in our people.</p></div>
+      <div class="value-card"><div class="value-icon" style="background:rgba(33,150,243,.1)">💡</div><h3>Innovation</h3><p>Constantly exploring new flavors and formats.</p></div>
+      <div class="value-card"><div class="value-icon" style="background:rgba(46,111,64,.1)">🌍</div><h3>Sustainability</h3><p>From Golden Eco to responsible sourcing.</p></div>
+    </div>
+  </section>
+
+  <section class="team">
+    <h2>Powered by <span>People</span></h2>
+    <p class="team-sub">500+ employees. One shared purpose.</p>
+    <div class="team-message">
+      <p>Behind every Frutex product is a team of passionate individuals — from the production floor in <strong>Suhareka</strong> to distribution partners across <strong>35+ markets</strong>. Great beverages start with great people.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" style="background:#111;color:rgba(255,255,255,.7);margin-top:60px">
+  <div style="padding:60px 32px 40px;max-width:1100px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.5fr;gap:40px">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="32" viewBox="0 0 209 44"><defs><clipPath id="fc2"><rect width="209" height="44" fill="none"/></clipPath></defs><g clip-path="url(#fc2)"><path d="M0,0H21.769A21.849,21.849,0,0,1,43.537,21.8V43.6H21.769A21.849,21.849,0,0,1,0,21.8Z" fill="#fff" fill-rule="evenodd"/><path d="M28.387,50.879l-.024-9.644H41.2v-7.75H28.362V28.22H50.834a16.463,16.463,0,0,0-13.958-7.707H20.512V37.16a16.038,16.038,0,0,0,7.875,13.719" transform="translate(-15.131 -15.124)" fill="#111" fill-rule="evenodd"/><path d="M202.685,69.881V95.123h5.059V86.755h12.583V82.509H207.743V74.127H223.49V69.881Z" transform="translate(-149.517 -51.522)" fill="#fff"/><path d="M419.744,82.513c0,5.345-1.676,8.567-7.284,8.567s-7.291-3.222-7.291-8.567V69.881h-5.059V82.513c0,7.182,3.555,13.009,12.342,13.009s12.35-5.827,12.35-13.009V69.881h-5.059Z" transform="translate(-295.155 -51.522)" fill="#fff"/><path d="M507.058,69.881v4.246h8.584v21H520.7v-21h8.584V69.881Z" transform="translate(-374.047 -51.522)" fill="#fff"/><path d="M609.982,86.756h12.583V82.51H609.982V74.127h15.747V69.881H604.923V95.123h21.234V90.877H609.982Z" transform="translate(-446.241 -51.522)" fill="#fff"/><path d="M715.748,69.881l-7.359,8.981-7.366-8.981h-5.976L705.4,82.506l-10.35,12.617h5.976l7.366-8.973,7.359,8.973h5.976l-10.35-12.617,10.35-12.625Z" transform="translate(-512.723 -51.522)" fill="#fff"/><path d="M312.961,82.5h-10.4V74.127h9.9c3.518,0,4.179,3.042,4.179,4.66a3.483,3.483,0,0,1-3.683,3.711m8.351-4.283c0-2.921-1.819-8.334-8.847-8.334H297.507V95.123h5.059V86.751h7.163l5.7,8.372h5.886L315.4,86.458c4.533-1.137,5.908-5.066,5.908-8.243" transform="translate(-219.465 -51.522)" fill="#fff"/></g></svg>
+        <p style="font-size:.88rem;line-height:1.6;margin:16px 0 20px;color:rgba(255,255,255,.45)">Kosovo's leading beverage producer since 1994.</p>
+      </div>
+      <div><h4 style="color:#fff;font-size:.95rem;font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.04em">Quick Links</h4><a href="index.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Home</a><a href="about.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">About Us</a><a href="juice-mixer.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Juice Mixer</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Contact</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Career</a></div>
+      <div><h4 style="color:#fff;font-size:.95rem;font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.04em">Products</h4><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Golden Eagle</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Natural 100</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Relax</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">ZEROS</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Freesia</a></div>
+      <div><h4 style="color:#fff;font-size:.95rem;font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.04em">Contact</h4><p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:8px">Zona Industriale Shirokë<br>Suharekë 23000, Kosovë</p><p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:8px">+383 44 119 925</p><p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:8px">info@frutex-ks.com</p></div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.08);padding:20px 32px;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:.82rem"><p>&copy; 2026 Frutex. All rights reserved.</p><div style="display:flex;gap:20px"><a href="#" style="color:rgba(255,255,255,.4);text-decoration:none">Privacy Policy</a><a href="#" style="color:rgba(255,255,255,.4);text-decoration:none">Terms</a></div></div>
+</footer>
+
+<script>
+(function(){
+  var nm=document.getElementById('navMenu'),hb=document.getElementById('hamburger'),dd=document.querySelectorAll('.navbar__dropdown');
+  dd.forEach(function(d){d.querySelector('.navbar__dropdown-toggle').addEventListener('click',function(e){e.preventDefault();e.stopPropagation();dd.forEach(function(x){if(x!==d)x.classList.remove('open')});d.classList.toggle('open')})});
+  document.addEventListener('click',function(e){dd.forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});
+  function cm(){nm.classList.remove('open');hb.classList.remove('open');hb.setAttribute('aria-expanded','false');document.body.style.overflow='';dd.forEach(function(d){d.classList.remove('open')})}
+  hb.addEventListener('click',function(){if(nm.classList.contains('open'))cm();else{nm.classList.add('open');hb.classList.add('open');hb.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}});
+  nm.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){if(nm.classList.contains('open'))cm()})});
+
+  // Interactive export map
+  var stage=document.getElementById('mapStage'),tip=document.getElementById('mapTip');
+  if(stage){
+    stage.addEventListener('mouseover',function(e){
+      var t=e.target.closest('.country-shape');
+      if(!t)return;
+      t.classList.add('highlight');
+      var route=stage.querySelector('.export-route[data-to="'+t.dataset.name+'"]');
+      if(route)route.classList.add('active');
+      tip.innerHTML='<div class="tt-name"><span></span>'+t.dataset.name+'</div><div class="tt-year">Since '+t.dataset.year+'</div><div class="tt-products"><strong>Products:</strong><br>'+t.dataset.products+'</div>';
+      tip.classList.add('show');
+    });
+    stage.addEventListener('mousemove',function(e){
+      if(!tip.classList.contains('show'))return;
+      var r=stage.getBoundingClientRect();
+      tip.style.left=(e.clientX-r.left)+'px';
+      tip.style.top=(e.clientY-r.top-20)+'px';
+    });
+    stage.addEventListener('mouseout',function(e){
+      var t=e.target.closest('.country-shape');
+      if(!t)return;
+      t.classList.remove('highlight');
+      var route=stage.querySelector('.export-route.active');
+      if(route)route.classList.remove('active');
+      tip.classList.remove('show');
+    });
+
+    // Animate route particles
+    var particles=stage.querySelectorAll('.route-particle');
+    function animateParticles(){
+      particles.forEach(function(p,i){
+        setTimeout(function(){
+          p.classList.add('moving');
+          setTimeout(function(){p.classList.remove('moving')},3000);
+        },i*400);
+      });
+      setTimeout(animateParticles,5000);
+    }
+    animateParticles();
+  }
+})();
+</script>
+</body>
 </html>
