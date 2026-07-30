@@ -78,8 +78,8 @@
     .kosovo-ring:nth-child(3){animation:kRing 2s ease-out 1.4s infinite}
     @keyframes kRing{0%{r:6;opacity:.7}100%{r:28;opacity:0}}
 
-    .map-tooltip{position:absolute;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(46,111,64,.15);border-radius:16px;padding:16px 20px;box-shadow:0 12px 40px rgba(0,0,0,.1);pointer-events:none;opacity:0;transform:translate(-50%,-110%) scale(.9);transition:all .25s cubic-bezier(.34,1.56,.64,1);font-size:.82rem;text-align:left;z-index:10;white-space:nowrap;min-width:160px}
-    .map-tooltip.show{opacity:1;transform:translate(-50%,-110%) scale(1)}
+    .map-tooltip{position:absolute;background:rgba(255,255,255,.85);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(46,111,64,.12);border-radius:18px;padding:18px 22px;box-shadow:0 4px 12px rgba(0,0,0,.04),0 16px 48px rgba(0,0,0,.08),0 0 0 .5px rgba(46,111,64,.06);pointer-events:none;opacity:0;transform:translate(-50%,-115%) scale(.85);transition:all .35s cubic-bezier(.34,1.56,.64,1);font-size:.82rem;text-align:left;z-index:10;white-space:nowrap;min-width:170px}
+    .map-tooltip.show{opacity:1;transform:translate(-50%,-115%) scale(1)}
     .map-tooltip .tt-name{color:var(--green);font-weight:700;font-size:.95rem;margin-bottom:6px;display:flex;align-items:center;gap:8px}
     .map-tooltip .tt-name span{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(46,111,64,.4)}
     .map-tooltip .tt-year{color:#888;font-size:.72rem;margin-bottom:6px}
@@ -371,7 +371,7 @@
       t.setAttribute('fill','rgba(46,111,64,.3)');
       var route=stage.querySelector('.export-route[data-to="'+t.dataset.name+'"]');
       if(route)route.classList.add('active');
-      tip.innerHTML='<div class="tt-name"><span></span>'+t.dataset.name+'</div><div class="tt-year">Since '+t.dataset.year+'</div><div class="tt-products"><strong>Products:</strong><br>'+t.dataset.products+'</div>';
+      tip.innerHTML='<div class="tt-name"><span></span>'+t.dataset.name+'</div><div class="tt-year">📅 Exports since '+t.dataset.year+'</div><div class="tt-products">📦 '+t.dataset.products+'</div>';
       tip.classList.add('show');
     });
     stage.addEventListener('mousemove',function(e){
