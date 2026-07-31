@@ -273,73 +273,73 @@
   </circle>
   <text x="534" y="365" text-anchor="middle" font-size="9" font-weight="700" fill="#2E6F40" letter-spacing=".06em">KOSOVO</text>
   <g opacity=".45">
-    <path d="M582,373 Q575.5,348.5 572,352" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q575.5,348.5 572,352" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0s" fill="freeze"/>
     </path>
     <circle cx="572" cy="352" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="0.8s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q554.5,353.5 530,362" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q554.5,353.5 530,362" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0.12s" fill="freeze"/>
     </path>
     <circle cx="530" cy="362" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="0.92s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q567.0,370.0 555,395" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q567.0,370.0 555,395" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0.24s" fill="freeze"/>
     </path>
     <circle cx="555" cy="395" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="1.04s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q539.5,375.0 500,405" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q539.5,375.0 500,405" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0.36s" fill="freeze"/>
     </path>
     <circle cx="500" cy="405" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="1.1600000000000001s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q568.0,342.5 557,340" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q568.0,342.5 557,340" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0.48s" fill="freeze"/>
     </path>
     <circle cx="557" cy="340" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="1.28s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q558.0,332.5 537,320" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q558.0,332.5 537,320" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0.6s" fill="freeze"/>
     </path>
     <circle cx="537" cy="320" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="1.4s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q589.5,337.5 600,330" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q589.5,337.5 600,330" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0.72s" fill="freeze"/>
     </path>
     <circle cx="600" cy="330" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="1.52s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q607.0,342.5 635,340" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q607.0,342.5 635,340" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0.84s" fill="freeze"/>
     </path>
     <circle cx="635" cy="340" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="1.6400000000000001s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q614.5,375.0 650,405" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q614.5,375.0 650,405" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="0.96s" fill="freeze"/>
     </path>
     <circle cx="650" cy="405" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="1.76s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q399.5,312.5 220,280" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q399.5,312.5 220,280" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="1.08s" fill="freeze"/>
     </path>
     <circle cx="220" cy="280" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="1.8800000000000001s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q679.5,432.5 780,520" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q679.5,432.5 780,520" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="1.2000000000000002s" fill="freeze"/>
     </path>
     <circle cx="780" cy="520" r="2" fill="#2E6F40" opacity="0">
       <animate attributeName="opacity" from="0" to=".8" dur=".3s" begin="2.0s" fill="freeze"/>
     </circle>
-    <path d="M582,373 Q619.5,382.5 660,420" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
+    <path d="M537,343 Q619.5,382.5 660,420" fill="none" stroke="#2E6F40" stroke-width="1.2" stroke-linecap="round" opacity=".4">
       <animate attributeName="stroke-dasharray" values="0,400;400,0" dur="1s" begin="1.3200000000000003s" fill="freeze"/>
     </path>
     <circle cx="660" cy="420" r="2" fill="#2E6F40" opacity="0">
