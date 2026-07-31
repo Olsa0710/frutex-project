@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Frutex</title>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--transition:.25s ease}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(180deg,#f8faf7,#f3f7f0 0%,#f8faf6 30%,#f5f8f2 60%,#fafcf8 100%);-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both}
+    @keyframes fPage{from{opacity:0}to{opacity:1}}
+
+    .navbar{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:1000;width:82vw;max-width:1050px;border-radius:40px;background:rgba(255,255,255,.12);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(0,0,0,.12)}
+    .navbar__inner{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:10px 36px;height:56px;width:100%}
+    .navbar__logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none;transition:transform var(--transition)}.navbar__logo:hover{transform:scale(1.05)}.navbar__logo svg{height:30px;width:auto}
+    .navbar__nav{display:flex;align-items:center}.navbar__list{display:flex;align-items:center;list-style:none;gap:6px}
+    .navbar__link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:14px;font-weight:600;color:var(--white-70);text-decoration:none;border-radius:20px;background:none;border:none;cursor:pointer;font-family:Poppins,sans-serif;white-space:nowrap;letter-spacing:.01em;position:relative;transition:color .25s ease,background .25s ease}
+    .navbar__link::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:2px;background:var(--white);border-radius:1px;transition:transform .25s ease}
+    .navbar__link:hover{color:var(--white)}.navbar__link:hover::after{transform:translateX(-50%) scaleX(1)}
+    .navbar__link.active{color:var(--white);background:rgba(46,111,64,.7)}.navbar__link.active::after{display:none}
+    .navbar__chevron{flex-shrink:0;transition:transform var(--transition);opacity:.5}.navbar__dropdown.open .navbar__chevron{transform:rotate(180deg);opacity:1}
+    .navbar__dropdown{position:relative}
+    .navbar__dropdown-menu{position:absolute;top:calc(100%+10px);left:50%;transform:translateX(-50%);min-width:200px;padding:8px;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-radius:14px;list-style:none;opacity:0;visibility:hidden;pointer-events:none;box-shadow:0 12px 40px rgba(0,0,0,.15)}
+    .navbar__dropdown.open .navbar__dropdown-menu{opacity:1;visibility:visible;pointer-events:auto}
+    .navbar__dropdown-link{display:block;padding:10px 14px;font-size:13.5px;font-weight:500;color:#333;text-decoration:none;border-radius:8px;transition:.15s}
+    .navbar__dropdown-link:hover{background:rgba(46,111,64,.1);color:var(--green);transform:translateX(4px)}
+
+    .contact-hero{position:relative;height:70vh;min-height:450px;display:flex;align-items:center;justify-content:center;background:url(https://goldeneagle-ks.com/wp-content/uploads/2024/03/Prodhim-4.png) center/cover no-repeat}
+    .contact-hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,15,5,.85) 0%,rgba(46,111,64,.75) 50%,rgba(0,0,0,.7) 100%)}
+    .contact-hero-content{position:relative;z-index:1;text-align:center;padding:0 32px;animation:fIn .8s ease both}
+    .contact-hero-badge{display:inline-block;padding:8px 20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#d4e8d0;border-radius:30px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px;backdrop-filter:blur(4px)}
+    .contact-hero h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2.8rem,7vw,5rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:20px;letter-spacing:-.02em}
+    .contact-hero p{font-size:1.1rem;color:rgba(255,255,255,.7);max-width:550px;margin:0 auto;line-height:1.7}
+    @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    .contact-section{max-width:1000px;margin:0 auto;padding:80px 32px}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .contact-info-card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.34,1.56,.64,1)}.contact-info-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.06),0 16px 48px rgba(46,111,64,.08)}
+    .contact-info-card h3{font-family:Georgia,serif;font-size:1.3rem;color:#111;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+    .contact-info-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;padding:12px;border-radius:14px;transition:all .25s}.contact-info-item:hover{background:rgba(46,111,64,.04)}
+    .contact-info-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .contact-info-item strong{display:block;color:#111;font-size:.9rem;margin-bottom:2px}
+    .contact-info-item span{color:#888;font-size:.85rem;line-height:1.5}
+
+    .contact-form-card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.34,1.56,.64,1)}.contact-form-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.06),0 16px 48px rgba(46,111,64,.08)}
+    .contact-form-card h3{font-family:Georgia,serif;font-size:1.3rem;color:#111;margin-bottom:24px}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:6px}
+    .form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:1.5px solid rgba(0,0,0,.1);border-radius:12px;font-size:.9rem;font-family:Poppins,sans-serif;transition:border .2s;background:#fafbfa}
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(46,111,64,.08)}
+    .form-group textarea{resize:vertical;min-height:120px}
+    .form-submit{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:12px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif;transition:all .25s}
+    .form-submit:hover{background:#3d8a52;transform:translateY(-1px);box-shadow:0 6px 20px rgba(46,111,64,.2)}
+
+    .map-section{max-width:1000px;margin:0 auto;padding:0 32px 80px}
+    .map-embed{border-radius:20px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04),0 12px 40px rgba(46,111,64,.06);height:380px;background:#e8ede6;transition:all .35s ease}.map-embed:hover{box-shadow:0 4px 16px rgba(0,0,0,.06),0 20px 56px rgba(46,111,64,.1)}
+    .map-embed iframe{width:100%;height:100%;border:0;filter:grayscale(.15)}
+
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr}.contact-hero{height:50vh}}
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800</head>display=swap" rel="stylesheet">
+</head>
+<body>
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden">
+  <!-- Animated gradient waves -->
+  <svg style="position:absolute;inset:0;opacity:.08" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2E6F40"/><stop offset="100%" stop-color="#a8e6a0"/></linearGradient>
+      <linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e8f5e9"/><stop offset="100%" stop-color="#2E6F40"/></linearGradient>
+      <linearGradient id="g3" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c8e6c9"/><stop offset="100%" stop-color="#f1f8e9"/></linearGradient>
+    </defs>
+    <path d="M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z" fill="url(#g1)" opacity=".15">
+      <animate attributeName="d" dur="20s" repeatCount="indefinite" values="M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z;M0,280 Q250,350 500,200 T1000,350 T1500,250 L1920,200 L1920,0 L0,0Z;M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z"/>
+    </path>
+    <path d="M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z" fill="url(#g2)" opacity=".1">
+      <animate attributeName="d" dur="25s" repeatCount="indefinite" values="M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z;M0,480 Q400,550 800,400 T1600,550 L1920,450 L1920,300 L0,300Z;M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z"/>
+    </path>
+  </svg>
+
+  <!-- Soft glowing circles -->
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(46,111,64,.06) 0%,transparent 70%);top:10%;left:5%;filter:blur(40px)">
+    <style>@keyframes f1{0%,100%{transform:translate(0,0)}33%{transform:translate(40px,-20px)}66%{transform:translate(-20px,30px)}}</style>
+    <div style="animation:f1 15s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(46,180,100,.05) 0%,transparent 70%);top:50%;right:8%;filter:blur(50px)">
+    <style>@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}</style>
+    <div style="animation:f2 20s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(46,150,80,.04) 0%,transparent 70%);bottom:10%;left:30%;filter:blur(45px)">
+    <style>@keyframes f3{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-15px)}}</style>
+    <div style="animation:f3 18s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+
+  <!-- Floating leaves -->
+  <svg style="position:absolute;inset:0;opacity:.02" xmlns="http://www.w3.org/2000/svg">
+    <g style="animation:leaf1 30s linear infinite">
+      <path d="M0,20 Q15,0 30,20 Q15,40 0,20Z M15,12 L15,4" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="100,200;200,300;300,200;200,100;100,200" dur="30s" repeatCount="indefinite"/>
+    </g>
+    <g style="animation:leaf2 25s linear infinite">
+      <path d="M0,18 Q12,0 25,18 Q12,35 0,18Z M12,10 L12,3" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="1700,600;1600,500;1500,600;1600,700;1700,600" dur="25s" repeatCount="indefinite"/>
+    </g>
+    <g style="animation:leaf3 28s linear infinite">
+      <path d="M0,16 Q10,0 20,16 Q10,32 0,16Z M10,9 L10,3" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="800,900;900,800;1000,700;900,800;800,900" dur="28s" repeatCount="indefinite"/>
+    </g>
+  </svg>
+</div>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.06" viewBox="0 0 1920 1080">
+  <defs><filter id="bBlur"><feGaussianBlur stdDeviation="80"/></filter></defs>
+  <circle cx="200" cy="200" r="300" fill="#2E6F40" filter="url(#bBlur)"><animate attributeName="cx" values="200;250;200" dur="20s" repeatCount="indefinite"/></circle>
+  <circle cx="1600" cy="700" r="350" fill="#3d8a52" filter="url(#bBlur)"><animate attributeName="cy" values="700;650;700" dur="25s" repeatCount="indefinite"/></circle>
+  <circle cx="900" cy="400" r="250" fill="#5a9a3a" filter="url(#bBlur)" opacity=".5"><animate attributeName="r" values="250;280;250" dur="18s" repeatCount="indefinite"/></circle>
+</svg>
+
+<header class="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" width="166" height="35" viewBox="0 0 209 44"><defs><clipPath id="fc"><rect width="209" height="44" fill="none"/></clipPath></defs><g clip-path="url(#fc)"><path d="M0,0H21.769A21.849,21.849,0,0,1,43.537,21.8V43.6H21.769A21.849,21.849,0,0,1,0,21.8Z" fill="#fff" fill-rule="evenodd"/><path d="M28.387,50.879l-.024-9.644H41.2v-7.75H28.362V28.22H50.834a16.463,16.463,0,0,0-13.958-7.707H20.512V37.16a16.038,16.038,0,0,0,7.875,13.719" transform="translate(-15.131 -15.124)" fill="#1e4d2c" fill-rule="evenodd"/><path d="M202.685,69.881V95.123h5.059V86.755h12.583V82.509H207.743V74.127H223.49V69.881Z" transform="translate(-149.517 -51.522)" fill="#fff"/><path d="M419.744,82.513c0,5.345-1.676,8.567-7.284,8.567s-7.291-3.222-7.291-8.567V69.881h-5.059V82.513c0,7.182,3.555,13.009,12.342,13.009s12.35-5.827,12.35-13.009V69.881h-5.059Z" transform="translate(-295.155 -51.522)" fill="#fff"/><path d="M507.058,69.881v4.246h8.584v21H520.7v-21h8.584V69.881Z" transform="translate(-374.047 -51.522)" fill="#fff"/><path d="M609.982,86.756h12.583V82.51H609.982V74.127h15.747V69.881H604.923V95.123h21.234V90.877H609.982Z" transform="translate(-446.241 -51.522)" fill="#fff"/><path d="M715.748,69.881l-7.359,8.981-7.366-8.981h-5.976L705.4,82.506l-10.35,12.617h5.976l7.366-8.973,7.359,8.973h5.976l-10.35-12.617,10.35-12.625Z" transform="translate(-512.723 -51.522)" fill="#fff"/><path d="M312.961,82.5h-10.4V74.127h9.9c3.518,0,4.179,3.042,4.179,4.66a3.483,3.483,0,0,1-3.683,3.711m8.351-4.283c0-2.921-1.819-8.334-8.847-8.334H297.507V95.123h5.059V86.751h7.163l5.7,8.372h5.886L315.4,86.458c4.533-1.137,5.908-5.066,5.908-8.243" transform="translate(-219.465 -51.522)" fill="#fff"/></g></svg></a>
+    <nav class="navbar__nav" id="navMenu">
+      <ul class="navbar__list">
+        <li><a href="index.html" class="navbar__link">Home</a></li>
+        <li><a href="about.html" class="navbar__link">About Us</a></li>
+        <li><a href="juice-mixer.html" class="navbar__link">Juice Mixer</a></li>
+        <li><a href="contact.html" class="navbar__link active">Contact</a></li>
+        <li class="navbar__dropdown"><button class="navbar__link navbar__dropdown-toggle" aria-expanded="false">Brands<svg class="navbar__chevron" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="navbar__dropdown-menu"><li><a href="golden-eagle.html" class="navbar__dropdown-link">Golden Eagle</a></li><li><a href="natural-apple.html" class="navbar__dropdown-link">Natural 100</a></li><li><a href="relax.html" class="navbar__dropdown-link">Relax</a></li><li><a href="zeros.html" class="navbar__dropdown-link">ZEROS</a></li><li><a href="freesia.html" class="navbar__dropdown-link">Freesia</a></li></ul></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="contact-hero">
+    <div class="contact-hero-overlay"></div>
+    <div class="contact-hero-content">
+      <div class="contact-hero-badge">Contact Us</div>
+      <h1>Get in Touch</h1>
+      <p>We're here to answer your questions, hear your feedback, and help you connect with Frutex.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <h3>📍 Contact Information</h3>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f3ed.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+          <div><strong>Headquarters</strong><span>Zona Industriale Shirokë<br>Suharekë 23000, Kosovë</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f4de.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+          <div><strong>Phone</strong><span>+383 44 119 925</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/2709.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+          <div><strong>Email</strong><span>info@frutex-ks.com</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f550.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+          <div><strong>Business Hours</strong><span>Monday – Friday: 8:00 AM – 5:00 PM<br>Saturday: 8:00 AM – 2:00 PM<br>Sunday: Closed</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f310.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+          <div><strong>Social Media</strong>
+            <span>
+              <a href="https://www.facebook.com/FrutexLLC/" style="color:var(--green);text-decoration:none">Facebook</a> · 
+              <a href="https://www.instagram.com/frutexks/" style="color:var(--green);text-decoration:none">Instagram</a> · 
+              <a href="https://www.youtube.com/@frutexL.L.C" style="color:var(--green);text-decoration:none">YouTube</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <h3>Send Us a Message</h3>
+        <form id="contactForm" onsubmit="document.getElementById('formSuccess').style.display='block';this.reset();return false">
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+          <div class="form-group"><label>Phone Number <span style="color:#aaa;font-weight:400">(optional)</span></label><input type="tel" placeholder="+383 44 119 925"></div>
+          <div class="form-group"><label>Subject</label><select><option>General Inquiry</option><option>Export & Distribution</option><option>Product Information</option><option>Partnership</option><option>Other</option></select></div>
+          <div class="form-group"><label>Message</label><textarea placeholder="How can we help you?" required></textarea></div>
+          <button type="submit" class="form-submit">Send Message</button>
+        <div id="formSuccess" style="display:none;margin-top:16px;padding:14px 18px;background:rgba(46,111,64,.08);border:1px solid rgba(46,111,64,.15);border-radius:12px;color:var(--green);font-weight:600;font-size:.9rem;animation:fIn .4s ease">✓ Message sent successfully! We will get back to you soon.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+    <section style="max-width:1000px;margin:0 auto;padding:40px 32px 60px">
+    <h2 style="font-family:Georgia,serif;font-size:1.6rem;color:#111;text-align:center;margin-bottom:6px">Meet Our <span style="color:var(--green)">Team</span></h2>
+    <p style="text-align:center;color:#888;font-size:.9rem;margin-bottom:40px">Our dedicated departments are ready to assist you with any inquiry.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <div style="background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.34,1.56,.64,1)" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.06),0 16px 48px rgba(46,111,64,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(46,111,64,.08);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f3a7.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+        <h3 style="font-size:1rem;color:#111;margin-bottom:6px">Customer Support</h3>
+        <p style="font-size:.82rem;color:#888;line-height:1.5">Product questions, feedback, or help with your order — our support team is here for you.</p>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.34,1.56,.64,1)" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.06),0 16px 48px rgba(46,111,64,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(46,111,64,.08);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f4bc.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+        <h3 style="font-size:1rem;color:#111;margin-bottom:6px">Sales</h3>
+        <p style="font-size:.82rem;color:#888;line-height:1.5">Interested in placing an order or becoming a distributor? Our sales team can help.</p>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.34,1.56,.64,1)" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.06),0 16px 48px rgba(46,111,64,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(46,111,64,.08);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f4e3.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+        <h3 style="font-size:1rem;color:#111;margin-bottom:6px">Marketing</h3>
+        <p style="font-size:.82rem;color:#888;line-height:1.5">Media inquiries, brand collaborations, and partnership opportunities — connect with marketing.</p>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04);transition:all .35s cubic-bezier(.34,1.56,.64,1)" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.06),0 16px 48px rgba(46,111,64,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(46,111,64,.08);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f30d.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div>
+        <h3 style="font-size:1rem;color:#111;margin-bottom:6px">Export Department</h3>
+        <p style="font-size:.82rem;color:#888;line-height:1.5">International inquiries, export logistics, and market expansion — our global team is ready.</p>
+      </div>
+    </div>
+    <style>@media(max-width:768px){.contact-grid + div + section div[style*="grid-template-columns"]{grid-template-columns:repeat(2,1fr)!important}}@media(max-width:500px){.contact-grid + div + section div[style*="grid-template-columns"]{grid-template-columns:1fr!important}}</style>
+  </section>
+
+  <section class="map-section">
+    <div class="map-embed" style="position:relative">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=20.80,42.34,20.86,42.38&layer=mapnik&marker=42.355,20.83" allowfullscreen loading="lazy" style="border:0;width:100%;height:100%"></iframe>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=42.355,20.83" target="_blank" style="position:absolute;bottom:20px;right:20px;display:inline-flex;align-items:center;gap:6px;padding:12px 22px;background:var(--green);color:#fff;border-radius:30px;text-decoration:none;font-weight:600;font-size:.85rem;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:all .25s;z-index:5" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(46,111,64,.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(0,0,0,.2)'"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f9ed.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Get Directions</a>
+    </div>
+  </section>
+</main>
+
+<section style="max-width:1000px;margin:0 auto;padding:60px 32px;text-align:center">
+    <h2 style="font-family:Georgia,serif;font-size:1.6rem;color:#111;margin-bottom:6px">Follow <span style="color:var(--green)">Us</span></h2>
+    <p style="color:#888;font-size:.9rem;margin-bottom:32px">Stay connected with Frutex across all platforms.</p>
+    <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
+      <a href="https://www.facebook.com/FrutexLLC/" target="_blank" style="width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:all .3s cubic-bezier(.34,1.56,.64,1);text-decoration:none" onmouseover="this.style.background='var(--green)';this.style.transform='translateY(-4px) scale(1.1)';this.style.boxShadow='0 8px 24px rgba(46,111,64,.25)'" onmouseout="this.style.background='#fff';this.style.transform='';this.style.boxShadow=''">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#2E6F40"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/frutexks/" target="_blank" style="width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:all .3s cubic-bezier(.34,1.56,.64,1);text-decoration:none" onmouseover="this.style.background='var(--green)';this.style.transform='translateY(-4px) scale(1.1)';this.style.boxShadow='0 8px 24px rgba(46,111,64,.25)'" onmouseout="this.style.background='#fff';this.style.transform='';this.style.boxShadow=''">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#2E6F40"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@frutexL.L.C" target="_blank" style="width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:all .3s cubic-bezier(.34,1.56,.64,1);text-decoration:none" onmouseover="this.style.background='var(--green)';this.style.transform='translateY(-4px) scale(1.1)';this.style.boxShadow='0 8px 24px rgba(46,111,64,.25)'" onmouseout="this.style.background='#fff';this.style.transform='';this.style.boxShadow=''">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#2E6F40"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="#" target="_blank" style="width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:all .3s cubic-bezier(.34,1.56,.64,1);text-decoration:none" onmouseover="this.style.background='var(--green)';this.style.transform='translateY(-4px) scale(1.1)';this.style.boxShadow='0 8px 24px rgba(46,111,64,.25)'" onmouseout="this.style.background='#fff';this.style.transform='';this.style.boxShadow=''">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#2E6F40"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section style="background:linear-gradient(160deg,#1a3a28,#2E6F40,#1e4d2c);padding:80px 32px;text-align:center;position:relative;overflow:hidden;animation:fIn .8s ease">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;max-width:700px;margin:0 auto">
+      <h2 style="font-family:Georgia,serif;font-size:clamp(1.8rem,4vw,2.6rem);color:#f5ead6;margin-bottom:16px;line-height:1.2">Let's Build Something Great Together</h2>
+      <p style="color:rgba(255,255,255,.7);font-size:1.05rem;line-height:1.7;margin-bottom:32px">Whether you have a question, a business inquiry, or simply want to learn more about Frutex, we'd love to hear from you.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+        <a href="#" onclick="document.querySelector('.contact-form-card').scrollIntoView({behavior:'smooth'});return false" style="display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:#f5ead6;color:var(--green);border-radius:60px;text-decoration:none;font-weight:600;font-size:1rem;transition:all .3s;box-shadow:0 6px 24px rgba(0,0,0,.15)" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(0,0,0,.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/2709.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Send a Message</a>
+        <a href="brands.html" style="display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3);border-radius:60px;text-decoration:none;font-weight:600;font-size:1rem;transition:all .3s" onmouseover="this.style.background='rgba(255,255,255,.1)';this.style.borderColor='rgba(255,255,255,.5)'" onmouseout="this.style.background='';this.style.borderColor=''"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f964.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Explore Our Products</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#111;color:rgba(255,255,255,.7);padding:40px 32px;text-align:center;font-size:.85rem">
+  <p>&copy; 2026 Frutex. All rights reserved.</p>
+</footer>
+
+<script>
+document.querySelectorAll('.navbar__dropdown > .navbar__link').forEach(function(b){
+  b.addEventListener('click',function(e){e.preventDefault();this.parentElement.classList.toggle('open')})
+});
+document.addEventListener('click',function(e){
+  document.querySelectorAll('.navbar__dropdown').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})
+});
+</script>
+</body>
+</html>
