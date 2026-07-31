@@ -57,6 +57,28 @@
     .story-milestone-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
     .story-milestone h4{font-size:.85rem;color:#111;font-weight:700;margin-bottom:2px}.story-milestone span{font-size:.7rem;color:#888}
 
+    /* ── TIMELINE ── */
+    .timeline-section{max-width:800px;margin:0 auto;padding:60px 32px;text-align:center}
+    .timeline-section h2{font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:8px}
+    .timeline-section h2 span{color:var(--green)}
+    .timeline-sub{color:#888;font-size:.95rem;margin-bottom:40px}
+    .timeline{position:relative;padding:0}
+    .timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--green),rgba(46,111,64,.15),var(--green));transform:translateX(-50%)}
+    .timeline-item{position:relative;display:flex;align-items:center;margin-bottom:40px;opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+    .timeline-item.visible{opacity:1;transform:translateY(0)}
+    .timeline-item:nth-child(odd){flex-direction:row}
+    .timeline-item:nth-child(even){flex-direction:row-reverse}
+    .timeline-dot{position:absolute;left:50%;top:24px;width:16px;height:16px;border-radius:50%;background:var(--green);transform:translate(-50%,-50%);z-index:1;box-shadow:0 0 0 6px rgba(46,111,64,.12),0 0 20px rgba(46,111,64,.2)}
+    .timeline-card{width:calc(50% - 40px);background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 16px rgba(0,0,0,.05);text-align:left;transition:transform .3s,box-shadow .3s;position:relative}
+    .timeline-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.08)}
+    .timeline-card::after{content:"";position:absolute;top:24px;width:16px;height:16px;background:#fff;transform:rotate(45deg)}
+    .timeline-item:nth-child(odd) .timeline-card::after{right:-8px}
+    .timeline-item:nth-child(even) .timeline-card::after{left:-8px}
+    .timeline-year{display:inline-block;padding:4px 12px;background:var(--green);color:#fff;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.04em;margin-bottom:10px}
+    .timeline-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:10px}
+    .timeline-card h3{font-size:1.05rem;color:#111;margin-bottom:6px}
+    .timeline-card p{font-size:.88rem;color:#777;line-height:1.5}
+
     /* ── EXPORT MAP ── */
     .export-section{max-width:1100px;margin:0 auto;padding:80px 32px;text-align:center}
     .export-section h2{font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:8px}.export-section h2 span{color:var(--green)}
@@ -164,6 +186,19 @@
     </div>
     <div class="story-img">
       <img src="https://goldeneagle-ks.com/wp-content/uploads/2024/03/Prodhim-4.png" alt="Frutex production facility">
+    </div>
+  </section>
+
+  <section class="timeline-section">
+    <h2>Our <span>Journey</span></h2>
+    <p class="timeline-sub">From a small workshop to a global brand — every milestone matters.</p>
+    <div class="timeline">
+      <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-card"><span class="timeline-year">1994</span><div class="timeline-icon" style="background:rgba(46,111,64,.1)">🏭</div><h3>Founded</h3><p>Frutex begins as a family workshop in Suhareka, Kosovo — crafting homemade juices from local fruit.</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-card"><span class="timeline-year">1997</span><div class="timeline-icon" style="background:rgba(230,150,30,.1)">🥤</div><h3>First Beverage</h3><p>The first commercial product line launches — natural fruit juices that quickly win local popularity.</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-card"><span class="timeline-year">2005</span><div class="timeline-icon" style="background:rgba(33,150,243,.1)">🏗️</div><h3>Production Expansion</h3><p>A state-of-the-art facility opens, multiplying production capacity and modernizing operations.</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-card"><span class="timeline-year">2012</span><div class="timeline-icon" style="background:rgba(156,39,176,.1)">🌍</div><h3>Export Markets</h3><p>Frutex breaks into international markets, shipping to Europe, North America, and the Middle East.</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-card"><span class="timeline-year">2020</span><div class="timeline-icon" style="background:rgba(76,175,80,.1)">🚀</div><h3>New Product Lines</h3><p>Golden Eagle Energy, Relax Ice Tea, and ZEROS join the portfolio — redefining the brand.</p></div></div>
+      <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-card"><span class="timeline-year">2026</span><div class="timeline-icon" style="background:rgba(46,111,64,.1)">✨</div><h3>Today</h3><p>500+ employees, 35+ export markets, and a growing family of beloved beverages worldwide.</p></div></div>
     </div>
   </section>
 
