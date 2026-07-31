@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Frutex</title>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--transition:.25s ease}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both}
+    @keyframes fPage{from{opacity:0}to{opacity:1}}
+
+    .navbar{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:1000;width:82vw;max-width:1050px;border-radius:40px;background:rgba(255,255,255,.12);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(0,0,0,.12)}
+    .navbar__inner{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:10px 36px;height:56px;width:100%}
+    .navbar__logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none;transition:transform var(--transition)}.navbar__logo:hover{transform:scale(1.05)}.navbar__logo svg{height:30px;width:auto}
+    .navbar__nav{display:flex;align-items:center}.navbar__list{display:flex;align-items:center;list-style:none;gap:6px}
+    .navbar__link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:14px;font-weight:600;color:var(--white-70);text-decoration:none;border-radius:20px;background:none;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;letter-spacing:.01em;position:relative;transition:color .25s ease,background .25s ease}
+    .navbar__link::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:2px;background:var(--white);border-radius:1px;transition:transform .25s ease}
+    .navbar__link:hover{color:var(--white)}.navbar__link:hover::after{transform:translateX(-50%) scaleX(1)}
+    .navbar__link.active{color:var(--white);background:rgba(46,111,64,.7)}.navbar__link.active::after{display:none}
+    .navbar__chevron{flex-shrink:0;transition:transform var(--transition);opacity:.5}.navbar__dropdown.open .navbar__chevron{transform:rotate(180deg);opacity:1}
+    .navbar__dropdown{position:relative}
+    .navbar__dropdown-menu{position:absolute;top:calc(100%+10px);left:50%;transform:translateX(-50%);min-width:200px;padding:8px;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-radius:14px;list-style:none;opacity:0;visibility:hidden;pointer-events:none;box-shadow:0 12px 40px rgba(0,0,0,.15)}
+    .navbar__dropdown.open .navbar__dropdown-menu{opacity:1;visibility:visible;pointer-events:auto}
+    .navbar__dropdown-link{display:block;padding:10px 14px;font-size:13.5px;font-weight:500;color:#333;text-decoration:none;border-radius:8px;transition:.15s}
+    .navbar__dropdown-link:hover{background:rgba(46,111,64,.1);color:var(--green);transform:translateX(4px)}
+
+    .contact-hero{position:relative;height:70vh;min-height:450px;display:flex;align-items:center;justify-content:center;background:url(https://goldeneagle-ks.com/wp-content/uploads/2024/03/Prodhim-4.png) center/cover no-repeat}
+    .contact-hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,15,5,.85) 0%,rgba(46,111,64,.75) 50%,rgba(0,0,0,.7) 100%)}
+    .contact-hero-content{position:relative;z-index:1;text-align:center;padding:0 32px;animation:fIn .8s ease both}
+    .contact-hero-badge{display:inline-block;padding:8px 20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#d4e8d0;border-radius:30px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px;backdrop-filter:blur(4px)}
+    .contact-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.8rem,7vw,5rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:20px;letter-spacing:-.02em}
+    .contact-hero p{font-size:1.1rem;color:rgba(255,255,255,.7);max-width:550px;margin:0 auto;line-height:1.7}
+    @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    .contact-section{max-width:1000px;margin:0 auto;padding:80px 32px}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .contact-info-card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04)}
+    .contact-info-card h3{font-family:Georgia,serif;font-size:1.3rem;color:#111;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+    .contact-info-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+    .contact-info-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .contact-info-item strong{display:block;color:#111;font-size:.9rem;margin-bottom:2px}
+    .contact-info-item span{color:#888;font-size:.85rem;line-height:1.5}
+
+    .contact-form-card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04)}
+    .contact-form-card h3{font-family:Georgia,serif;font-size:1.3rem;color:#111;margin-bottom:24px}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:6px}
+    .form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:1.5px solid rgba(0,0,0,.1);border-radius:12px;font-size:.9rem;font-family:inherit;transition:border .2s;background:#fafbfa}
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(46,111,64,.08)}
+    .form-group textarea{resize:vertical;min-height:120px}
+    .form-submit{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:12px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .25s}
+    .form-submit:hover{background:#3d8a52;transform:translateY(-1px);box-shadow:0 6px 20px rgba(46,111,64,.2)}
+
+    .map-section{max-width:1000px;margin:0 auto;padding:0 32px 80px}
+    .map-embed{border-radius:20px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.03),0 8px 32px rgba(0,0,0,.04);height:350px;background:#e8ede6}
+    .map-embed iframe{width:100%;height:100%;border:0}
+
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr}.contact-hero{height:50vh}}
+  </style>
+</head>
+<body>
+<header class="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" width="166" height="35" viewBox="0 0 209 44"><defs><clipPath id="fc"><rect width="209" height="44" fill="none"/></clipPath></defs><g clip-path="url(#fc)"><path d="M0,0H21.769A21.849,21.849,0,0,1,43.537,21.8V43.6H21.769A21.849,21.849,0,0,1,0,21.8Z" fill="#fff" fill-rule="evenodd"/><path d="M28.387,50.879l-.024-9.644H41.2v-7.75H28.362V28.22H50.834a16.463,16.463,0,0,0-13.958-7.707H20.512V37.16a16.038,16.038,0,0,0,7.875,13.719" transform="translate(-15.131 -15.124)" fill="#1e4d2c" fill-rule="evenodd"/><path d="M202.685,69.881V95.123h5.059V86.755h12.583V82.509H207.743V74.127H223.49V69.881Z" transform="translate(-149.517 -51.522)" fill="#fff"/><path d="M419.744,82.513c0,5.345-1.676,8.567-7.284,8.567s-7.291-3.222-7.291-8.567V69.881h-5.059V82.513c0,7.182,3.555,13.009,12.342,13.009s12.35-5.827,12.35-13.009V69.881h-5.059Z" transform="translate(-295.155 -51.522)" fill="#fff"/><path d="M507.058,69.881v4.246h8.584v21H520.7v-21h8.584V69.881Z" transform="translate(-374.047 -51.522)" fill="#fff"/><path d="M609.982,86.756h12.583V82.51H609.982V74.127h15.747V69.881H604.923V95.123h21.234V90.877H609.982Z" transform="translate(-446.241 -51.522)" fill="#fff"/><path d="M715.748,69.881l-7.359,8.981-7.366-8.981h-5.976L705.4,82.506l-10.35,12.617h5.976l7.366-8.973,7.359,8.973h5.976l-10.35-12.617,10.35-12.625Z" transform="translate(-512.723 -51.522)" fill="#fff"/><path d="M312.961,82.5h-10.4V74.127h9.9c3.518,0,4.179,3.042,4.179,4.66a3.483,3.483,0,0,1-3.683,3.711m8.351-4.283c0-2.921-1.819-8.334-8.847-8.334H297.507V95.123h5.059V86.751h7.163l5.7,8.372h5.886L315.4,86.458c4.533-1.137,5.908-5.066,5.908-8.243" transform="translate(-219.465 -51.522)" fill="#fff"/></g></svg></a>
+    <nav class="navbar__nav" id="navMenu">
+      <ul class="navbar__list">
+        <li><a href="index.html" class="navbar__link">Home</a></li>
+        <li><a href="about.html" class="navbar__link">About Us</a></li>
+        <li><a href="juice-mixer.html" class="navbar__link">Juice Mixer</a></li>
+        <li><a href="contact.html" class="navbar__link active">Contact</a></li>
+        <li class="navbar__dropdown"><button class="navbar__link navbar__dropdown-toggle" aria-expanded="false">Brands<svg class="navbar__chevron" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="navbar__dropdown-menu"><li><a href="golden-eagle.html" class="navbar__dropdown-link">Golden Eagle</a></li><li><a href="natural-apple.html" class="navbar__dropdown-link">Natural 100</a></li><li><a href="relax.html" class="navbar__dropdown-link">Relax</a></li><li><a href="zeros.html" class="navbar__dropdown-link">ZEROS</a></li><li><a href="freesia.html" class="navbar__dropdown-link">Freesia</a></li></ul></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="contact-hero">
+    <div class="contact-hero-overlay"></div>
+    <div class="contact-hero-content">
+      <div class="contact-hero-badge">Contact Us</div>
+      <h1>Get in Touch</h1>
+      <p>We're here to answer your questions, hear your feedback, and help you connect with Frutex.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <h3>📍 Contact Information</h3>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)">🏭</div>
+          <div><strong>Headquarters</strong><span>Zona Industriale Shirokë<br>Suharekë 23000, Kosovë</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)">📞</div>
+          <div><strong>Phone</strong><span>+383 44 119 925</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)">✉️</div>
+          <div><strong>Email</strong><span>info@frutex-ks.com</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="background:rgba(46,111,64,.08)">🌐</div>
+          <div><strong>Social Media</strong>
+            <span>
+              <a href="https://www.facebook.com/FrutexLLC/" style="color:var(--green);text-decoration:none">Facebook</a> · 
+              <a href="https://www.instagram.com/frutexks/" style="color:var(--green);text-decoration:none">Instagram</a> · 
+              <a href="https://www.youtube.com/@frutexL.L.C" style="color:var(--green);text-decoration:none">YouTube</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <h3>Send Us a Message</h3>
+        <form onsubmit="alert('Thank you for your message! We will get back to you soon.');return false">
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+          <div class="form-group"><label>Subject</label><select><option>General Inquiry</option><option>Export & Distribution</option><option>Product Information</option><option>Partnership</option><option>Other</option></select></div>
+          <div class="form-group"><label>Message</label><textarea placeholder="How can we help you?" required></textarea></div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <div class="map-embed">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=20.81,42.34,20.85,42.37&layer=mapnik&marker=42.355,20.83" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer style="background:#111;color:rgba(255,255,255,.7);padding:40px 32px;text-align:center;font-size:.85rem">
+  <p>&copy; 2026 Frutex. All rights reserved.</p>
+</footer>
+
+<script>
+document.querySelectorAll('.navbar__dropdown > .navbar__link').forEach(function(b){
+  b.addEventListener('click',function(e){e.preventDefault();this.parentElement.classList.toggle('open')})
+});
+document.addEventListener('click',function(e){
+  document.querySelectorAll('.navbar__dropdown').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})
+});
+</script>
+</body>
+</html>
