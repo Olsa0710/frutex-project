@@ -4,13 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juice Mixer — Frutex</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--transition:.25s ease}
-    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both;position:relative}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(180deg,#f8faf7,#f3f7f0 0%,#f8faf6 30%,#f5f8f2 60%,#fafcf8 100%);-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both;position:relative}
     @keyframes fPage{from{opacity:0}to{opacity:1}}
 
     .bg-blob{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(120px);opacity:.04}
@@ -22,7 +19,7 @@
     .navbar__inner{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:10px 36px;height:56px;width:100%}
     .navbar__logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none;transition:transform var(--transition)}.navbar__logo:hover{transform:scale(1.05)}.navbar__logo svg{height:30px;width:auto}
     .navbar__nav{display:flex;align-items:center}.navbar__list{display:flex;align-items:center;list-style:none;gap:6px}
-    .navbar__link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:14px;font-weight:600;color:var(--white-70);text-decoration:none;border-radius:20px;background:none;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;letter-spacing:.01em;position:relative;transition:color .25s ease,background .25s ease}
+    .navbar__link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:14px;font-weight:600;color:var(--white-70);text-decoration:none;border-radius:20px;background:none;border:none;cursor:pointer;font-family:Poppins,sans-serif;white-space:nowrap;letter-spacing:.01em;position:relative;transition:color .25s ease,background .25s ease}
     .navbar__link::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:2px;background:var(--white);border-radius:1px;transition:transform .25s ease}
     .navbar__link:hover{color:var(--white)}.navbar__link:hover::after{transform:translateX(-50%) scaleX(1)}
     .navbar__link.active{color:var(--white);background:rgba(46,111,64,.7)}.navbar__link.active::after{display:none}
@@ -44,13 +41,13 @@
     .mixer-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,5,.15) 0%,rgba(0,0,0,.3) 100%)}
     .mixer-hero-content{position:relative;z-index:1;text-align:center;padding:0 32px;animation:fIn .8s ease both}
     .mixer-hero-badge{display:inline-block;padding:8px 20px;background:rgba(46,111,64,.3);border:1px solid rgba(255,255,255,.15);color:#d4e8d0;border-radius:30px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px}
-    .mixer-hero h1{font-family:'Poppins',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:10px}
+    .mixer-hero h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.2rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:10px}
     .mixer-hero p{font-size:0.95rem;color:rgba(255,255,255,.7);max-width:480px;margin:0 auto 16px;line-height:1.5}
     @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
     /* How to Play */
     .how-to-play{max-width:900px;margin:0 auto;padding:40px 32px 20px}
-    .how-to-play h2{font-family:'Poppins',sans-serif;font-size:1.5rem;color:#1a1a1a;text-align:center;margin-bottom:24px}
+    .how-to-play h2{font-family:Georgia,serif;font-size:1.5rem;color:#1a1a1a;text-align:center;margin-bottom:24px}
     .how-to-play h2 span{color:var(--green)}
     .htp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .htp-card{background:#fff;border-radius:14px;padding:16px 14px;text-align:center;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:transform .3s}
@@ -65,7 +62,7 @@
     .game-scoreboard{display:flex;justify-content:space-evenly;width:100%;padding:8px 0;background:linear-gradient(135deg,rgba(46,111,64,.04),rgba(46,111,64,.02));border-radius:16px}
     .game-score,.game-timer{display:flex;flex-direction:column;align-items:center;gap:2px}
     .game-score-label{font-size:.7rem;color:#aaa;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
-    .game-score-val{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:700;color:#111}
+    .game-score-val{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#111}
     .game-score-val.pop{animation:sPop .4s cubic-bezier(.34,1.56,.64,1)}
     .game-timer .game-score-val{color:var(--green)}
     @keyframes sPop{0%{transform:scale(1)}30%{transform:scale(1.35)}100%{transform:scale(1)}}
@@ -96,7 +93,7 @@
     .finished-juice::before{content:'';position:absolute;top:8px;left:10%;width:40%;height:15px;background:rgba(255,255,255,.35);border-radius:50%;transform:rotate(-10deg)}
     .finished-juice::after{content:'';position:absolute;top:4px;right:15%;width:20%;height:8px;background:rgba(255,255,255,.25);border-radius:50%;transform:rotate(-5deg)}
 
-    .game-blend-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,#4a9e5e 0%,#2E6F40 40%,#1a4526 100%);color:#fff;border:none;border-radius:60px;font-weight:700;font-size:1.1rem;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);font-family:inherit;box-shadow:0 6px 24px rgba(46,111,64,.35),0 2px 6px rgba(0,0,0,.1);letter-spacing:.02em;position:relative;overflow:hidden}
+    .game-blend-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,#4a9e5e 0%,#2E6F40 40%,#1a4526 100%);color:#fff;border:none;border-radius:60px;font-weight:700;font-size:1.1rem;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);font-family:Poppins,sans-serif;box-shadow:0 6px 24px rgba(46,111,64,.35),0 2px 6px rgba(0,0,0,.1);letter-spacing:.02em;position:relative;overflow:hidden}
     .game-blend-btn::before{content:'';position:absolute;inset:0;border-radius:60px;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 60%);pointer-events:none}
     .game-blend-btn:hover:not(:disabled){transform:translateY(-3px) scale(1.04);box-shadow:0 12px 36px rgba(46,111,64,.5)}
     .game-blend-btn:active:not(:disabled){transform:scale(.97)}
@@ -111,7 +108,7 @@
     @keyframes fbShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 
     .game-fruits{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:4px 0;max-width:100%}
-    .fruit-btn{display:flex;flex-direction:row;align-items:center;gap:5px;padding:8px 12px;background:#fff;border:1.5px solid rgba(46,111,64,.08);border-radius:14px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:inherit;white-space:nowrap;flex:0 1 auto;min-width:fit-content}
+    .fruit-btn{display:flex;flex-direction:row;align-items:center;gap:5px;padding:8px 12px;background:#fff;border:1.5px solid rgba(46,111,64,.08);border-radius:14px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:Poppins,sans-serif;white-space:nowrap;flex:0 1 auto;min-width:fit-content}
     .fruit-btn:hover{border-color:rgba(46,111,64,.25);background:rgba(46,111,64,.04);transform:translateY(-3px);box-shadow:0 6px 20px rgba(46,111,64,.08)}
     .fruit-btn:active{transform:scale(.94)}
     .fruit-btn.selected{border-color:var(--green);background:rgba(46,111,64,.12);box-shadow:0 4px 12px rgba(46,111,64,.1)}
@@ -120,9 +117,9 @@
 
     .game-overlay{position:absolute;inset:0;background:rgba(0,0,0,.78);border-radius:32px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;z-index:20;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:overlayIn .4s ease}
     @keyframes overlayIn{from{opacity:0}to{opacity:1}}
-    .game-overlay h2{font-family:'Poppins',sans-serif;color:#f5ead6;font-size:2rem;margin:0}
+    .game-overlay h2{font-family:Georgia,serif;color:#f5ead6;font-size:2rem;margin:0}
     .game-overlay p{color:rgba(255,255,255,.6);margin:0;font-size:.95rem}
-    .game-overlay-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:#f5ead6;color:#2E6F40;border:none;border-radius:60px;font-weight:600;font-size:1rem;cursor:pointer;font-family:inherit;transition:all .3s cubic-bezier(.34,1.56,.64,1);text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+    .game-overlay-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:#f5ead6;color:#2E6F40;border:none;border-radius:60px;font-weight:600;font-size:1rem;cursor:pointer;font-family:Poppins,sans-serif;transition:all .3s cubic-bezier(.34,1.56,.64,1);text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.15)}
     .game-overlay-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
     .game-overlay-btn:active{transform:scale(.96)}
     .game-overlay.high-score{background:rgba(0,30,15,.88)}
@@ -136,16 +133,65 @@
 
     .pitcher-lid{position:absolute;top:117px;left:50%;transform:translate(-50%,0);width:60px;height:28px;border-radius:30px 30px 10px 10px;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.6));border:2px solid rgba(255,255,255,.15);pointer-events:none;z-index:6;transition:all .8s cubic-bezier(.34,1.56,.64,1);box-shadow:0 6px 16px rgba(0,0,0,.25)}
     .pitcher-lid.open{transform:translate(-50%,-50px) rotate(30deg);opacity:0}
-    .pitcher-lid.closed{transform:translate(-50%,0) rotate(0deg);opacity:1}
+    .pitcher-lid.closed{transform:translate(-50%,-3px) rotate(0deg);opacity:1}
 
     @media(max-width:768px){.htp-grid{grid-template-columns:1fr}.mixer-frame{padding:24px 16px 20px;gap:14px}}
     @media(max-width:500px){.game-fruits{gap:4px}.fruit-btn{padding:6px 8px}.fruit-emoji{font-size:1.2rem}.fruit-name{font-size:.6rem}.mixer-hero{height:40vh}.mixer-area{padding:40px 12px}.game-blend-btn{padding:14px 28px;font-size:1rem}}
     @media(max-width:960px){.navbar{top:12px;border-radius:28px;width:90vw}.navbar__inner{padding:8px 20px;height:48px}.navbar__logo svg{height:24px}.navbar__hamburger{display:flex}.navbar__nav{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;align-items:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--transition),visibility var(--transition);z-index:1000}.navbar__nav.open{opacity:1;visibility:visible;pointer-events:auto}.navbar__list{flex-direction:column;gap:8px;align-items:center}.navbar__link{font-size:17px;padding:12px 20px}.navbar__link:hover{background:rgba(255,255,255,.1)}.navbar__link.active{background:rgba(46,111,64,.7)}.navbar__dropdown-menu{position:static;transform:none;min-width:unset;background:transparent;box-shadow:none;padding:4px 0;opacity:1;visibility:visible;pointer-events:auto;display:none;animation:none}.navbar__dropdown.open .navbar__dropdown-menu{display:block}.navbar__dropdown-link{color:rgba(255,255,255,.7);font-size:15px;text-align:center}.navbar__dropdown-link:hover{background:rgba(255,255,255,.1);color:var(--white);transform:none}}
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800</head>display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="bg-blob bg-blob-1"></div>
-<div class="bg-blob bg-blob-2"></div>
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden">
+  <!-- Animated gradient waves -->
+  <svg style="position:absolute;inset:0;opacity:.08" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2E6F40"/><stop offset="100%" stop-color="#a8e6a0"/></linearGradient>
+      <linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e8f5e9"/><stop offset="100%" stop-color="#2E6F40"/></linearGradient>
+      <linearGradient id="g3" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c8e6c9"/><stop offset="100%" stop-color="#f1f8e9"/></linearGradient>
+    </defs>
+    <path d="M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z" fill="url(#g1)" opacity=".15">
+      <animate attributeName="d" dur="20s" repeatCount="indefinite" values="M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z;M0,280 Q250,350 500,200 T1000,350 T1500,250 L1920,200 L1920,0 L0,0Z;M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z"/>
+    </path>
+    <path d="M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z" fill="url(#g2)" opacity=".1">
+      <animate attributeName="d" dur="25s" repeatCount="indefinite" values="M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z;M0,480 Q400,550 800,400 T1600,550 L1920,450 L1920,300 L0,300Z;M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z"/>
+    </path>
+  </svg>
+
+  <!-- Soft glowing circles -->
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(46,111,64,.06) 0%,transparent 70%);top:10%;left:5%;filter:blur(40px)">
+    <style>@keyframes f1{0%,100%{transform:translate(0,0)}33%{transform:translate(40px,-20px)}66%{transform:translate(-20px,30px)}}</style>
+    <div style="animation:f1 15s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(46,180,100,.05) 0%,transparent 70%);top:50%;right:8%;filter:blur(50px)">
+    <style>@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}</style>
+    <div style="animation:f2 20s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(46,150,80,.04) 0%,transparent 70%);bottom:10%;left:30%;filter:blur(45px)">
+    <style>@keyframes f3{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-15px)}}</style>
+    <div style="animation:f3 18s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+
+  <!-- Floating leaves -->
+  <svg style="position:absolute;inset:0;opacity:.02" xmlns="http://www.w3.org/2000/svg">
+    <g style="animation:leaf1 30s linear infinite">
+      <path d="M0,20 Q15,0 30,20 Q15,40 0,20Z M15,12 L15,4" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="100,200;200,300;300,200;200,100;100,200" dur="30s" repeatCount="indefinite"/>
+    </g>
+    <g style="animation:leaf2 25s linear infinite">
+      <path d="M0,18 Q12,0 25,18 Q12,35 0,18Z M12,10 L12,3" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="1700,600;1600,500;1500,600;1600,700;1700,600" dur="25s" repeatCount="indefinite"/>
+    </g>
+    <g style="animation:leaf3 28s linear infinite">
+      <path d="M0,16 Q10,0 20,16 Q10,32 0,16Z M10,9 L10,3" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="800,900;900,800;1000,700;900,800;800,900" dur="28s" repeatCount="indefinite"/>
+    </g>
+  </svg>
+</div>
+
+
+
+
 
 <header class="navbar" id="navbar">
   <div class="navbar__inner">
@@ -156,10 +202,11 @@
       <ul class="navbar__list">
         <li><a href="index.html" class="navbar__link">Home</a></li>
         <li><a href="about.html" class="navbar__link">About Us</a></li>
-        <li><a href="juice-mixer.html" class="navbar__link active">Juice Mixer</a></li>
-        <li><a href="#" class="navbar__link">Contact</a></li>
+        <li><a href="juice-mixer.html" class="navbar__link"active">Juice Mixer</a></li>
+        <li><a href="contact.html" class="navbar__link">Contact</a></li>
         <li class="navbar__dropdown"><button class="navbar__link navbar__dropdown-toggle" aria-expanded="false">Brands<svg class="navbar__chevron" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="navbar__dropdown-menu"><li><a href="#" class="navbar__dropdown-link">Golden Eagle</a></li><li><a href="#" class="navbar__dropdown-link">Natural 100</a></li><li><a href="#" class="navbar__dropdown-link">Relax</a></li><li><a href="#" class="navbar__dropdown-link">ZEROS</a></li><li><a href="#" class="navbar__dropdown-link">Freesia</a></li></ul></li>
-        <li class="navbar__dropdown"><button class="navbar__link navbar__dropdown-toggle" aria-expanded="false">Foundation<svg class="navbar__chevron" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="navbar__dropdown-menu"><li><a href="#" class="navbar__dropdown-link">Our Mission</a></li><li><a href="#" class="navbar__dropdown-link">Golden Eco</a></li><li><a href="#" class="navbar__dropdown-link">Donate</a></li></ul></li>
+      </ul></li>
+        </ul></li>
       </ul>
     </nav>
     <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu"><span class="navbar__hamburger-line"></span><span class="navbar__hamburger-line"></span><span class="navbar__hamburger-line"></span></button>
@@ -179,9 +226,9 @@
   <section class="how-to-play">
     <h2>How to <span>Play</span></h2>
     <div class="htp-grid">
-      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)">📋</div><h3>Read the Recipe</h3><p>A Natural 100 juice appears at the top — match the ingredients shown.</p></div>
-      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)">👆</div><h3>Pick Ingredients</h3><p>Click or drag fruits into the blender to build your juice.</p></div>
-      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)">⚡</div><h3>Blend & Score</h3><p>Press Blend — match the recipe to earn points before time runs out.</p></div>
+      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f4cb.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div><h3>Read the Recipe</h3><p>A Natural 100 juice appears at the top — match the ingredients shown.</p></div>
+      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f446.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div><h3>Pick Ingredients</h3><p>Click or drag fruits into the blender to build your juice.</p></div>
+      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/26a1.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div><h3>Blend & Score</h3><p>Press Blend — match the recipe to earn points before time runs out.</p></div>
     </div>
   </section>
 
@@ -193,7 +240,7 @@
         <div class="game-timer"><span class="game-score-label">Time</span><span class="game-score-val" id="gTimer">60</span></div>
       </div>
       <div class="game-overlay" id="gameStartOverlay">
-        <h2>🥤 Juice Mixer</h2>
+        <h2><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f964.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Juice Mixer</h2>
         <p>Drag fruits into the blender to match the recipe!</p>
         <button class="game-overlay-btn" onclick="document.getElementById('gameStartOverlay').remove();document.__startGame()">▶ Play</button>
       </div>
@@ -241,18 +288,17 @@
         </svg>
       </div>
       <div class="game-feedback" id="gFeedback"></div>
-      <button class="game-blend-btn" id="gBlendBtn"><span class="blend-icon">⚡</span> Blend</button>
+      <button class="game-blend-btn" id="gBlendBtn"><span class="blend-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/26a1.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></span> Blend</button>
       <div class="game-fruits" id="gFruits">
-        <button class="fruit-btn" draggable="true" data-fruit="strawberry"><span class="fruit-emoji">🍓</span><span class="fruit-name">Strawberry</span></button>
-        <button class="fruit-btn" draggable="true" data-fruit="apple"><span class="fruit-emoji">🍏</span><span class="fruit-name">Apple</span></button>
-        <button class="fruit-btn" draggable="true" data-fruit="orange"><span class="fruit-emoji">🍊</span><span class="fruit-name">Orange</span></button>
-        <button class="fruit-btn" draggable="true" data-fruit="peach"><span class="fruit-emoji">🍑</span><span class="fruit-name">Peach</span></button>
-        <button class="fruit-btn" draggable="true" data-fruit="grape"><span class="fruit-emoji">🍇</span><span class="fruit-name">Grape</span></button>
-        <button class="fruit-btn" draggable="true" data-fruit="sourcherry"><span class="fruit-emoji">🍒</span><span class="fruit-name">Cherry</span></button>
-        <button class="fruit-btn" draggable="true" data-fruit="pear"><span class="fruit-emoji">🍐</span><span class="fruit-name">Pear</span></button>
-        <button class="fruit-btn" draggable="true" data-fruit="carrot"><span class="fruit-emoji">🥕</span><span class="fruit-name">Carrot</span></button>
-      </div>
-    </div>
+        <button class="fruit-btn" draggable="true" data-fruit="strawberry"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f353.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Strawberry</span></button>
+        <button class="fruit-btn" draggable="true" data-fruit="apple"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f34f.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Apple</span></button>
+        <button class="fruit-btn" draggable="true" data-fruit="orange"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f34a.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Orange</span></button>
+        <button class="fruit-btn" draggable="true" data-fruit="peach"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f351.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Peach</span></button>
+        <button class="fruit-btn" draggable="true" data-fruit="grape"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f347.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Grape</span></button>
+        <button class="fruit-btn" draggable="true" data-fruit="sourcherry"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f352.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Cherry</span></button>
+        <button class="fruit-btn" draggable="true" data-fruit="pear"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f350.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Pear</span></button>
+        <button class="fruit-btn" draggable="true" data-fruit="carrot"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f955.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Carrot</span></button>
+      </div></div>
   </section>
 </main>
 
@@ -263,7 +309,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="150" height="32" viewBox="0 0 209 44"><defs><clipPath id="fc2"><rect width="209" height="44" fill="none"/></clipPath></defs><g clip-path="url(#fc2)"><path d="M0,0H21.769A21.849,21.849,0,0,1,43.537,21.8V43.6H21.769A21.849,21.849,0,0,1,0,21.8Z" fill="#fff" fill-rule="evenodd"/><path d="M28.387,50.879l-.024-9.644H41.2v-7.75H28.362V28.22H50.834a16.463,16.463,0,0,0-13.958-7.707H20.512V37.16a16.038,16.038,0,0,0,7.875,13.719" transform="translate(-15.131 -15.124)" fill="#111" fill-rule="evenodd"/><path d="M202.685,69.881V95.123h5.059V86.755h12.583V82.509H207.743V74.127H223.49V69.881Z" transform="translate(-149.517 -51.522)" fill="#fff"/><path d="M419.744,82.513c0,5.345-1.676,8.567-7.284,8.567s-7.291-3.222-7.291-8.567V69.881h-5.059V82.513c0,7.182,3.555,13.009,12.342,13.009s12.35-5.827,12.35-13.009V69.881h-5.059Z" transform="translate(-295.155 -51.522)" fill="#fff"/><path d="M507.058,69.881v4.246h8.584v21H520.7v-21h8.584V69.881Z" transform="translate(-374.047 -51.522)" fill="#fff"/><path d="M609.982,86.756h12.583V82.51H609.982V74.127h15.747V69.881H604.923V95.123h21.234V90.877H609.982Z" transform="translate(-446.241 -51.522)" fill="#fff"/><path d="M715.748,69.881l-7.359,8.981-7.366-8.981h-5.976L705.4,82.506l-10.35,12.617h5.976l7.366-8.973,7.359,8.973h5.976l-10.35-12.617,10.35-12.625Z" transform="translate(-512.723 -51.522)" fill="#fff"/><path d="M312.961,82.5h-10.4V74.127h9.9c3.518,0,4.179,3.042,4.179,4.66a3.483,3.483,0,0,1-3.683,3.711m8.351-4.283c0-2.921-1.819-8.334-8.847-8.334H297.507V95.123h5.059V86.751h7.163l5.7,8.372h5.886L315.4,86.458c4.533-1.137,5.908-5.066,5.908-8.243" transform="translate(-219.465 -51.522)" fill="#fff"/></g></svg>
         <p style="font-size:.88rem;line-height:1.6;margin:16px 0 20px;color:rgba(255,255,255,.45)">Kosovo's leading beverage producer since 1994.</p>
       </div>
-      <div><h4 style="color:#fff;font-size:.95rem;font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.04em">Quick Links</h4><a href="index.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Home</a><a href="about.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">About Us</a><a href="juice-mixer.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Juice Mixer</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Contact</a></div>
+      <div><h4 style="color:#fff;font-size:.95rem;font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.04em">Quick Links</h4><a href="index.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Home</a><a href="about.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">About Us</a><a href="juice-mixer.html" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px"active">Juice Mixer</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Contact</a></div>
       <div><h4 style="color:#fff;font-size:.95rem;font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.04em">Products</h4><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Golden Eagle</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Natural 100</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Relax</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">ZEROS</a><a href="#" style="display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px">Freesia</a></div>
       <div><h4 style="color:#fff;font-size:.95rem;font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.04em">Contact</h4><p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:8px">Zona Industriale Shirokë<br>Suharekë 23000, Kosovë</p><p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:8px">+383 44 119 925</p><p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:8px">info@frutex-ks.com</p></div>
     </div>
@@ -282,7 +328,8 @@
 
   // === JUICE MIXER GAME ===
   var fruits=['strawberry','apple','orange','peach','grape','sourcherry','pear','carrot'];
-  var emojis={strawberry:'🍓',apple:'🍏',orange:'🍊',peach:'🍑',grape:'🍇',sourcherry:'🍒',pear:'🍐',carrot:'🥕'};
+  var base="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64";
+  var emojis={strawberry:'<img src="'+base+'/1f353.png" style="width:22px;height:22px">',apple:'<img src="'+base+'/1f34f.png" style="width:22px;height:22px">',orange:'<img src="'+base+'/1f34a.png" style="width:22px;height:22px">',peach:'<img src="'+base+'/1f351.png" style="width:22px;height:22px">',grape:'<img src="'+base+'/1f347.png" style="width:22px;height:22px">',sourcherry:'<img src="'+base+'/1f352.png" style="width:22px;height:22px">',pear:'<img src="'+base+'/1f350.png" style="width:22px;height:22px">',carrot:'<img src="'+base+'/1f955.png" style="width:22px;height:22px">'};
   var juiceImages={
     strawberry:'images/strawnerry.png',apple:'images/apple.png',orange:'images/orange.png',
     pear:'images/pear.png',carrot:'images/carrot.png',multivitamin:'images/multivitamin.png',
@@ -339,11 +386,11 @@
     var xPct=50;
     var yPositions=[185,160,135,110,88,68];
     var yPos=yPositions[i]||185;
-    var d=document.createElement('div');d.className='fruit-drop';d.textContent=emoji;
+    var d=document.createElement('div');d.className='fruit-drop';d.innerHTML=emoji;
     d.style.left='calc('+xPct+'% - 13px)';d.style.top='5px';
     blenderEl.appendChild(d);
     
-    var s=document.createElement('div');s.className='fruit-in-blender';s.textContent=emoji;
+    var s=document.createElement('div');s.className='fruit-in-blender';s.innerHTML=emoji;
     s.style.left='calc('+xPct+'% - 12px)';s.style.top=yPos+'px';s.style.opacity='0';
     blenderEl.appendChild(s);
     setTimeout(function(){s.style.opacity='1'},500);
@@ -425,7 +472,7 @@
     var acc=totalAttempts>0?Math.round((correctAttempts/totalAttempts)*100):0;
     var isHigh=score>=100;
     var ov=document.createElement('div');ov.className='game-overlay'+(isHigh?' high-score':'');
-    ov.innerHTML='<h2>'+(isHigh?'🎉 Amazing!':'Time\'s Up!')+'</h2><div style="display:flex;gap:24px;margin:8px 0"><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+score+'</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Score</div></div><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+correctAttempts+'</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Correct</div></div><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+acc+'%</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Accuracy</div></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px"><button class="game-overlay-btn" onclick="document.querySelector(\'.game-overlay\').remove();document.__startGame()">🔄 Play Again</button><a href="index.html" class="game-overlay-btn" style="background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff">🏠 Home</a></div>';
+    ov.innerHTML='<h2>'+(isHigh?'<img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f389.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Amazing!':'Time\'s Up!')+'</h2><div style="display:flex;gap:24px;margin:8px 0"><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+score+'</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Score</div></div><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+correctAttempts+'</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Correct</div></div><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+acc+'%</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Accuracy</div></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px"><button class="game-overlay-btn" onclick="document.querySelector(\'.game-overlay\').remove();document.__startGame()"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f504.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Play Again</button><a href="index.html" class="game-overlay-btn" style="background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff">🏠 Home</a></div>';
     frameEl.appendChild(ov);
   }
 
@@ -435,14 +482,13 @@
     var btn=e.target.closest('.fruit-btn');if(!btn)return;
     e.dataTransfer.setData('text/plain',btn.dataset.fruit);e.dataTransfer.effectAllowed='move';
     btn.style.opacity='.5';
-    // Create ghost showing only the fruit emoji (not the whole button)
-    var emojiEl=btn.querySelector('.fruit-emoji');
-    if(emojiEl){
-      var ghost=document.createElement('div');
-      ghost.textContent=emojiEl.textContent;
-      ghost.style.cssText='position:fixed;top:-1000px;left:-1000px;font-size:2rem;pointer-events:none;line-height:1;padding:4px;';
+    var img=btn.querySelector('img');
+    if(img){
+      var ghost=img.cloneNode(true);
+      ghost.style.width='40px';ghost.style.height='40px';
+      ghost.style.position='fixed';ghost.style.top='-9999px';
       document.body.appendChild(ghost);
-      e.dataTransfer.setDragImage(ghost,16,16);
+      e.dataTransfer.setDragImage(ghost,20,20);
       setTimeout(function(){ghost.remove()},0);
     }
   });
@@ -467,7 +513,6 @@
     if(selected.includes(fruit)){selected=selected.filter(function(f){return f!==fruit})}
     else{selected.push(fruit)}
     renderSelected();
-    fruitDrop(emojis[fruit],selected.length-1);
   });
 
   blendBtn.addEventListener('click',function(){if(gameActive)checkBlend()});

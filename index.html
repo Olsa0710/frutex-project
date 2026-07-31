@@ -4,13 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frutex</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--white-10:rgba(255,255,255,.1);--transition:.25s ease}
-    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(180deg,#f9fbf8 0%,#f4f8f3 30%,#f8fbf7 60%,#f5f9f4 100%);-webkit-font-smoothing:antialiased;overflow-x:hidden}
     /* ── Premium ambient glows ── */
     body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 90% 60% at 10% 5%,rgba(46,111,64,.05) 0%,transparent 55%),radial-gradient(ellipse 70% 50% at 85% 85%,rgba(46,111,64,.04) 0%,transparent 55%),radial-gradient(ellipse 60% 40% at 50% 40%,rgba(220,190,120,.03) 0%,transparent 50%)}
     /* ── Subtle dotted world map ── */
@@ -61,7 +58,7 @@
     .navbar__logo svg{height:30px;width:auto}
     .navbar__nav{display:flex;align-items:center}
     .navbar__list{display:flex;align-items:center;list-style:none;gap:6px}
-    .navbar__link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:14px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;border-radius:20px;background:none;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;letter-spacing:.01em;position:relative;transition:color .25s ease,background .25s ease}
+    .navbar__link{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:14px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;border-radius:20px;background:none;border:none;cursor:pointer;font-family:Poppins,sans-serif;white-space:nowrap;letter-spacing:.01em;position:relative;transition:color .25s ease,background .25s ease}
     .navbar__link::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:2px;background:var(--white);border-radius:1px;transition:transform .25s ease}
     .navbar__link:hover{color:var(--white)}
     .navbar__link:hover::after{transform:translateX(-50%) scaleX(1)}
@@ -99,7 +96,7 @@
     /* ── Hero content ── */
     .hero-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 32px;z-index:2}
     .hero-badge{display:inline-block;padding:8px 22px;background:rgba(46,111,64,.2);border:1px solid rgba(255,255,255,.12);color:#c8e6d0;border-radius:30px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px;animation:fIn .9s ease both;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-    .hero-text h1{font-family:'Poppins',sans-serif;font-size:clamp(3rem,7vw,5.5rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:18px;letter-spacing:-.02em;animation:fIn .9s .15s ease both;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+    .hero-text h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(3rem,7vw,5.5rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:18px;letter-spacing:-.02em;animation:fIn .9s .15s ease both;text-shadow:0 2px 20px rgba(0,0,0,.25)}
     .hero-text h1 span{color:#4CAF50}
     .hero-text .hero-sub{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,.65);max-width:480px;line-height:1.6;font-weight:400;margin-bottom:38px;animation:fIn .9s .3s ease both}
     .hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;animation:fIn .9s .45s ease both}
@@ -115,18 +112,18 @@
     .hero-btn-arrow{transition:transform .25s}
     .hero-btn:hover .hero-btn-arrow{transform:translateX(4px)}
     @keyframes fIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-    .home-sec{max-width:900px;margin:0 auto;padding:60px 32px;position:relative;z-index:2}
+    .home-sec{max-width:900px;margin:0 auto;padding:80px 32px;position:relative;z-index:2}
     .story-wrapper{position:relative;overflow:hidden}
     .story-bg-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.09;pointer-events:none;z-index:0}
     .story-bg-blob--1{width:400px;height:400px;background:var(--green);top:-80px;right:-120px}
     .story-bg-blob--2{width:300px;height:300px;background:var(--green);bottom:-60px;left:-80px;opacity:.06}
     .story-map{position:absolute;right:-40px;top:30%;width:280px;height:180px;opacity:.04;pointer-events:none;z-index:0;background:radial-gradient(circle at 30% 40%,#000 1px,transparent 1px),radial-gradient(circle at 50% 30%,#000 1px,transparent 1px),radial-gradient(circle at 60% 50%,#000 1px,transparent 1px),radial-gradient(circle at 40% 60%,#000 1px,transparent 1px),radial-gradient(circle at 55% 45%,#000 1px,transparent 1px),radial-gradient(circle at 70% 35%,#000 1px,transparent 1px),radial-gradient(circle at 35% 55%,#000 1px,transparent 1px);background-size:80px 60px,80px 60px,80px 60px,80px 60px,80px 60px,80px 60px,80px 60px;background-position:0 0,20px 15px,40px 5px,10px 25px,30px 10px,50px 20px,60px 0}
     @media(max-width:768px){.story-map{display:none}.story-bg-blob--1{width:200px;height:200px}}
-    .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal{transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{transform:translateY(0)}
     .story-badge{display:inline-block;padding:6px 16px;background:rgba(46,111,64,.1);color:var(--green);border-radius:20px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
     .hist-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .hist-text h2{font-family:'Poppins',sans-serif;font-size:clamp(2.4rem,4.5vw,3.6rem);color:#111;line-height:1.1;margin-bottom:12px;letter-spacing:-.02em}
+    .hist-text h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2.4rem,4.5vw,3.6rem);color:#111;line-height:1.1;margin-bottom:12px;letter-spacing:-.02em}
     .hist-text h2 span{color:var(--green)}
     .story-line{width:50px;height:3px;background:var(--green);border-radius:2px;margin-bottom:24px}
     .hist-text p{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1.05rem;color:#555;line-height:1.8;max-width:480px}
@@ -137,7 +134,7 @@
     .hist-stat:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
     .hist-stat-icon{width:52px;height:52px;border-radius:50%;background:rgba(46,111,64,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .hist-stat-icon svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.8}
-    .hist-stat-n{font-family:'Poppins',sans-serif;font-size:2.4rem;font-weight:700;color:var(--green);line-height:1;min-width:70px}
+    .hist-stat-n{font-family:Georgia,'Times New Roman',serif;font-size:2.4rem;font-weight:700;color:var(--green);line-height:1;min-width:70px}
     .hist-stat-l{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:.9rem;color:#555;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
     .hist-stat-d{font-size:.82rem;color:#999}
     .home-divider{width:60px;height:3px;background:var(--green);margin:40px 0 32px;border-radius:2px}
@@ -147,8 +144,8 @@
     .home-card-year{font-size:.8rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
     .home-card h3{font-size:1.15rem;color:#111;margin-bottom:6px}
     .home-card p{font-size:.9rem;color:#777;line-height:1.5}
-    .cats{max-width:1100px;margin:0 auto;padding:60px 32px}
-    .cats h2{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:10px;text-align:center}
+    .cats{max-width:1100px;margin:0 auto;padding:80px 32px}
+    .cats h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:10px;text-align:center}
     .cats h2 span{color:var(--green)}
     .cats-sub{text-align:center;color:#888;font-size:1rem;margin-bottom:40px}
     .cats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
@@ -157,8 +154,8 @@
     .cat-card:hover .cat-img{transform:scale(1.12)}
     .cat-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease}
     .cat-img--energy{background:url(https://frutex-ks.com/wp-content/uploads/2026/01/GoldenEagle-716x716-1.png) center/contain no-repeat,linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)}
-    .cat-img--juices{background:linear-gradient(135deg,#2d1b00,#4a2800,#7a3d00)}
-    .cat-img--soft{background:linear-gradient(135deg,#0d1b2a,#1b2838,#2c3e50)}
+    .cat-img--juices{background:url(https://frutex-ks.com/wp-content/uploads/2026/02/golden-eco-1-1024x295.webp) center/cover}
+    .cat-img--soft{background:url(https://goldeneagle-ks.com/wp-content/uploads/2024/03/Prodhim-4.png) center/cover}
     .cat-img--water{background:linear-gradient(135deg,#001f3f,#003366,#006994)}
     .cat-img--new{background:linear-gradient(135deg,#1a0a2e,#2d1b4e,#4a0e5c)}
     .cat-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:1}
@@ -167,11 +164,11 @@
     .cat-btn{display:inline-block;padding:8px 20px;font-size:.85rem;font-weight:600;color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:20px;text-decoration:none;transition:background .25s,border-color .25s}
     .cat-btn:hover{background:rgba(255,255,255,.15);border-color:#fff}
     /* ── About ── */
-    .about{max-width:1000px;margin:0 auto;padding:60px 32px}
+    .about{max-width:1000px;margin:0 auto;padding:80px 32px}
     .about-split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
     .about-img img{width:100%;border-radius:16px;display:block;object-fit:cover}
     .about-f{background:#2E6F40;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:60px;aspect-ratio:1;max-width:380px;margin:0 auto}
-    .about-text h2{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:16px}
+    .about-text h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:16px}
     .about-text h2 span{color:var(--green)}
     .about-text p{font-size:1.05rem;color:#555;line-height:1.75;margin-bottom:24px}
     .about-btn{display:inline-block;padding:12px 28px;background:var(--green);color:#fff;border-radius:50px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .25s,box-shadow .25s}
@@ -182,13 +179,13 @@
     .stat-item{text-align:center;padding:32px 16px;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .3s,box-shadow .3s}
     .stat-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
     .stat-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-    .stat-num{font-family:'Poppins',sans-serif;font-size:2.2rem;font-weight:700;color:#1a1a1a;line-height:1.1}
+    .stat-num{font-family:Georgia,'Times New Roman',serif;font-size:2.2rem;font-weight:700;color:#1a1a1a;line-height:1.1}
     .stat-label{font-size:.85rem;color:#888;margin-top:6px;font-weight:500}
     @media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:480px){.stats-grid{grid-template-columns:1fr}}
     /* ── News ── */
-    .news-section{max-width:1000px;margin:0 auto;padding:60px 32px}
-    .news-heading{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;text-align:center;margin-bottom:36px}
+    .news-section{max-width:1000px;margin:0 auto;padding:80px 32px}
+    .news-heading{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;text-align:center;margin-bottom:36px}
     .news-heading span{color:var(--green)}
     .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .news-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
@@ -202,8 +199,8 @@
     .news-btn:hover{color:#1a4d2a}
     @media(max-width:768px){.news-grid{grid-template-columns:1fr}}
     /* ── Testimonials ── */
-    .testimonials{max-width:800px;margin:0 auto;padding:60px 32px;text-align:center}
-    .testi-heading{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:36px}
+    .testimonials{max-width:800px;margin:0 auto;padding:80px 32px;text-align:center}
+    .testi-heading{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:36px}
     .testi-heading span{color:var(--green)}
     .testi-carousel{overflow:hidden;position:relative}
     .testi-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
@@ -224,7 +221,7 @@
     @media(max-width:768px){.testi-arrow{width:36px;height:36px;font-size:1.3rem}.testi-prev{left:-10px}.testi-next{right:-10px}}
     /* ── Footer ── */
     .footer{background:#111;color:rgba(255,255,255,.7);margin-top:60px}
-    .footer-top{padding:60px 32px 40px;max-width:1100px;margin:0 auto}
+    .footer-top{padding:80px 32px 40px;max-width:1100px;margin:0 auto}
     .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.5fr;gap:40px}
     .footer-col h4{color:#fff;font-size:.95rem;font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.04em}
     .footer-col a{display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;margin-bottom:9px;transition:color .2s}
@@ -236,7 +233,7 @@
     .fs-icon:hover{background:var(--green);transform:translateY(-2px)}
     .footer-contact{font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:8px;line-height:1.5}
     .footer-newsletter{display:flex;margin-top:16px;gap:8px}
-    .footer-newsletter input{flex:1;padding:10px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:.85rem;outline:none;font-family:inherit}
+    .footer-newsletter input{flex:1;padding:10px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:.85rem;outline:none;font-family:Poppins,sans-serif}
     .footer-newsletter input:focus{border-color:var(--green)}
     .footer-newsletter button{padding:10px 18px;background:var(--green);color:#fff;border:none;border-radius:6px;font-weight:600;font-size:.85rem;cursor:pointer;transition:background .2s;white-space:nowrap}
     .footer-newsletter button:hover{background:#247a3a}
@@ -264,8 +261,84 @@
       .navbar__dropdown-link:hover{background:rgba(255,255,255,.1);color:var(--white);transform:none}
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800</head>display=swap" rel="stylesheet">
 </head>
 <body>
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden">
+  <!-- Green gradient orbs with slow drift -->
+  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,180,100,.07) 0%,rgba(46,200,100,.02) 40%,transparent 70%);top:5%;left:-10%;filter:blur(60px)">
+    <style>@keyframes orb1{0%,100%{transform:translate(0,0)}25%{transform:translate(60px,30px)}50%{transform:translate(30px,-20px)}75%{transform:translate(-40px,10px)}}</style>
+    <div style="animation:orb1 25s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(46,200,120,.05) 0%,rgba(46,180,80,.01) 45%,transparent 75%);top:40%;right:-8%;filter:blur(50px)">
+    <style>@keyframes orb2{0%,100%{transform:translate(0,0)}33%{transform:translate(-50px,-20px)}66%{transform:translate(-20px,40px)}}</style>
+    <div style="animation:orb2 22s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(46,150,90,.04) 0%,transparent 70%);bottom:5%;left:20%;filter:blur(45px)">
+    <style>@keyframes orb3{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-30px)}}</style>
+    <div style="animation:orb3 20s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+
+  <!-- Flowing green gradient wave -->
+  <svg style="position:absolute;inset:0;opacity:.06" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="gw" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2E6F40"/><stop offset="50%" stop-color="#81c784"/><stop offset="100%" stop-color="#c8e6c9"/></linearGradient></defs>
+    <path fill="url(#gw)" opacity=".4">
+      <animate attributeName="d" dur="30s" repeatCount="indefinite"
+        values="M0,200 Q300,150 600,250 T1200,200 T1920,300 L1920,0 L0,0Z;
+                M0,250 Q300,300 600,180 T1200,280 T1920,200 L1920,0 L0,0Z;
+                M0,200 Q300,150 600,250 T1200,200 T1920,300 L1920,0 L0,0Z"/>
+    </path>
+  </svg>
+
+  <!-- Floating leaves with natural drift -->
+  <svg style="position:absolute;inset:0;opacity:.025" xmlns="http://www.w3.org/2000/svg">
+    <g><animateTransform attributeName="transform" type="translate" values="-100,300;2000,400" dur="40s" repeatCount="indefinite"/>
+      <path d="M0,20 Q15,0 30,20 Q15,40 0,20Z M15,12 L15,4" stroke="#2E6F40" stroke-width="1.5" fill="none">
+        <animateTransform attributeName="transform" type="rotate" values="0,15,20;360,15,20" dur="12s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    <g><animateTransform attributeName="transform" type="translate" values="2000,600;-100,500" dur="35s" repeatCount="indefinite"/>
+      <path d="M0,16 Q10,0 20,16 Q10,32 0,16Z M10,9 L10,3" stroke="#4caf50" stroke-width="1.2" fill="none">
+        <animateTransform attributeName="transform" type="rotate" values="0,10,16;270,10,16" dur="14s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    <g><animateTransform attributeName="transform" type="translate" values="-50,800;1950,700" dur="45s" repeatCount="indefinite"/>
+      <path d="M0,22 Q16,0 32,22 Q16,44 0,22Z M16,12 L16,5" stroke="#66bb6a" stroke-width="1" fill="none">
+        <animateTransform attributeName="transform" type="rotate" values="0,16,22;180,16,22" dur="16s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </svg>
+
+  <!-- Sunlight glow spots -->
+  <div style="position:absolute;width:800px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,220,.03) 0%,transparent 70%);top:10%;left:20%;filter:blur(80px);transform:rotate(-15deg)"></div>
+</div>
+
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(46,180,100,.05) 0%,transparent 70%);top:50%;right:8%;filter:blur(50px)">
+    <style>@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}</style>
+    <div style="animation:f2 20s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(46,150,80,.04) 0%,transparent 70%);bottom:10%;left:30%;filter:blur(45px)">
+    <style>@keyframes f3{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-15px)}}</style>
+    <div style="animation:f3 18s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+
+  <!-- Floating leaves -->
+  <svg style="position:absolute;inset:0;opacity:.02" xmlns="http://www.w3.org/2000/svg">
+    <g style="animation:leaf1 30s linear infinite">
+      <path d="M0,20 Q15,0 30,20 Q15,40 0,20Z M15,12 L15,4" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="100,200;200,300;300,200;200,100;100,200" dur="30s" repeatCount="indefinite"/>
+    </g>
+    <g style="animation:leaf2 25s linear infinite">
+      <path d="M0,18 Q12,0 25,18 Q12,35 0,18Z M12,10 L12,3" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="1700,600;1600,500;1500,600;1600,700;1700,600" dur="25s" repeatCount="indefinite"/>
+    </g>
+    <g style="animation:leaf3 28s linear infinite">
+      <path d="M0,16 Q10,0 20,16 Q10,32 0,16Z M10,9 L10,3" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="800,900;900,800;1000,700;900,800;800,900" dur="28s" repeatCount="indefinite"/>
+    </g>
+  </svg>
+</div>
+
 
 <div class="bg-dots"></div>
 <div class="bg-water"></div>
@@ -275,10 +348,10 @@
 <div class="bg-depth bg-depth--3"></div>
 <div class="bg-glow bg-glow--tl"></div>
 <div class="bg-glow bg-glow--br"></div>
-<div class="bg-blob bg-blob--1"></div>
-<div class="bg-blob bg-blob--2"></div>
-<div class="bg-blob bg-blob--3"></div>
-<div class="bg-blob bg-blob--4"></div>
+
+
+
+
 <div class="bg-leaf bg-leaf--1"><svg viewBox="0 0 80 100"><path d="M40 95C38 75 20 55 8 35c0 0-3 22 10 30C6 55 2 42 2 30 6 12 22 3 40 2c18 1 34 10 38 28 0 12-4 25-16 35 13-8 10-30 10-30-12 20-22 40-24 60z" fill="var(--green)" opacity=".7"/><path d="M40 95V15" stroke="var(--green)" stroke-width=".6" opacity=".4"/><path d="M40 30l-12-8M40 40l14-6M40 55l-10-4M40 65l12-5" stroke="var(--green)" stroke-width=".4" opacity=".3"/></svg></div>
 <div class="bg-leaf bg-leaf--2"><svg viewBox="0 0 80 90"><path d="M40 2c8 18 12 36 10 55-2 18-8 30-10 33C38 87 32 75 30 57c-2-19 2-37 10-55z" fill="var(--green)" opacity=".6"/><path d="M40 2v88" stroke="var(--green)" stroke-width=".5" opacity=".4"/><path d="M40 25l10-5M40 40l8-4M40 55l6-3M40 70l4-2" stroke="var(--green)" stroke-width=".3" opacity=".25"/></svg></div>
 <div class="bg-leaf bg-leaf--3"><svg viewBox="0 0 90 80"><path d="M5 40c20-2 38-8 52-18 14-10 24-18 28-20C83 5 73 14 59 26 45 38 30 42 5 40z" fill="var(--green)" opacity=".65"/><path d="M5 40h80" stroke="var(--green)" stroke-width=".5" opacity=".35"/><path d="M25 34l6-10M45 28l4-8M60 24l3-6" stroke="var(--green)" stroke-width=".3" opacity=".25"/></svg></div>
@@ -303,39 +376,20 @@
     </a>
     <nav class="navbar__nav" id="navMenu">
       <ul class="navbar__list">
-        <li><a href="#" class="navbar__link active">Home</a></li>
+        <li><a href="index.html" class="navbar__link"active">Home</a></li>
         <li><a href="about.html" class="navbar__link">About Us</a></li>
         <li><a href="juice-mixer.html" class="navbar__link">Juice Mixer</a></li>
-        <li><a href="#" class="navbar__link">News</a></li>
-        <li><a href="#" class="navbar__link">Contact</a></li>
-        <li class="navbar__dropdown">
-          <button class="navbar__link navbar__dropdown-toggle" aria-expanded="false">Brands<svg class="navbar__chevron" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <ul class="navbar__dropdown-menu">
-            <li><a href="#" class="navbar__dropdown-link">Golden Eagle</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Natural 100</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Relax</a></li>
-            <li><a href="#" class="navbar__dropdown-link">ZEROS</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Art Food Industry</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Freesia</a></li>
-          </ul>
+        <li><a href="contact.html" class="navbar__link">Contact</a></li>
+        <li class="navbar__dropdown"><button class="navbar__link navbar__dropdown-toggle" aria-expanded="false">Brands<svg class="navbar__chevron" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="navbar__dropdown-menu"><li><a href="golden-eagle.html" class="navbar__dropdown-link">Golden Eagle</a></li><li><a href="natural-apple.html" class="navbar__dropdown-link">Natural 100</a></li><li><a href="relax.html" class="navbar__dropdown-link">Relax</a></li><li><a href="zeros.html" class="navbar__dropdown-link">ZEROS</a></li><li><a href="freesia.html" class="navbar__dropdown-link">Freesia</a></li></ul></li>
+      </ul>
         </li>
         <li class="navbar__dropdown">
-          <button class="navbar__link navbar__dropdown-toggle" aria-expanded="false">Foundation<svg class="navbar__chevron" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <ul class="navbar__dropdown-menu">
-            <li><a href="#" class="navbar__dropdown-link">Our Mission</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Golden Eco</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Donate</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Foundation Stories</a></li>
+            
+            
+            
           </ul>
         </li>
-        <li class="navbar__dropdown">
-          <button class="navbar__link navbar__dropdown-toggle" aria-expanded="false">Career<svg class="navbar__chevron" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <ul class="navbar__dropdown-menu">
-            <li><a href="#" class="navbar__dropdown-link">Open Positions</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Life at Frutex</a></li>
-            <li><a href="#" class="navbar__dropdown-link">Apply Now</a></li>
-          </ul>
-        </li>
+
       </ul>
     </nav>
     <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -360,7 +414,7 @@
     <h1>Fuel Your Day<br>with <span>Frutex</span></h1>
     <p class="hero-sub">Refreshing juices, premium beverages, and powerful energy drinks for every lifestyle.</p>
     <div class="hero-btns">
-      <a href="#" class="hero-btn hero-btn--primary">Explore Products <span class="hero-btn-arrow">→</span></a>
+      <a href="about.html#timeline" class="hero-btn hero-btn--primary">Explore Products <span class="hero-btn-arrow">→</span></a>
       <a href="about.html" class="hero-btn hero-btn--outline">Learn More <span class="hero-btn-arrow">→</span></a>
     </div>
   </div>
@@ -381,12 +435,12 @@
         <div class="story-line"></div>
         <p>Frutex was founded in <strong style="color:var(--green)">1994</strong> as a family business in Suhareka, Kosovo — a small operation built on big ambition.</p>
         <p style="margin-top:12px">Today, we ship to <strong style="color:var(--green)">35+ markets</strong> across six continents, powered by a team of over <strong style="color:var(--green)">500 employees</strong>. Every product is guided by one promise: quality, freshness, and a deep respect for natural ingredients.</p>
-        <a href="about.html" class="story-btn">Discover Our Journey <span style="margin-left:4px">→</span></a>
+        <a href="about.html#timeline" class="story-btn">Discover Our Journey <span style="margin-left:4px">→</span></a>
       </div>
       <div class="hist-stats">
-        <div class="hist-stat reveal"><div class="hist-stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="hist-stat-n" data-target="1994" data-start="1900">1900</div><div><div class="hist-stat-l">Founded</div><div class="hist-stat-d">Family business in Suhareka</div></div></div>
-        <div class="hist-stat reveal"><div class="hist-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a10 10 0 0 1 0 20"/></svg></div><div class="hist-stat-n" data-target="35">0</div><div><div class="hist-stat-l">Export Markets</div><div class="hist-stat-d">Across six continents</div></div></div>
-        <div class="hist-stat reveal"><div class="hist-stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="hist-stat-n" data-target="500" data-start="450">450</div><div><div class="hist-stat-l">Employees</div><div class="hist-stat-d">Driving quality &amp; innovation</div></div></div>
+        <div class="hist-stat reveal"><div class="hist-stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="hist-stat-n" data-target="1994" data-start="1900">1994</div><div><div class="hist-stat-l">Founded</div><div class="hist-stat-d">Family business in Suhareka</div></div></div>
+        <div class="hist-stat reveal"><div class="hist-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a10 10 0 0 1 0 20"/></svg></div><div class="hist-stat-n" data-target="35" data-suffix="+">35+</div><div><div class="hist-stat-l">Export Markets</div><div class="hist-stat-d">Across six continents</div></div></div>
+        <div class="hist-stat reveal"><div class="hist-stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="hist-stat-n" data-target="500" data-start="450">500</div><div><div class="hist-stat-l">Employees</div><div class="hist-stat-d">Driving quality &amp; innovation</div></div></div>
       </div>
     </div>
   </section>
@@ -445,29 +499,29 @@
     <h2 class="news-heading">Latest <span>News</span></h2>
     <div class="news-grid">
       <div class="news-card">
-        <div class="news-img" style="background:linear-gradient(135deg,#1a3a2a,#2E6F40,#3d8a52)"></div>
+        <div class="news-img" style="background:url(https://frutex-ks.com/wp-content/uploads/2026/02/469140725_974032201429376_952982148927710389_n-1024x683.webp) center/cover"></div>
         <div class="news-body">
-          <div class="news-date">July 22, 2026</div>
-          <h3>Frutex Enters Australian Market</h3>
-          <p>Products now reach customers across six continents as the export network expands to its 36th destination.</p>
+          <div class="news-date">Nov 8, 2024</div>
+          <h3>Granit Xhaka Becomes Face of Golden Eagle</h3>
+          <p>Golden Eagle Energy Drink and Swiss-Albanian football star Granit Xhaka reached a major cooperation agreement — a powerful union between a premium Kosovo brand and world-class athleticism.</p>
           <a href="#" class="news-btn">Read More →</a>
         </div>
       </div>
       <div class="news-card">
-        <div class="news-img" style="background:linear-gradient(135deg,#2d1b00,#4a2800,#7a3d00)"></div>
+        <div class="news-img" style="background:url(https://frutex-ks.com/wp-content/uploads/2026/02/golden-eco-1-1024x295.webp) center/cover"></div>
         <div class="news-body">
-          <div class="news-date">June 14, 2026</div>
-          <h3>ZEROS Peach Wins Beverage Award</h3>
-          <p>The newest sugar-free iced tea earns regional industry recognition for its bold flavor and clean ingredients.</p>
+          <div class="news-date">Apr 24, 2025</div>
+          <h3>Golden Eco — Share Today, Help Tomorrow</h3>
+          <p>The Golden Eco project by the Frutex The newest sugar-free iced tea earns regional industry recognition for its bold flavor and clean ingredients. Golden Eagle Foundation launches a humanitarian initiative supporting communities and environmental sustainability across Kosovo.</p>
           <a href="#" class="news-btn">Read More →</a>
         </div>
       </div>
       <div class="news-card">
-        <div class="news-img" style="background:linear-gradient(135deg,#0d1b2a,#1b2838,#2c3e50)"></div>
+        <div class="news-img" style="background:url(https://goldeneagle-ks.com/wp-content/uploads/2024/03/Prodhim-4.png) center/cover"></div>
         <div class="news-body">
-          <div class="news-date">May 30, 2026</div>
-          <h3>Golden Eco Expands to New Cities</h3>
-          <p>The foundation's recycling initiative brings jobs and school supplies to three more municipalities across Kosovo.</p>
+          <div class="news-date">Nov 8, 2024</div>
+          <h3>British Ambassador Visits Freesia Factory</h3>
+          <p>British Ambassador Jonathan Hargreaves toured the Freesia production facility, highlighting Frutex's growing international reputation and export partnerships.</p>
           <a href="#" class="news-btn">Read More →</a>
         </div>
       </div>
@@ -540,11 +594,11 @@
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
-        <a href="index.html">Home</a><a href="about.html">About Us</a><a href="#">News</a><a href="#">Contact</a><a href="#">Career</a>
+        <a href="index.html"active">Home</a><a href="about.html">About Us</a><a href="#">News</a><a href="#">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Products</h4>
-        <a href="#">Golden Eagle</a><a href="#">Natural 100</a><a href="#">Relax</a><a href="#">ZEROS</a><a href="#">Freesia</a>
+        <a href="golden-eagle.html">Golden Eagle</a><a href="natural-apple.html">Natural 100</a><a href="relax.html">Relax</a><a href="zeros.html">ZEROS</a><a href="freesia.html">Freesia</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
@@ -585,7 +639,7 @@
   });
   navMenu.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{if(navMenu.classList.contains('open'))closeMobile();});});
   const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');
-    const num=e.target.querySelector('.hist-stat-n');if(num&&num.dataset.target&&!num.dataset.done){num.dataset.done=1;const t=+num.dataset.target,s=num.dataset.start?+num.dataset.start:0,d=Math.max(800,(t-s)*3),st=performance.now();function r(ts){const p=Math.min((ts-st)/d,1),v=Math.round(s+p*(t-s));num.textContent=v+(t>=35&&t<100?'+':'');if(p<1)requestAnimationFrame(r);else num.textContent=t+(t>=35&&t<100?'+':'')}requestAnimationFrame(r);}
+    const num=e.target.querySelector('.hist-stat-n');if(num&&num.dataset.target&&!num.dataset.done){num.dataset.done=1;const t=+num.dataset.target,s=num.dataset.start?+num.dataset.start:0,suffix=num.dataset.suffix||'',d=Math.max(800,(t-s)*3),st=performance.now();function r(ts){const p=Math.min((ts-st)/d,1),v=Math.round(s+p*(t-s));num.textContent=v+suffix;if(p<1)requestAnimationFrame(r);else num.textContent=t+suffix}requestAnimationFrame(r);}
     const snum=e.target.querySelector('.stat-num');if(snum&&snum.dataset.target&&!snum.dataset.done){snum.dataset.done=1;const t=+snum.dataset.target,sf=snum.dataset.suffix||'',d=Math.max(600,t*15),st=performance.now();function r(ts){const p=Math.min((ts-st)/d,1),v=Math.round(p*t);snum.textContent=v+sf;if(p<1)requestAnimationFrame(r);else snum.textContent=t+sf}requestAnimationFrame(r);}
   }});},{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
