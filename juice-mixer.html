@@ -226,9 +226,9 @@
   <section class="how-to-play">
     <h2>How to <span>Play</span></h2>
     <div class="htp-grid">
-      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)">📋</div><h3>Read the Recipe</h3><p>A Natural 100 juice appears at the top — match the ingredients shown.</p></div>
-      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)">👆</div><h3>Pick Ingredients</h3><p>Click or drag fruits into the blender to build your juice.</p></div>
-      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)">⚡</div><h3>Blend & Score</h3><p>Press Blend — match the recipe to earn points before time runs out.</p></div>
+      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f4cb.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div><h3>Read the Recipe</h3><p>A Natural 100 juice appears at the top — match the ingredients shown.</p></div>
+      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f446.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div><h3>Pick Ingredients</h3><p>Click or drag fruits into the blender to build your juice.</p></div>
+      <div class="htp-card"><div class="htp-icon" style="background:rgba(46,111,64,.08)"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/26a1.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></div><h3>Blend & Score</h3><p>Press Blend — match the recipe to earn points before time runs out.</p></div>
     </div>
   </section>
 
@@ -240,7 +240,7 @@
         <div class="game-timer"><span class="game-score-label">Time</span><span class="game-score-val" id="gTimer">60</span></div>
       </div>
       <div class="game-overlay" id="gameStartOverlay">
-        <h2>🥤 Juice Mixer</h2>
+        <h2><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f964.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Juice Mixer</h2>
         <p>Drag fruits into the blender to match the recipe!</p>
         <button class="game-overlay-btn" onclick="document.getElementById('gameStartOverlay').remove();document.__startGame()">▶ Play</button>
       </div>
@@ -288,7 +288,7 @@
         </svg>
       </div>
       <div class="game-feedback" id="gFeedback"></div>
-      <button class="game-blend-btn" id="gBlendBtn"><span class="blend-icon">⚡</span> Blend</button>
+      <button class="game-blend-btn" id="gBlendBtn"><span class="blend-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/26a1.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"></span> Blend</button>
       <div class="game-fruits" id="gFruits">
         <button class="fruit-btn" draggable="true" data-fruit="strawberry"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f353.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Strawberry</span></button>
         <button class="fruit-btn" draggable="true" data-fruit="apple"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f34f.png" style="width:24px;height:24px;object-fit:contain"><span class="fruit-name">Apple</span></button>
@@ -472,7 +472,7 @@
     var acc=totalAttempts>0?Math.round((correctAttempts/totalAttempts)*100):0;
     var isHigh=score>=100;
     var ov=document.createElement('div');ov.className='game-overlay'+(isHigh?' high-score':'');
-    ov.innerHTML='<h2>'+(isHigh?'🎉 Amazing!':'Time\'s Up!')+'</h2><div style="display:flex;gap:24px;margin:8px 0"><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+score+'</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Score</div></div><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+correctAttempts+'</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Correct</div></div><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+acc+'%</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Accuracy</div></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px"><button class="game-overlay-btn" onclick="document.querySelector(\'.game-overlay\').remove();document.__startGame()">🔄 Play Again</button><a href="index.html" class="game-overlay-btn" style="background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff">🏠 Home</a></div>';
+    ov.innerHTML='<h2>'+(isHigh?'<img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f389.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Amazing!':'Time\'s Up!')+'</h2><div style="display:flex;gap:24px;margin:8px 0"><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+score+'</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Score</div></div><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+correctAttempts+'</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Correct</div></div><div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:#f5ead6">'+acc+'%</div><div style="font-size:.72rem;color:rgba(255,255,255,.5)">Accuracy</div></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px"><button class="game-overlay-btn" onclick="document.querySelector(\'.game-overlay\').remove();document.__startGame()"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f504.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle"> Play Again</button><a href="index.html" class="game-overlay-btn" style="background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff">🏠 Home</a></div>';
     frameEl.appendChild(ov);
   }
 
