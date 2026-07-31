@@ -468,9 +468,6 @@
       e.dataTransfer.setDragImage(ghost,20,20);
       setTimeout(function(){ghost.remove()},0);
     }
-      e.dataTransfer.setDragImage(ghost,16,16);
-      setTimeout(function(){ghost.remove()},0);
-    }
   });
   document.getElementById('gFruits').addEventListener('dragend',function(e){
     var btn=e.target.closest('.fruit-btn');if(btn)btn.style.opacity='';
