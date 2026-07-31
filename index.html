@@ -7,7 +7,7 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--white-10:rgba(255,255,255,.1);--transition:.25s ease}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     /* ── Premium ambient glows ── */
     body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 90% 60% at 10% 5%,rgba(46,111,64,.05) 0%,transparent 55%),radial-gradient(ellipse 70% 50% at 85% 85%,rgba(46,111,64,.04) 0%,transparent 55%),radial-gradient(ellipse 60% 40% at 50% 40%,rgba(220,190,120,.03) 0%,transparent 50%)}
     /* ── Subtle dotted world map ── */
@@ -96,7 +96,7 @@
     /* ── Hero content ── */
     .hero-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 32px;z-index:2}
     .hero-badge{display:inline-block;padding:8px 22px;background:rgba(46,111,64,.2);border:1px solid rgba(255,255,255,.12);color:#c8e6d0;border-radius:30px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px;animation:fIn .9s ease both;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-    .hero-text h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,7vw,5.5rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:18px;letter-spacing:-.02em;animation:fIn .9s .15s ease both;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+    .hero-text h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(3rem,7vw,5.5rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:18px;letter-spacing:-.02em;animation:fIn .9s .15s ease both;text-shadow:0 2px 20px rgba(0,0,0,.25)}
     .hero-text h1 span{color:#4CAF50}
     .hero-text .hero-sub{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,.65);max-width:480px;line-height:1.6;font-weight:400;margin-bottom:38px;animation:fIn .9s .3s ease both}
     .hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;animation:fIn .9s .45s ease both}
@@ -123,7 +123,7 @@
     .reveal.visible{transform:translateY(0)}
     .story-badge{display:inline-block;padding:6px 16px;background:rgba(46,111,64,.1);color:var(--green);border-radius:20px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
     .hist-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .hist-text h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.4rem,4.5vw,3.6rem);color:#111;line-height:1.1;margin-bottom:12px;letter-spacing:-.02em}
+    .hist-text h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2.4rem,4.5vw,3.6rem);color:#111;line-height:1.1;margin-bottom:12px;letter-spacing:-.02em}
     .hist-text h2 span{color:var(--green)}
     .story-line{width:50px;height:3px;background:var(--green);border-radius:2px;margin-bottom:24px}
     .hist-text p{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1.05rem;color:#555;line-height:1.8;max-width:480px}
@@ -134,7 +134,7 @@
     .hist-stat:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
     .hist-stat-icon{width:52px;height:52px;border-radius:50%;background:rgba(46,111,64,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .hist-stat-icon svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.8}
-    .hist-stat-n{font-family:Georgia,"Times New Roman",serif;font-size:2.4rem;font-weight:700;color:var(--green);line-height:1;min-width:70px}
+    .hist-stat-n{font-family:Georgia,'Times New Roman',serif;font-size:2.4rem;font-weight:700;color:var(--green);line-height:1;min-width:70px}
     .hist-stat-l{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:.9rem;color:#555;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
     .hist-stat-d{font-size:.82rem;color:#999}
     .home-divider{width:60px;height:3px;background:var(--green);margin:40px 0 32px;border-radius:2px}
@@ -145,7 +145,7 @@
     .home-card h3{font-size:1.15rem;color:#111;margin-bottom:6px}
     .home-card p{font-size:.9rem;color:#777;line-height:1.5}
     .cats{max-width:1100px;margin:0 auto;padding:60px 32px}
-    .cats h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:10px;text-align:center}
+    .cats h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:10px;text-align:center}
     .cats h2 span{color:var(--green)}
     .cats-sub{text-align:center;color:#888;font-size:1rem;margin-bottom:40px}
     .cats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
@@ -168,7 +168,7 @@
     .about-split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
     .about-img img{width:100%;border-radius:16px;display:block;object-fit:cover}
     .about-f{background:#2E6F40;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:60px;aspect-ratio:1;max-width:380px;margin:0 auto}
-    .about-text h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:16px}
+    .about-text h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:16px}
     .about-text h2 span{color:var(--green)}
     .about-text p{font-size:1.05rem;color:#555;line-height:1.75;margin-bottom:24px}
     .about-btn{display:inline-block;padding:12px 28px;background:var(--green);color:#fff;border-radius:50px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .25s,box-shadow .25s}
@@ -179,13 +179,13 @@
     .stat-item{text-align:center;padding:32px 16px;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .3s,box-shadow .3s}
     .stat-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
     .stat-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-    .stat-num{font-family:Georgia,"Times New Roman",serif;font-size:2.2rem;font-weight:700;color:#1a1a1a;line-height:1.1}
+    .stat-num{font-family:Georgia,'Times New Roman',serif;font-size:2.2rem;font-weight:700;color:#1a1a1a;line-height:1.1}
     .stat-label{font-size:.85rem;color:#888;margin-top:6px;font-weight:500}
     @media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:480px){.stats-grid{grid-template-columns:1fr}}
     /* ── News ── */
     .news-section{max-width:1000px;margin:0 auto;padding:60px 32px}
-    .news-heading{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;text-align:center;margin-bottom:36px}
+    .news-heading{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;text-align:center;margin-bottom:36px}
     .news-heading span{color:var(--green)}
     .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .news-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
@@ -200,7 +200,7 @@
     @media(max-width:768px){.news-grid{grid-template-columns:1fr}}
     /* ── Testimonials ── */
     .testimonials{max-width:800px;margin:0 auto;padding:60px 32px;text-align:center}
-    .testi-heading{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:36px}
+    .testi-heading{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a;margin-bottom:36px}
     .testi-heading span{color:var(--green)}
     .testi-carousel{overflow:hidden;position:relative}
     .testi-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
@@ -261,6 +261,7 @@
       .navbar__dropdown-link:hover{background:rgba(255,255,255,.1);color:var(--white);transform:none}
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800</head>display=swap" rel="stylesheet">
 </head>
 <body>
 
