@@ -7,7 +7,7 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--transition:.25s ease}
-    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(180deg,#fdfcf9,#f5f8f2,#fafcf8);-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(180deg,#f8faf7,#f3f7f0,#f5f8f2,#fafcf8);-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both}
     @keyframes fPage{from{opacity:0}to{opacity:1}}
 
     .navbar{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:1000;width:82vw;max-width:1050px;border-radius:40px;background:rgba(255,255,255,.12);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(0,0,0,.12)}
@@ -48,6 +48,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800</head>display=swap" rel="stylesheet">
 </head>
 <body>
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden">
+  <!-- Animated gradient waves -->
+  <svg style="position:absolute;inset:0;opacity:.08" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2E6F40"/><stop offset="100%" stop-color="#a8e6a0"/></linearGradient>
+      <linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e8f5e9"/><stop offset="100%" stop-color="#2E6F40"/></linearGradient>
+      <linearGradient id="g3" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c8e6c9"/><stop offset="100%" stop-color="#f1f8e9"/></linearGradient>
+    </defs>
+    <path d="M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z" fill="url(#g1)" opacity=".15">
+      <animate attributeName="d" dur="20s" repeatCount="indefinite" values="M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z;M0,280 Q250,350 500,200 T1000,350 T1500,250 L1920,200 L1920,0 L0,0Z;M0,300 Q250,200 500,350 T1000,300 T1500,400 L1920,300 L1920,0 L0,0Z"/>
+    </path>
+    <path d="M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z" fill="url(#g2)" opacity=".1">
+      <animate attributeName="d" dur="25s" repeatCount="indefinite" values="M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z;M0,480 Q400,550 800,400 T1600,550 L1920,450 L1920,300 L0,300Z;M0,500 Q400,400 800,550 T1600,480 L1920,500 L1920,300 L0,300Z"/>
+    </path>
+  </svg>
+
+  <!-- Soft glowing circles -->
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(46,111,64,.06) 0%,transparent 70%);top:10%;left:5%;filter:blur(40px)">
+    <style>@keyframes f1{0%,100%{transform:translate(0,0)}33%{transform:translate(40px,-20px)}66%{transform:translate(-20px,30px)}}</style>
+    <div style="animation:f1 15s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(46,180,100,.05) 0%,transparent 70%);top:50%;right:8%;filter:blur(50px)">
+    <style>@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}</style>
+    <div style="animation:f2 20s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(46,150,80,.04) 0%,transparent 70%);bottom:10%;left:30%;filter:blur(45px)">
+    <style>@keyframes f3{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-15px)}}</style>
+    <div style="animation:f3 18s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+
+  <!-- Floating leaves -->
+  <svg style="position:absolute;inset:0;opacity:.02" xmlns="http://www.w3.org/2000/svg">
+    <g style="animation:leaf1 30s linear infinite">
+      <path d="M0,20 Q15,0 30,20 Q15,40 0,20Z M15,12 L15,4" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="100,200;200,300;300,200;200,100;100,200" dur="30s" repeatCount="indefinite"/>
+    </g>
+    <g style="animation:leaf2 25s linear infinite">
+      <path d="M0,18 Q12,0 25,18 Q12,35 0,18Z M12,10 L12,3" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="1700,600;1600,500;1500,600;1600,700;1700,600" dur="25s" repeatCount="indefinite"/>
+    </g>
+    <g style="animation:leaf3 28s linear infinite">
+      <path d="M0,16 Q10,0 20,16 Q10,32 0,16Z M10,9 L10,3" stroke="#2E6F40" stroke-width="1" fill="none"/>
+      <animateTransform attributeName="transform" type="translate" values="800,900;900,800;1000,700;900,800;800,900" dur="28s" repeatCount="indefinite"/>
+    </g>
+  </svg>
+</div>
+
 <header class="navbar" id="navbar">
   <div class="navbar__inner">
     <a href="index.html" class="navbar__logo"><svg xmlns="http://www.w3.org/2000/svg" width="166" height="35" viewBox="0 0 209 44"><defs><clipPath id="fc"><rect width="209" height="44" fill="none"/></clipPath></defs><g clip-path="url(#fc)"><path d="M0,0H21.769A21.849,21.849,0,0,1,43.537,21.8V43.6H21.769A21.849,21.849,0,0,1,0,21.8Z" fill="#fff" fill-rule="evenodd"/><path d="M28.387,50.879l-.024-9.644H41.2v-7.75H28.362V28.22H50.834a16.463,16.463,0,0,0-13.958-7.707H20.512V37.16a16.038,16.038,0,0,0,7.875,13.719" transform="translate(-15.131 -15.124)" fill="#1e4d2c" fill-rule="evenodd"/><path d="M202.685,69.881V95.123h5.059V86.755h12.583V82.509H207.743V74.127H223.49V69.881Z" transform="translate(-149.517 -51.522)" fill="#fff"/><path d="M419.744,82.513c0,5.345-1.676,8.567-7.284,8.567s-7.291-3.222-7.291-8.567V69.881h-5.059V82.513c0,7.182,3.555,13.009,12.342,13.009s12.35-5.827,12.35-13.009V69.881h-5.059Z" transform="translate(-295.155 -51.522)" fill="#fff"/><path d="M507.058,69.881v4.246h8.584v21H520.7v-21h8.584V69.881Z" transform="translate(-374.047 -51.522)" fill="#fff"/><path d="M609.982,86.756h12.583V82.51H609.982V74.127h15.747V69.881H604.923V95.123h21.234V90.877H609.982Z" transform="translate(-446.241 -51.522)" fill="#fff"/><path d="M715.748,69.881l-7.359,8.981-7.366-8.981h-5.976L705.4,82.506l-10.35,12.617h5.976l7.366-8.973,7.359,8.973h5.976l-10.35-12.617,10.35-12.625Z" transform="translate(-512.723 -51.522)" fill="#fff"/><path d="M312.961,82.5h-10.4V74.127h9.9c3.518,0,4.179,3.042,4.179,4.66a3.483,3.483,0,0,1-3.683,3.711m8.351-4.283c0-2.921-1.819-8.334-8.847-8.334H297.507V95.123h5.059V86.751h7.163l5.7,8.372h5.886L315.4,86.458c4.533-1.137,5.908-5.066,5.908-8.243" transform="translate(-219.465 -51.522)" fill="#fff"/></g></svg></a>
