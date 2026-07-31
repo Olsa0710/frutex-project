@@ -459,13 +459,15 @@
     var btn=e.target.closest('.fruit-btn');if(!btn)return;
     e.dataTransfer.setData('text/plain',btn.dataset.fruit);e.dataTransfer.effectAllowed='move';
     btn.style.opacity='.5';
-    // Create ghost showing only the fruit emoji (not the whole button)
-    var emojiEl=btn.querySelector('.fruit-emoji');
-    if(emojiEl){
-      var ghost=document.createElement('div');
-      ghost.textContent=emojiEl.textContent;
-      ghost.style.cssText='position:fixed;top:-1000px;left:-1000px;font-size:2rem;pointer-events:none;line-height:1;padding:4px;';
+    var img=btn.querySelector('img');
+    if(img){
+      var ghost=img.cloneNode(true);
+      ghost.style.width='40px';ghost.style.height='40px';
+      ghost.style.position='fixed';ghost.style.top='-9999px';
       document.body.appendChild(ghost);
+      e.dataTransfer.setDragImage(ghost,20,20);
+      setTimeout(function(){ghost.remove()},0);
+    }
       e.dataTransfer.setDragImage(ghost,16,16);
       setTimeout(function(){ghost.remove()},0);
     }
@@ -491,7 +493,6 @@
     if(selected.includes(fruit)){selected=selected.filter(function(f){return f!==fruit})}
     else{selected.push(fruit)}
     renderSelected();
-    fruitDrop(emojis[fruit],selected.length-1);
   });
 
   blendBtn.addEventListener('click',function(){if(gameActive)checkBlend()});
