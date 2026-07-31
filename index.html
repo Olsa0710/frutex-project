@@ -7,7 +7,7 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--white-10:rgba(255,255,255,.1);--transition:.25s ease}
-    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(180deg,#f9fbf8 0%,#f4f8f3 30%,#f8fbf7 60%,#f5f9f4 100%);-webkit-font-smoothing:antialiased;overflow-x:hidden}
     /* ── Premium ambient glows ── */
     body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 90% 60% at 10% 5%,rgba(46,111,64,.05) 0%,transparent 55%),radial-gradient(ellipse 70% 50% at 85% 85%,rgba(46,111,64,.04) 0%,transparent 55%),radial-gradient(ellipse 60% 40% at 50% 40%,rgba(220,190,120,.03) 0%,transparent 50%)}
     /* ── Subtle dotted world map ── */
@@ -264,6 +264,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800</head>display=swap" rel="stylesheet">
 </head>
 <body>
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden">
+  <!-- Green gradient orbs with slow drift -->
+  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,180,100,.07) 0%,rgba(46,200,100,.02) 40%,transparent 70%);top:5%;left:-10%;filter:blur(60px)">
+    <style>@keyframes orb1{0%,100%{transform:translate(0,0)}25%{transform:translate(60px,30px)}50%{transform:translate(30px,-20px)}75%{transform:translate(-40px,10px)}}</style>
+    <div style="animation:orb1 25s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(46,200,120,.05) 0%,rgba(46,180,80,.01) 45%,transparent 75%);top:40%;right:-8%;filter:blur(50px)">
+    <style>@keyframes orb2{0%,100%{transform:translate(0,0)}33%{transform:translate(-50px,-20px)}66%{transform:translate(-20px,40px)}}</style>
+    <div style="animation:orb2 22s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(46,150,90,.04) 0%,transparent 70%);bottom:5%;left:20%;filter:blur(45px)">
+    <style>@keyframes orb3{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-30px)}}</style>
+    <div style="animation:orb3 20s ease-in-out infinite;width:100%;height:100%"></div>
+  </div>
+
+  <!-- Flowing green gradient wave -->
+  <svg style="position:absolute;inset:0;opacity:.06" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="gw" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2E6F40"/><stop offset="50%" stop-color="#81c784"/><stop offset="100%" stop-color="#c8e6c9"/></linearGradient></defs>
+    <path fill="url(#gw)" opacity=".4">
+      <animate attributeName="d" dur="30s" repeatCount="indefinite"
+        values="M0,200 Q300,150 600,250 T1200,200 T1920,300 L1920,0 L0,0Z;
+                M0,250 Q300,300 600,180 T1200,280 T1920,200 L1920,0 L0,0Z;
+                M0,200 Q300,150 600,250 T1200,200 T1920,300 L1920,0 L0,0Z"/>
+    </path>
+  </svg>
+
+  <!-- Floating leaves with natural drift -->
+  <svg style="position:absolute;inset:0;opacity:.025" xmlns="http://www.w3.org/2000/svg">
+    <g><animateTransform attributeName="transform" type="translate" values="-100,300;2000,400" dur="40s" repeatCount="indefinite"/>
+      <path d="M0,20 Q15,0 30,20 Q15,40 0,20Z M15,12 L15,4" stroke="#2E6F40" stroke-width="1.5" fill="none">
+        <animateTransform attributeName="transform" type="rotate" values="0,15,20;360,15,20" dur="12s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    <g><animateTransform attributeName="transform" type="translate" values="2000,600;-100,500" dur="35s" repeatCount="indefinite"/>
+      <path d="M0,16 Q10,0 20,16 Q10,32 0,16Z M10,9 L10,3" stroke="#4caf50" stroke-width="1.2" fill="none">
+        <animateTransform attributeName="transform" type="rotate" values="0,10,16;270,10,16" dur="14s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    <g><animateTransform attributeName="transform" type="translate" values="-50,800;1950,700" dur="45s" repeatCount="indefinite"/>
+      <path d="M0,22 Q16,0 32,22 Q16,44 0,22Z M16,12 L16,5" stroke="#66bb6a" stroke-width="1" fill="none">
+        <animateTransform attributeName="transform" type="rotate" values="0,16,22;180,16,22" dur="16s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </svg>
+
+  <!-- Sunlight glow spots -->
+  <div style="position:absolute;width:800px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,220,.03) 0%,transparent 70%);top:10%;left:20%;filter:blur(80px);transform:rotate(-15deg)"></div>
+</div>
 
   <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(46,180,100,.05) 0%,transparent 70%);top:50%;right:8%;filter:blur(50px)">
     <style>@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}</style>
