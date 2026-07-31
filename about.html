@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — Frutex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--green:#2E6F40;--green-dark:#1e4d2c;--white:#fff;--white-70:rgba(255,255,255,.7);--white-10:rgba(255,255,255,.1);--transition:.25s ease}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both}
+    body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#FAFBFA;-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:fPage .5s ease both}
     @keyframes fPage{from{opacity:0}to{opacity:1}}
 
     .navbar{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:1000;animation:nIn .7s cubic-bezier(.22,1,.36,1) both;width:82vw;max-width:1050px;border-radius:40px;background:rgba(255,255,255,.12);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.1)}
@@ -38,7 +41,7 @@
     .about-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,5,.15) 0%,rgba(0,25,10,.3) 60%,rgba(0,0,0,.4) 100%)}
     .about-hero-content{position:relative;z-index:1;text-align:center;padding:0 32px;animation:fIn .8s ease both}
     .about-hero-badge{display:inline-block;padding:8px 20px;background:rgba(46,111,64,.3);border:1px solid rgba(255,255,255,.15);color:#d4e8d0;border-radius:30px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px;backdrop-filter:blur(4px)}
-    .about-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.8rem,7vw,5rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:16px;letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+    .about-hero h1{font-family:'Poppins',sans-serif;font-size:clamp(2.8rem,7vw,5rem);color:#f5ead6;font-weight:700;line-height:1.05;margin-bottom:16px;letter-spacing:-.02em;text-shadow:0 2px 20px rgba(0,0,0,.3)}
     .about-hero p{font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 32px;line-height:1.6}
     .about-hero-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:#f5ead6;color:#2E6F40;border-radius:50px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .3s,box-shadow .3s;box-shadow:0 6px 28px rgba(0,0,0,.2),0 0 40px rgba(46,111,64,.15)}
     .about-hero-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(0,0,0,.3)}
@@ -47,7 +50,7 @@
     .story{max-width:1000px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
     .story-img{border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.12)}.story-img img{width:100%;display:block}
     .story-badge{display:inline-block;padding:6px 16px;background:rgba(46,111,64,.1);color:var(--green);border-radius:20px;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
-    .story-text h2{font-family:Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.4rem);color:#1a1a1a;line-height:1.15;margin-bottom:16px}.story-text h2 span{color:var(--green)}
+    .story-text h2{font-family:'Poppins',sans-serif;font-size:clamp(1.8rem,3.5vw,2.4rem);color:#1a1a1a;line-height:1.15;margin-bottom:16px}.story-text h2 span{color:var(--green)}
     .story-text p{font-size:1.05rem;color:#555;line-height:1.8;margin-bottom:16px}
     .story-milestones{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
     .story-milestone{background:#fff;border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 12px rgba(0,0,0,.04);border-left:3px solid var(--green)}
@@ -56,7 +59,7 @@
 
     /* ── EXPORT MAP ── */
     .export-section{max-width:1100px;margin:0 auto;padding:80px 32px;text-align:center}
-    .export-section h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:8px}.export-section h2 span{color:var(--green)}
+    .export-section h2{font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:8px}.export-section h2 span{color:var(--green)}
     .export-sub{color:#888;font-size:.95rem;margin-bottom:50px}
     .map-container{position:relative;max-width:900px;margin:0 auto;perspective:1200px}
     .map-stage{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(248,252,248,.75),rgba(240,248,240,.8));backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);border:1px solid rgba(46,111,64,.1);border-radius:28px;padding:40px;box-shadow:0 2px 4px rgba(0,0,0,.03),0 8px 32px rgba(46,111,64,.06),0 20px 60px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 60px rgba(46,111,64,.02);transition:transform .4s ease}
@@ -88,26 +91,26 @@
 
     .export-stats{display:flex;justify-content:center;gap:40px;margin-top:40px;flex-wrap:wrap}
     .export-stat{text-align:center}
-    .export-stat-n{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:var(--green)}
+    .export-stat-n{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:700;color:var(--green)}
     .export-stat-l{font-size:.78rem;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
 
     .mission{max-width:900px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-    .mission-text h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:16px}.mission-text h2 span{color:var(--green)}
+    .mission-text h2{font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;margin-bottom:16px}.mission-text h2 span{color:var(--green)}
     .mission-text p{font-size:1.05rem;color:#555;line-height:1.75;margin-bottom:16px}
     .mission-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.04);border-left:4px solid var(--green)}
 
     .values{max-width:1000px;margin:0 auto;padding:60px 32px}
-    .values h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;text-align:center;margin-bottom:40px}.values h2 span{color:var(--green)}
+    .values h2{font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;text-align:center;margin-bottom:40px}.values h2 span{color:var(--green)}
     .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .value-card{background:#fff;border-radius:14px;padding:32px 20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .3s}.value-card:hover{transform:translateY(-4px)}
     .value-icon{width:56px;height:56px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
     .value-card h3{font-size:1.05rem;color:#111;margin-bottom:8px}.value-card p{font-size:.88rem;color:#777;line-height:1.5}
 
     .team{max-width:900px;margin:0 auto;padding:60px 32px}
-    .team h2{font-family:Georgia,serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;text-align:center;margin-bottom:12px}.team h2 span{color:var(--green)}
+    .team h2{font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,3vw,2rem);color:#1a1a1a;text-align:center;margin-bottom:12px}.team h2 span{color:var(--green)}
     .team-sub{text-align:center;color:#888;font-size:.95rem;margin-bottom:40px}
     .team-message{background:var(--green);color:#fff;padding:40px;border-radius:20px;text-align:center;font-size:1.15rem;line-height:1.7;position:relative}
-    .team-message::before{content:'"';position:absolute;top:10px;left:20px;font-size:5rem;opacity:.15;font-family:Georgia,serif;line-height:1}
+    .team-message::before{content:'"';position:absolute;top:10px;left:20px;font-size:5rem;opacity:.15;font-family:'Poppins',sans-serif;line-height:1}
     .team-message strong{color:#e8f5e9}
 
     @media(max-width:768px){.story,.mission,.values-grid{grid-template-columns:1fr}}
@@ -316,7 +319,7 @@
       <p>Every bottle carries the same promise: quality you can taste and freshness you can feel.</p>
     </div>
     <div class="mission-card">
-      <p style="font-family:Georgia,serif;font-size:1.15rem;color:var(--green);line-height:1.6;font-style:italic">"We don't just make drinks. We create moments — from the first sip of a Golden Eagle to the last drop of a Natural 100 juice."</p>
+      <p style="font-family:'Poppins',sans-serif;font-size:1.15rem;color:var(--green);line-height:1.6;font-style:italic">"We don't just make drinks. We create moments — from the first sip of a Golden Eagle to the last drop of a Natural 100 juice."</p>
     </div>
   </section>
 
